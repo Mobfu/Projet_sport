@@ -54,7 +54,7 @@
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 				<br> <a href='./addUser.jsp'>
-					<button type="text" class="btn btn-primary">addUser</button>
+					<button type="text" class="btn btn-primary">Inscription</button>
 				</a>
 			</div>
 			<%
