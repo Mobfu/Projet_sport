@@ -20,7 +20,7 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-header bg-primary text-white">Please enter
-				your login information</div>
+				your information for Inscription</div>
 			<div class="card-body">
 				<form action="AddUser" method="post">
 					<h4 class="class-title">UserName:</h4>
