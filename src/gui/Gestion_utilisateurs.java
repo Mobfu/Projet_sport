@@ -1,4 +1,4 @@
-package GUY;
+package gui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -17,10 +17,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 
-public class Liste_utilisateurs extends JFrame {
+public class Gestion_utilisateurs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JButton btnAjouter, btnModifier, btnSupprimer, btnRetour;
 	/**
 	 * Launch the application.
 	 */
@@ -28,7 +28,7 @@ public class Liste_utilisateurs extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Liste_utilisateurs frame = new Liste_utilisateurs();
+					Gestion_utilisateurs frame = new Gestion_utilisateurs();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class Liste_utilisateurs extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Liste_utilisateurs() {
+	public Gestion_utilisateurs() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -54,35 +54,45 @@ public class Liste_utilisateurs extends JFrame {
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("/fond.jpg")).getImage();
 		
-		JButton btnAppliquer = new JButton("appliquer");
-		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAppliquer.setBounds(520, 74, 140, 30);
-		contentPane.add(btnAppliquer);
+		//JButtons
 		
-		textField = new JTextField();
-		textField.setBounds(308, 75, 201, 30);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		this.btnAjouter = new JButton("ajouter");
+		btnAjouter.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnAjouter.setBounds(70, 258, 140, 30);
+		contentPane.add(btnAjouter);
+		btnAjouter.addActionListener(this);
 		
-		JLabel lblListeDesProfils = new JLabel("filtre de recherche :");
+		this.btnModifier = new JButton("modifier");
+		btnModifier.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnModifier.setBounds(282, 258, 140, 30);
+		contentPane.add(btnModifier);
+		btnModifier.addActionListener(this);
+		
+		this.btnSupprimer = new JButton("supprimer");
+		btnSupprimer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnSupprimer.setBounds(483, 258, 140, 30);
+		contentPane.add(btnSupprimer);
+		btnSupprimer.addActionListener(this);
+		
+		this.btnRetour = new JButton("retour");
+		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnRetour.setBounds(282, 312, 140, 30);
+		contentPane.add(btnRetour);
+		btnRetour.addActionListener(this);
+		
+		
+		JLabel lblListeDesProfils = new JLabel("liste des profils");
 		lblListeDesProfils.setHorizontalAlignment(SwingConstants.CENTER);
 		lblListeDesProfils.setForeground(Color.WHITE);
 		lblListeDesProfils.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
-		lblListeDesProfils.setBounds(29, 74, 300, 30);
+		lblListeDesProfils.setBounds(165, 56, 347, 30);
 		contentPane.add(lblListeDesProfils);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(29, 115, 631, 173);
+		scrollPane.setBounds(29, 95, 631, 139);
 		contentPane.add(scrollPane);
 		
-		//JLabels contenant les textes et les textfields
-		
-		JButton btnAnnuler = new JButton("retour");
-		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler.setBounds(282, 312, 140, 30);
-		contentPane.add(btnAnnuler);
-		
-		JLabel lblNewLabel = new JLabel("Liste des profils");
+		JLabel lblNewLabel = new JLabel("Gestion des utilisateurs");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(165, 8, 347, 37);
 		contentPane.add(lblNewLabel);
@@ -100,5 +110,23 @@ public class Liste_utilisateurs extends JFrame {
 		contentPane.add(imageLabel);
 		imageLabel.setBounds(0, 0, 686, 373);
 		setLocationRelativeTo(null);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		if(ae.getSource()==btnAjouter) {
+			System.out.println("fonction pas encore réalisée");
+		}
+		else if(ae.getSource()==btnModifier) {
+			System.out.println("fonction pas encore réalisée");
+		}
+		else if(ae.getSource()==btnSupprimer) {
+			System.out.println("fonction pas encore réalisée");
+		}
+		else if(ae.getSource()==btnRetour) {
+			Menu_principal frame = new Menu_principal();
+			frame.setVisible(true);
+			dispose();
+		}
 	}
 }

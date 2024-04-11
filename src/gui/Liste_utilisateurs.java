@@ -1,4 +1,4 @@
-package GUY;
+package gui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -15,10 +15,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JScrollPane;
 
-public class Menu_principal extends JFrame {
+public class Liste_utilisateurs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JButton btnRetour, btnAppliquer;
 	/**
 	 * Launch the application.
 	 */
@@ -26,7 +29,7 @@ public class Menu_principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Menu_principal frame = new Menu_principal();
+					Liste_utilisateurs frame = new Liste_utilisateurs();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +41,7 @@ public class Menu_principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Menu_principal() {
+	public Liste_utilisateurs() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -52,34 +55,38 @@ public class Menu_principal extends JFrame {
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("/fond.jpg")).getImage();
 		
-		JButton btnAnnuler_1_2 = new JButton("gestion de clubs");
-		btnAnnuler_1_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler_1_2.setBounds(394, 232, 251, 30);
-		contentPane.add(btnAnnuler_1_2);
+		//JButtons
 		
-		JButton btnAnnuler_1_1_1 = new JButton("afficher les clubs de sport");
-		btnAnnuler_1_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler_1_1_1.setBounds(10, 232, 355, 30);
-		contentPane.add(btnAnnuler_1_1_1);
+		this.btnAppliquer = new JButton("appliquer");
+		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnAppliquer.setBounds(520, 74, 140, 30);
+		contentPane.add(btnAppliquer);
+		btnAppliquer.addActionListener(this);
 		
-		JButton btnAnnuler_1_1 = new JButton("afficher une liste d'utilisateurs");
-		btnAnnuler_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler_1_1.setBounds(10, 125, 355, 30);
-		contentPane.add(btnAnnuler_1_1);
+		this.btnRetour = new JButton("retour");
+		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnRetour.setBounds(282, 312, 140, 30);
+		contentPane.add(btnRetour);
+		btnRetour.addActionListener(this);
 		
-		JButton btnAnnuler_1 = new JButton("gérer les utilisateurs");
-		btnAnnuler_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler_1.setBounds(394, 125, 251, 30);
-		contentPane.add(btnAnnuler_1);
 		
-		//JLabels contenant les textes et les textfields
+		textField = new JTextField();
+		textField.setBounds(308, 75, 201, 30);
+		contentPane.add(textField);
+		textField.setColumns(10);
 		
-		JButton btnAnnuler = new JButton("déconnexion");
-		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler.setBounds(261, 312, 163, 30);
-		contentPane.add(btnAnnuler);
+		JLabel lblListeDesProfils = new JLabel("filtre de recherche :");
+		lblListeDesProfils.setHorizontalAlignment(SwingConstants.CENTER);
+		lblListeDesProfils.setForeground(Color.WHITE);
+		lblListeDesProfils.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
+		lblListeDesProfils.setBounds(29, 74, 300, 30);
+		contentPane.add(lblListeDesProfils);
 		
-		JLabel lblNewLabel = new JLabel("Menu principal");
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(29, 115, 631, 173);
+		contentPane.add(scrollPane);
+		
+		JLabel lblNewLabel = new JLabel("Liste des profils");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(165, 8, 347, 37);
 		contentPane.add(lblNewLabel);
@@ -98,5 +105,17 @@ public class Menu_principal extends JFrame {
 		imageLabel.setBounds(0, 0, 686, 373);
 		setLocationRelativeTo(null);
 	}
-
+	
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		if(ae.getSource()==btnRetour) {
+			Menu_principal frame = new Menu_principal();
+			frame.setVisible(true);
+			dispose();
+		}
+		else if(ae.getSource()==btnAppliquer) {
+			System.out.println("fonction pas encore réalisée");
+		}
+		
+	}
 }
