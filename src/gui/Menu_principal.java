@@ -127,11 +127,13 @@ public class Menu_principal extends JFrame implements ActionListener{
 			frame.setVisible(true);
 			dispose();
 		}else if(ae.getSource()==btnHistoriqueConnexion) {
-			System.out.println("page pas encre créée");
+			Historique_connexions frame = new Historique_connexions();
+			frame.setVisible(true);
 			dispose();
 		}
 		else if(ae.getSource()==btnAffichageClub) {
-			System.out.println("page pas encre créée");
+			Liste_utilisateurs frame = new Liste_utilisateurs();
+			frame.setVisible(true);
 			dispose();
 				}
 		else if(ae.getSource()==btnAffichageUtilisateurs) {
