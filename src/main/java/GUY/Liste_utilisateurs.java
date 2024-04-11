@@ -17,10 +17,11 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 
-public class Liste_utilisateurs extends JFrame {
+public class Liste_utilisateurs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JButton btnRetour, btnAppliquer;
 	/**
 	 * Launch the application.
 	 */
@@ -54,10 +55,20 @@ public class Liste_utilisateurs extends JFrame {
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 		
-		JButton btnAppliquer = new JButton("appliquer");
+		//JButtons
+		
+		this.btnAppliquer = new JButton("appliquer");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAppliquer.setBounds(520, 74, 140, 30);
 		contentPane.add(btnAppliquer);
+		btnAppliquer.addActionListener(this);
+		
+		this.btnRetour = new JButton("retour");
+		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnRetour.setBounds(282, 312, 140, 30);
+		contentPane.add(btnRetour);
+		btnRetour.addActionListener(this);
+		
 		
 		textField = new JTextField();
 		textField.setBounds(308, 75, 201, 30);
@@ -74,13 +85,6 @@ public class Liste_utilisateurs extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(29, 115, 631, 173);
 		contentPane.add(scrollPane);
-		
-		//JLabels contenant les textes et les textfields
-		
-		JButton btnAnnuler = new JButton("retour");
-		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler.setBounds(282, 312, 140, 30);
-		contentPane.add(btnAnnuler);
 		
 		JLabel lblNewLabel = new JLabel("Liste des profils");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -100,5 +104,18 @@ public class Liste_utilisateurs extends JFrame {
 		contentPane.add(imageLabel);
 		imageLabel.setBounds(0, 0, 686, 373);
 		setLocationRelativeTo(null);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		if(ae.getSource()==btnRetour) {
+			Menu_principal frame = new Menu_principal();
+			frame.setVisible(true);
+			dispose();
+		}
+		else if(ae.getSource()==btnAppliquer) {
+			System.out.println("fonction pas encore r¨¦alis¨¦e");
+		}
+		
 	}
 }

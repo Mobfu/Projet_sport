@@ -17,9 +17,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 
-public class Gestion_utilisateurs extends JFrame {
+public class Gestion_utilisateurs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private JButton btnAjouter, btnModifier, btnSupprimer, btnRetour;
 	/**
 	 * Launch the application.
 	 */
@@ -53,6 +54,33 @@ public class Gestion_utilisateurs extends JFrame {
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 		
+		//JButtons
+		
+		this.btnAjouter = new JButton("ajouter");
+		btnAjouter.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnAjouter.setBounds(70, 258, 140, 30);
+		contentPane.add(btnAjouter);
+		btnAjouter.addActionListener(this);
+		
+		this.btnModifier = new JButton("modifier");
+		btnModifier.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnModifier.setBounds(282, 258, 140, 30);
+		contentPane.add(btnModifier);
+		btnModifier.addActionListener(this);
+		
+		this.btnSupprimer = new JButton("supprimer");
+		btnSupprimer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnSupprimer.setBounds(483, 258, 140, 30);
+		contentPane.add(btnSupprimer);
+		btnSupprimer.addActionListener(this);
+		
+		this.btnRetour = new JButton("retour");
+		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnRetour.setBounds(282, 312, 140, 30);
+		contentPane.add(btnRetour);
+		btnRetour.addActionListener(this);
+		
+		
 		JLabel lblListeDesProfils = new JLabel("liste des profils");
 		lblListeDesProfils.setHorizontalAlignment(SwingConstants.CENTER);
 		lblListeDesProfils.setForeground(Color.WHITE);
@@ -60,31 +88,9 @@ public class Gestion_utilisateurs extends JFrame {
 		lblListeDesProfils.setBounds(165, 56, 347, 30);
 		contentPane.add(lblListeDesProfils);
 		
-		JButton btnAjouter = new JButton("ajouter");
-		btnAjouter.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAjouter.setBounds(70, 258, 140, 30);
-		contentPane.add(btnAjouter);
-		
-		JButton btnModifier = new JButton("modifier");
-		btnModifier.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnModifier.setBounds(282, 258, 140, 30);
-		contentPane.add(btnModifier);
-		
-		JButton btnSupprimer = new JButton("supprimer");
-		btnSupprimer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnSupprimer.setBounds(483, 258, 140, 30);
-		contentPane.add(btnSupprimer);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(29, 95, 631, 139);
 		contentPane.add(scrollPane);
-		
-		//JLabels contenant les textes et les textfields
-		
-		JButton btnAnnuler = new JButton("annuler");
-		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler.setBounds(282, 312, 140, 30);
-		contentPane.add(btnAnnuler);
 		
 		JLabel lblNewLabel = new JLabel("Gestion des utilisateurs");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -104,5 +110,23 @@ public class Gestion_utilisateurs extends JFrame {
 		contentPane.add(imageLabel);
 		imageLabel.setBounds(0, 0, 686, 373);
 		setLocationRelativeTo(null);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		if(ae.getSource()==btnAjouter) {
+			System.out.println("fonction pas encore r¨¦alis¨¦e");
+		}
+		else if(ae.getSource()==btnModifier) {
+			System.out.println("fonction pas encore r¨¦alis¨¦e");
+		}
+		else if(ae.getSource()==btnSupprimer) {
+			System.out.println("fonction pas encore r¨¦alis¨¦e");
+		}
+		else if(ae.getSource()==btnRetour) {
+			Menu_principal frame = new Menu_principal();
+			frame.setVisible(true);
+			dispose();
+		}
 	}
 }
