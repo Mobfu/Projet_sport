@@ -2,12 +2,14 @@ package ProjetSport;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 /**
  * Servlet implementation class UserLogin
@@ -49,12 +51,15 @@ public class UserLogin extends HttpServlet {
 		DBDAO dao = new DBDAO();
 		
 		HttpSession session = request.getSession();
+		LocalDateTime now = LocalDateTime.now();
+		System.out.println(now);
 		
 		if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN, "Bad Request");
 		}
 		if (dao.verifierUser(username, password,choix)) {
 			session.setAttribute("UserName", username);
+			dao.saveTempLogin(now, choix);
 			response.sendRedirect("./index.html");
 		} else {
 			/* response.sendError(HttpServletResponse.SC_FORBIDDEN, "FORBIDDEN"); */

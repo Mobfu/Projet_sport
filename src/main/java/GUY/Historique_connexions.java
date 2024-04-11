@@ -9,19 +9,30 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import ProjetSport.DBDAO;
+
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class Historique_connexions extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JButton btnRetour, btnAppliquer;
+	private JTable table; // 将 JTable 作为成员变量
+    private JScrollPane scrollPane;
+    private JComboBox<Integer> roleComboBox;
+	DBDAO dbdao = new DBDAO();
+	DefaultTableModel tableModel = dbdao.getTempLoginTableModel();
 	/**
 	 * Launch the application.
 	 */
@@ -70,11 +81,6 @@ public class Historique_connexions extends JFrame implements ActionListener{
 		btnRetour.addActionListener(this);
 		
 		
-		textField = new JTextField();
-		textField.setBounds(308, 75, 201, 30);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
 		JLabel lblListeDesProfils = new JLabel("filtre de recherche :");
 		lblListeDesProfils.setHorizontalAlignment(SwingConstants.CENTER);
 		lblListeDesProfils.setForeground(Color.WHITE);
@@ -82,9 +88,16 @@ public class Historique_connexions extends JFrame implements ActionListener{
 		lblListeDesProfils.setBounds(29, 74, 300, 30);
 		contentPane.add(lblListeDesProfils);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(29, 115, 631, 173);
-		contentPane.add(scrollPane);
+		if (tableModel != null) {
+		    this.table = new JTable(tableModel);
+		    this.scrollPane = new JScrollPane(table);
+		    scrollPane.setBounds(29, 115, 631, 173);
+		    contentPane.add(scrollPane);
+		}
+		
+		this.roleComboBox = new JComboBox<>(new Integer[]{0, 1, 2, 3});
+		roleComboBox.setBounds(308, 75, 201, 30); // 可以调整位置和大小
+        contentPane.add(roleComboBox);
 		
 		JLabel lblNewLabel = new JLabel("connexions récentes au site web :");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -114,7 +127,11 @@ public class Historique_connexions extends JFrame implements ActionListener{
 			dispose();
 		}
 		else if(ae.getSource()==btnAppliquer) {
-			System.out.println("fonction pas encore réalisée");
+			Integer selectedRole = (Integer)roleComboBox.getSelectedItem();
+            // 调用 DBDAO 类中的新方法来获取过滤后的 DefaultTableModel
+            DefaultTableModel filteredModel = dbdao.getTempLoginByRole(selectedRole);
+            // 更新 JTable 的模型
+            this.table.setModel(filteredModel);
 		}
 		
 	}
