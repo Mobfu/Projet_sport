@@ -47,7 +47,7 @@ public class AddUser extends HttpServlet {
 			break;
 		}
 		DBDAO dao = new DBDAO();
-		boolean res = dao.addUser(name, password, choix);
+		boolean res = dao.insertUser(name, password, choix);
 
 		if (res) {
 			request.getSession().setAttribute("messageS", "User inscrp succe");

@@ -47,31 +47,9 @@ public class DBDAO {
 		}
 	}
 
-	public Boolean addUser(String name, String password, int role) {
-		String tableName;
-		switch (role) {
-		case 0:
-			tableName = "projet_sport.administrateur";
-			break;
-		case 1:
-			tableName = "projet_sport.elu";
-			break;
-		case 2:
-			tableName = "projet_sport.acteur";
-			break;
-		case 3:
-			tableName = "projet_sport.user";
-			break;
-		default:
-			System.out.println("Cant add cette role!");
-			return false;
-		}
-		return insertUser(tableName, name, password, role);
-	}
-
-	private Boolean insertUser(String tableName, String name, String password, int role) {
+	public Boolean insertUser(String name, String password, int role) {
 		if (dbConnect()) {
-			String query = String.format("INSERT INTO %s (name, password, role) VALUES (?, SHA2(?,256), ?)", tableName);
+			String query = String.format("INSERT INTO users (name, password, role) VALUES (?, SHA2(?,256), ?)");
 			try (PreparedStatement ps = conn.prepareStatement(query)) {
 				ps.setString(1, name);
 				ps.setString(2, password);
@@ -88,30 +66,9 @@ public class DBDAO {
 		return false;
 	}
 
-	public Boolean verifierUser(String name, String password, int role) {
-		String tableName;
-		switch (role) {
-		case 0:
-			tableName = "projet_sport.administrateur";
-			break;
-		case 1:
-			tableName = "projet_sport.elu";
-			break;
-		case 2:
-			tableName = "projet_sport.acteur";
-			break;
-		case 3:
-			tableName = "projet_sport.user";
-			break;
-		default:
-			System.out.println("Invalid role!");
-			return false;
-		}
-		return validateUser(tableName, name, password, role);
-	}
 
-	public boolean validateUser(String tableName, String user, String password, int role) {
-		String query = String.format("SELECT * FROM %s WHERE name=? AND password=SHA2(?,256) AND role=?", tableName);
+	public boolean validateUser(String user, String password, int role) {
+		String query = String.format("SELECT * FROM users WHERE name=? AND password=SHA2(?,256) AND role=?");
 		try {
 			if (dbConnect()) {
 				try (PreparedStatement ps = conn.prepareStatement(query)) {
@@ -237,6 +194,38 @@ public class DBDAO {
 
 	    return tableModel;
 	}
+	
+	 public void deletePasswords() {
+	        Connection connection = null;
+	        PreparedStatement statement = null;
+
+	        try {
+	            connection = DriverManager.getConnection(url, username, password);
+
+	            String query = "UPDATE projet_sport.user SET password = NULL";
+	            statement = connection.prepareStatement(query);
+
+	            int rowsAffected = statement.executeUpdate();
+	            System.out.println("Nombre de mots de passe supprim¨¦s : " + rowsAffected);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            if (statement != null) {
+	                try {
+	                    statement.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	            if (connection != null) {
+	                try {
+	                    connection.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	    }
 
 	
 }
