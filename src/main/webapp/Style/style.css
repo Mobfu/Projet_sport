@@ -1,0 +1,96 @@
+
+
+
+
+.redressed{
+    font-family: ' Aptos' ;
+
+}
+
+.merriweather{
+    font-family: 'Aptos' ;
+}
+
+ 
+
+.cc-navbar{
+    background-color: rgba(0,0,0,0.55)   ;
+    font-family: 'Aptos' ;
+    box-shadow: 1px 1px 3px rgba(255,255,255, 0.54);
+    z-index:90;
+
+}
+.cc-navbar .nav-link{
+    border-bottom: 1px solid transparent;
+    transition: padding-bottom .4s ease-in-out, border-color .3s ease;
+}
+.cc-navbar .nav-link:hover{
+    padding-bottom: 20px;
+    border-bottom-color: var(--bs-teal) ;
+}
+
+
+
+.banner .banner-desc{
+    font-size: 48px;
+    font-weight: 400;
+    color: black;
+}
+
+.btn-order{
+    color: var(--bs-teal);
+    border-color: var(--bs-teal);
+    transition: 0.5s;
+
+}
+
+.btn-order:hover,
+
+.btn-order:active {
+    color: black;
+    background-color: var(--bs-teal);
+}
+
+.footer{
+    background-color:rgb(118, 122, 124) ;
+    align-items: flex-down;
+}
+
+.form-label{
+    color: black;
+}
+.text-center {
+    color: white;
+}
+   
+
+.titre {
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding:20px;
+    margin-top:20px;
+}
+.titre:hover {
+    background-color: blue;
+    }
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-child {
+    display: none;
+    background-color: white;
+    min-width: 200px;
+}
+.dropdown-child a {
+    color: black;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown:hover .dropdown-child {
+    display: block;
+}
+    

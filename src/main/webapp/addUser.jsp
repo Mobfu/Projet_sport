@@ -30,6 +30,11 @@
 					<h4 class="class-title">Password:</h4>
 					<label for="password"></label> <input type="password" id="password"
 						name="password" required><br>
+						
+					<h4 class="class-title">E-mail:</h4>
+					<label for="password"></label> <input type="email" id="email"
+						name="email" required><br>
+						
 					<h4></h4>
 					<ul class="list-group">
 						<li class="list-group-item"><input
