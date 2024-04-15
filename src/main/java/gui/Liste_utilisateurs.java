@@ -20,7 +20,6 @@ import javax.swing.JScrollPane;
 public class Liste_utilisateurs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JButton btnRetour, btnAppliquer;
 	/**
 	 * Launch the application.
@@ -57,33 +56,20 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 		
 		//JButtons
 		
-		this.btnAppliquer = new JButton("appliquer");
+		this.btnAppliquer = new JButton("appliquer un filtre");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAppliquer.setBounds(520, 74, 140, 30);
+		btnAppliquer.setBounds(356, 312, 236, 30);
 		contentPane.add(btnAppliquer);
 		btnAppliquer.addActionListener(this);
 		
 		this.btnRetour = new JButton("retour");
 		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnRetour.setBounds(282, 312, 140, 30);
+		btnRetour.setBounds(113, 312, 140, 30);
 		contentPane.add(btnRetour);
 		btnRetour.addActionListener(this);
 		
-		
-		textField = new JTextField();
-		textField.setBounds(308, 75, 201, 30);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblListeDesProfils = new JLabel("filtre de recherche :");
-		lblListeDesProfils.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListeDesProfils.setForeground(Color.WHITE);
-		lblListeDesProfils.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
-		lblListeDesProfils.setBounds(29, 74, 300, 30);
-		contentPane.add(lblListeDesProfils);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(29, 115, 631, 173);
+		scrollPane.setBounds(30, 56, 631, 223);
 		contentPane.add(scrollPane);
 		
 		JLabel lblNewLabel = new JLabel("Liste des profils");
@@ -114,7 +100,9 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 			dispose();
 		}
 		else if(ae.getSource()==btnAppliquer) {
-			System.out.println("fonction pas encore r¨¦alis¨¦e");
+			Filtrer_profils frame = new Filtrer_profils();
+			frame.setVisible(true);
+			dispose();
 		}
 		
 	}
