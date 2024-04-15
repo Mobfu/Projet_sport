@@ -57,10 +57,10 @@ public class UserLogin extends HttpServlet {
 		if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN, "Bad Request");
 		}
-		if (dao.validateUser(username, password,choix)) {
+		if (dao.checkUser(username, password,choix)) {
 			session.setAttribute("UserName", username);
 			dao.saveTempLogin(now, choix);
-			response.sendRedirect("./index.html");
+			response.sendRedirect("./index.jsp");
 		} else {
 			/* response.sendError(HttpServletResponse.SC_FORBIDDEN, "FORBIDDEN"); */
 			 response.sendRedirect("./Login.jsp"); 

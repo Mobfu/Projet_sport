@@ -31,6 +31,7 @@ public class AddUser extends HttpServlet {
 		// TODO Auto-generated method stub
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
+		String email = request.getParameter("email");
 		String role = request.getParameter("role");
 
 		int choix = 0;
@@ -47,7 +48,7 @@ public class AddUser extends HttpServlet {
 			break;
 		}
 		DBDAO dao = new DBDAO();
-		boolean res = dao.insertUser(name, password, choix);
+		boolean res = dao.insertUser(name,email, password, choix);
 
 		if (res) {
 			request.getSession().setAttribute("messageS", "User inscrp succe");
