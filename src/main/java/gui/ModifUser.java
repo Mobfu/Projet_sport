@@ -2,7 +2,7 @@
  
 import javax.swing.*;
  
-import ProjetSport.DBDAO;
+import dao.DBDAO;
  
 import java.awt.EventQueue;
 import java.awt.Image;

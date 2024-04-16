@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
  
-import ProjetSport.DBDAO;
+import dao.DBDAO;
  
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
