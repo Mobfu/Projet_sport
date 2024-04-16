@@ -55,7 +55,7 @@ public class ModifUser extends JFrame implements ActionListener {
         roleComboBox = new JComboBox<>();
         roleComboBox.addItem("Admin");
         roleComboBox.addItem("Sportif");
-        roleComboBox.addItem("Membre Ministère Sport");
+        roleComboBox.addItem("Membre Minist猫re Sport");
         roleComboBox.addItem("Elu");
         contentPane.add(roleComboBox);
  
@@ -89,12 +89,12 @@ public class ModifUser extends JFrame implements ActionListener {
                 return 0;
             case "Sportif":
                 return 1;
-            case "Membre Ministère Sport":
+            case "Membre Minist猫re Sport":
                 return 2;
             case "Elu":
                 return 3;
             default:
-                return 0; // Valeur par défaut, à ajuster selon vos besoins
+                return 0; // Valeur par d茅faut, 脿 ajuster selon vos besoins
         }
     }
     @Override
@@ -104,13 +104,13 @@ public class ModifUser extends JFrame implements ActionListener {
             String selectedRole = (String) roleComboBox.getSelectedItem();
             int roleValue = getRoleValue(selectedRole);
             if (dbdao.updateRoleUser(username, roleValue)) {
-                JOptionPane.showMessageDialog(this, "Utilisateur " + username + " modifié avec succès.", "Succès", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Utilisateur " + username + " modifi茅 avec succ猫s.", "Succ猫s", JOptionPane.INFORMATION_MESSAGE);
             }
             else
-            	JOptionPane.showMessageDialog(this, "Une erreur a été rencontré ", "Echec", JOptionPane.INFORMATION_MESSAGE);
+            	JOptionPane.showMessageDialog(this, "Une erreur a 茅t茅 rencontr茅 ", "Echec", JOptionPane.INFORMATION_MESSAGE);
         }
         if (e.getSource() == btnRetour) {
-                // Retourner à la page de gestion des utilisateurs
+                // Retourner 脿 la page de gestion des utilisateurs
             	Gestion_utilisateurs frame = new Gestion_utilisateurs();
                 frame.setVisible(true);
                 dispose();
