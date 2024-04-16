@@ -1,9 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Index du Sport</title>
+<meta charset="ISO-8859-1">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -24,34 +24,34 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="./Style/style.css" />
-
-
+<title>AddNews</title>
 </head>
-<% 
-if (session == null) {
-    session = request.getSession(); // 创建一个新的会话
-}
-if (session.getAttribute("LogFlag") == null) {
-    session.setAttribute("LogFlag", false);
-}
-%>
-
 <body>
-	<%
-	if (session != null && session.getAttribute("LogFlag") != null) {
-		if ((boolean) session.getAttribute("LogFlag") != true) {
-	%>
-	<jsp:include page="Menu.jsp" />
-	<%
-	} else {
-	%>
 	<jsp:include page="Menu_conn.jsp" />
-	<%
-	}
-	}
-	%>
+	<div class="container mt-5">
+		
+			<h2>Insert Information</h2>
+			<form action="AddNews" method="post">
+				<div class="mb-3">
+					<label for="largeText" class="form-label">NEWS</label>
+					<textarea class="form-control" id="news" rows="3" name="news"
+						placeholder="Enter news ici..."></textarea>
+				</div>
 
-	<jsp:include page="map.jsp" />
+				<div class="mb-3">
+					<label for="datePicker" class="form-label">Select Date</label> <input
+						type="date" class="form-control" id="date" name="date">
+				</div>
+
+				<div class="mb-3">
+					<label for="textInput" class="form-label">Les montants</label> <input
+						type="text" class="form-control" id="montants" name="montants"
+						placeholder="Enter montants ici...">
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form></div>
+
 
 </body>
 </html>

@@ -58,7 +58,8 @@ public class UserLogin extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN, "Bad Request");
 		}
 		if (dao.checkUser(username, password,choix)) {
-			session.setAttribute("UserName", username);
+			session.setAttribute("LogFlag", true);
+			session.setAttribute("username", username);
 			dao.saveTempLogin(now, choix);
 			response.sendRedirect("./index.jsp");
 		} else {

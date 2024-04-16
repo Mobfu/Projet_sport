@@ -312,4 +312,24 @@ public class DBDAO {
 		return false;
 	}
 
+	public Boolean insertNews(String username, String news, String horaire, String montants) {
+		if (dbConnect()) {
+			String query = String.format(
+					"INSERT INTO news (username, news, horaire, montants) VALUES (?,?,?,?)");
+			try (PreparedStatement ps = conn.prepareStatement(query)) {
+				ps.setString(1, username);
+				ps.setString(2,news);
+				ps.setString(3, horaire);
+				ps.setString(4, montants);
+
+				int rs = ps.executeUpdate();
+				return rs > 0;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+		}
+		return false;
+	}
 }

@@ -39,4 +39,14 @@
     <servlet-name>AdminLogin</servlet-name>
     <url-pattern>/AdminLogin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNews</display-name>
+    <servlet-name>AddNews</servlet-name>
+    <servlet-class>ProjetSport.AddNews</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNews</servlet-name>
+    <url-pattern>/AddNews</url-pattern>
+  </servlet-mapping>
 </web-app>
