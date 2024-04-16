@@ -48,6 +48,10 @@
 					<li class="list-group-item">Horaire:<%=news.getHoraire()%></li>
 					<li class="list-group-item">Montants:<%=news.getMontants()%></li>
 				</ul>
+				<div class="card-body">
+					<a href="modifNews.jsp?id=<%=news.getId()%>" class="btn btn-primary">Modification</a>
+				</div>
+
 			</div>
 			<%
 			}

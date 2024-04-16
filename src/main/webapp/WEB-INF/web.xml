@@ -49,4 +49,14 @@
     <servlet-name>AddNews</servlet-name>
     <url-pattern>/AddNews</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModifNews</display-name>
+    <servlet-name>ModifNews</servlet-name>
+    <servlet-class>ProjetSport.ModifNews</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifNews</servlet-name>
+    <url-pattern>/ModifNews</url-pattern>
+  </servlet-mapping>
 </web-app>

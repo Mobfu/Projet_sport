@@ -339,15 +339,16 @@ public class DBDAO {
 	public List<News> getNews() {
 	    List<News> newsList = new ArrayList<>();
 	    if (dbConnect()) {
-	        String query = "SELECT username, news, horaire, montants FROM news";
+	        String query = "SELECT id, username, news, horaire, montants FROM news";
 	        try (PreparedStatement ps = conn.prepareStatement(query);
 	             ResultSet rs = ps.executeQuery()) { 
 	            while (rs.next()) {
+	            	int id = rs.getInt("id");
 	                String username = rs.getString("username");
 	                String news = rs.getString("news");
 	                String horaire = rs.getString("horaire");
 	                String montants = rs.getString("montants");
-	                newsList.add(new News(username, news, horaire, montants));
+	                newsList.add(new News(id, username, news, horaire, montants));
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -356,6 +357,26 @@ public class DBDAO {
 	        }
 	    }
 	    return newsList;
+	}
+
+	public Boolean modifNews(String username, String news, String horaire, String montants) {
+	    if (dbConnect()) {
+	        String query = "UPDATE news SET news = ?, horaire = ?, montants = ? WHERE username = ?";
+	        try (PreparedStatement ps = conn.prepareStatement(query)) {
+	            ps.setString(1, news);
+	            ps.setString(2, horaire);
+	            ps.setString(3, montants);
+	            ps.setString(4, username);
+
+	            int rs = ps.executeUpdate();
+	            return rs > 0;
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            dbClose();
+	        }
+	    }
+	    return false;
 	}
 
 }
