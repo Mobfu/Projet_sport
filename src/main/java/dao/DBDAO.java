@@ -1,4 +1,4 @@
-package ProjetSport;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,10 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 public class DBDAO {
@@ -311,5 +314,17 @@ public class DBDAO {
 		}
 		return false;
 	}
+	/*
+	public List <String> listeUtilisateurs(){
+		List<String> data = new ArrayList<>();
+		if(dbConnect()) {
+			String query="SELECT * FROM USERS";
+			try(PreparedStatement ps = conn.prepareStatement(query)){
+				
+			}
+			
+		}
+		
+	}*/
 
 }

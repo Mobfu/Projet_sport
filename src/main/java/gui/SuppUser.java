@@ -1,7 +1,7 @@
  package gui;
  
 import java.awt.EventQueue;
-import ProjetSport.DBDAO;
+import dao.DBDAO;
 import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;

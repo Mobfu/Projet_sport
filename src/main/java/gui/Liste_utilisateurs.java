@@ -15,7 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import dao.DBDAO;
+
 import javax.swing.JScrollPane;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 public class Liste_utilisateurs extends JFrame implements ActionListener{
 
@@ -41,6 +48,8 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public Liste_utilisateurs() {
+		
+		DBDAO dbdao = new DBDAO();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -90,6 +99,9 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 		contentPane.add(imageLabel);
 		imageLabel.setBounds(0, 0, 686, 373);
 		setLocationRelativeTo(null);
+		
+		//partie r¨¦cup¨¦ration des donn¨¦es depuis la BDD mysql
+
 	}
 	
 	@Override

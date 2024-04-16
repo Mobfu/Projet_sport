@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import ProjetSport.DBDAO;
+import dao.DBDAO;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
