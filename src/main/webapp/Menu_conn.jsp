@@ -27,7 +27,7 @@
 				<li class="nav-item pe-2"><a class="btn btn-order rounded-0"
 					href="logout.jsp">Deconnection</a></li>
 				<li class="nav-item pe-2"><a class="nav-link"
-					href="addNews.jsp">Ajoter Info</a></li>
+					href="News.jsp">News</a></li>
 			</ul>
 		</div>
 	</div>

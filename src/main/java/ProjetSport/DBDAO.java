@@ -9,9 +9,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
+
+import Module.News;
 
 public class DBDAO {
 
@@ -314,11 +318,10 @@ public class DBDAO {
 
 	public Boolean insertNews(String username, String news, String horaire, String montants) {
 		if (dbConnect()) {
-			String query = String.format(
-					"INSERT INTO news (username, news, horaire, montants) VALUES (?,?,?,?)");
+			String query = String.format("INSERT INTO news (username, news, horaire, montants) VALUES (?,?,?,?)");
 			try (PreparedStatement ps = conn.prepareStatement(query)) {
 				ps.setString(1, username);
-				ps.setString(2,news);
+				ps.setString(2, news);
 				ps.setString(3, horaire);
 				ps.setString(4, montants);
 
@@ -332,4 +335,27 @@ public class DBDAO {
 		}
 		return false;
 	}
+
+	public List<News> getNews() {
+	    List<News> newsList = new ArrayList<>();
+	    if (dbConnect()) {
+	        String query = "SELECT username, news, horaire, montants FROM news";
+	        try (PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) { 
+	            while (rs.next()) {
+	                String username = rs.getString("username");
+	                String news = rs.getString("news");
+	                String horaire = rs.getString("horaire");
+	                String montants = rs.getString("montants");
+	                newsList.add(new News(username, news, horaire, montants));
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            dbClose();
+	        }
+	    }
+	    return newsList;
+	}
+
 }

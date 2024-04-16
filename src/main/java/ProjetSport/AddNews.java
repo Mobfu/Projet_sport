@@ -37,7 +37,7 @@ public class AddNews extends HttpServlet {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		if(dao.insertNews(username,news,data, montants)) {
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("News.jsp");
 		}
 	}
 
