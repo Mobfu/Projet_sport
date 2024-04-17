@@ -128,7 +128,7 @@ public class Page_Connexion extends JFrame implements ActionListener{
 	    if(ae.getSource()==btnConnexion) {
 	        String username = textField.getText();
 	        String password = textField_1.getText();
-	        if(dbdao.checkUser(username, password)) {
+	        if(dbdao.checkUserA(username, password)) {
 	        	JOptionPane.showMessageDialog(null, "Connexion réussie !", "Bienvenue Mr/Mme " + username,JOptionPane.INFORMATION_MESSAGE);
 	            Menu_principal frame=new Menu_principal();
 	            frame.setVisible(true);
