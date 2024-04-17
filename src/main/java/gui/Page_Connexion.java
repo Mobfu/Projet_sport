@@ -1,5 +1,6 @@
 package gui;
-
+import dao.DBDAO;
+ 
 import java.awt.EventQueue;
 import java.awt.Image;
 import javax.swing.JFrame;
@@ -9,24 +10,28 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+ 
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+ 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Window;
-
+ 
 public class Page_Connexion extends JFrame implements ActionListener{
-
+ 
+	private DBDAO dbdao ;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JButton btnAnnuler, btnConnexion;
 	
+	
 	public Page_Connexion() {
-		
+		dbdao = new DBDAO();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
@@ -105,6 +110,7 @@ public class Page_Connexion extends JFrame implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+ 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -116,16 +122,24 @@ public class Page_Connexion extends JFrame implements ActionListener{
 			}
 		});
 	}
-
+ 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		if(ae.getSource()==btnConnexion) {
-			Menu_principal frame=new Menu_principal();
-			frame.setVisible(true);
-			dispose();
-		}else if(ae.getSource()==btnAnnuler) {
-			dispose();
-		}
-		
+	    if(ae.getSource()==btnConnexion) {
+	        String username = textField.getText();
+	        String password = textField_1.getText();
+	        if(dbdao.checkUser(username, password)) {
+	        	JOptionPane.showMessageDialog(null, "Connexion réussie !", "Bienvenue Mr/Mme " + username,JOptionPane.INFORMATION_MESSAGE);
+	            Menu_principal frame=new Menu_principal();
+	            frame.setVisible(true);
+	            dispose();
+	        } else {
+	        	JOptionPane.showMessageDialog(null, "Nom d'utilisateur ou mot de passe incorrect", " Connexion échouée.",JOptionPane.INFORMATION_MESSAGE);
+	        }
+	    } else if(ae.getSource()==btnAnnuler) {
+	        dispose();
+	    }
 	}
+ 
+ 
 }
