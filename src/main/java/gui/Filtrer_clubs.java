@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.EventQueue;
 import java.awt.Image;
+import dao.DBDAO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
@@ -67,13 +69,13 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 		
 		//JLabels
 		
-		JLabel lblNewLabel_2 = new JLabel("lieu (commune, r®¶gion, d®¶partement) :");
+		JLabel lblNewLabel_2 = new JLabel("lieu (commune, r√©gion, d√©partement) :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_2.setBounds(54, 198, 375, 27);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("discipline sportive :");
+		JLabel lblNewLabel_1 = new JLabel("Nom de f√©d√©ration :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
@@ -120,15 +122,23 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		if(ae.getSource()==btnAppliquer) {
-			Liste_clubs frame = new Liste_clubs ();
-			frame.setVisible(true);
-			dispose();
-		}else if(ae.getSource()==btnAnnuler) {
-			Liste_clubs frame = new Liste_clubs ();
-			frame.setVisible(true);
-			dispose();
-		}
-		
+	    if(ae.getSource()==btnAppliquer) {
+	        String federationName = textField.getText();
+	        String location = textField_1.getText();
+
+	        DBDAO dbdao = new DBDAO();
+	        List<String> results = dbdao.searchClubsByFederationAndLocation(federationName, location);
+
+	        // Affichage des r√©sultats dans une nouvelle fen√™tre
+	        Resultats_recherche_club resultat = new Resultats_recherche_club(results);
+	        resultat.setVisible(true);
+
+	        dispose();
+	    } else if(ae.getSource()==btnAnnuler) {
+	        Liste_clubs frame = new Liste_clubs();
+	        frame.setVisible(true);
+	        dispose();
+	    }
 	}
+
 }
