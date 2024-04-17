@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
  
 public class Menu_principal extends JFrame implements ActionListener{
- 
+	 
 	private JPanel contentPane;
 	private JButton btnDeconnexion, btnHistoriqueConnexion, btnAffichageClub, btnAffichageUtilisateurs, btnGestionUtilisateurs;
 	/**
@@ -77,12 +77,12 @@ public class Menu_principal extends JFrame implements ActionListener{
 		btnAffichageUtilisateurs.setBounds(24, 93, 355, 30);
 		contentPane.add(btnAffichageUtilisateurs);
 		btnAffichageUtilisateurs.addActionListener(this);
-		this.btnGestionUtilisateurs = new JButton("g®¶rer les utilisateurs");
+		this.btnGestionUtilisateurs = new JButton("g√©rer les utilisateurs");
 		btnGestionUtilisateurs.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnGestionUtilisateurs.setBounds(299, 259, 355, 30);
 		contentPane.add(btnGestionUtilisateurs);
 		btnGestionUtilisateurs.addActionListener(this);
-		this.btnDeconnexion = new JButton("d®¶connexion");
+		this.btnDeconnexion = new JButton("d√©connexion");
 		btnDeconnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnDeconnexion.setBounds(261, 312, 163, 30);
 		contentPane.add(btnDeconnexion);
