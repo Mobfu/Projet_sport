@@ -380,5 +380,31 @@ public class DBDAO {
 		    }
 		    return false;
 		}
+	
+	public List<String> searchClubsByFederationAndLocation(String federationName, String location) {
+        List<String> results = new ArrayList<>();
+        String query = "SELECT * FROM club WHERE nom_federation = ? AND (deprtement = ? OR region = ? OR nom_commune = ?)";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, federationName);
+            statement.setString(2, location);
+            statement.setString(3, location);
+            statement.setString(4, location);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                // Construire le résultat à afficher pour chaque ligne de résultat
+                String result = "Club trouvé: " + resultSet.getString("nom_commune") + ", " +
+                                resultSet.getString("deprtement") + ", " +
+                                resultSet.getString("region") + ", " +
+                                resultSet.getString("nom_federation");
+                results.add(result);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
+    }
 
 }
