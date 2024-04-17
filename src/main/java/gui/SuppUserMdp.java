@@ -1,6 +1,5 @@
  package gui;
- 
-import java.awt.EventQueue;
+ import java.awt.EventQueue;
 import dao.DBDAO;
 import java.awt.Image;
 import javax.swing.JFrame;
@@ -117,7 +116,7 @@ public class SuppUserMdp extends JFrame implements ActionListener{
 		if(ae.getSource()==btnAjouter) {
 			String name = textField_2.getText();
 			dbdao.deleteUserPassword(name);
-			JOptionPane.showMessageDialog(null, "Mot de passe de l'utilisateur supprim®¶ avec succ®®s !", "Succ®®s", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Mot de passe de l'utilisateur supprim√© avec succ√®s !", "Succ√®s", JOptionPane.INFORMATION_MESSAGE);
 			Menu_principal frame=new Menu_principal();
 			frame.setVisible(true);
 			dispose();
@@ -129,4 +128,3 @@ public class SuppUserMdp extends JFrame implements ActionListener{
 		
 	}
 }
- 
