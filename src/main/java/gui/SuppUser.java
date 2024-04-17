@@ -1,6 +1,5 @@
  package gui;
- 
-import java.awt.EventQueue;
+ import java.awt.EventQueue;
 import dao.DBDAO;
 import java.awt.Image;
 import javax.swing.JFrame;
@@ -117,7 +116,7 @@ public class SuppUser extends JFrame implements ActionListener{
 		if(ae.getSource()==btnAjouter) {
 			String name = textField_2.getText();
 			 dbdao.deleteUserByUsername(name);
-			JOptionPane.showMessageDialog(null, "Utilisateur supprim®¶ avec succ®®s !", "Succ®®s", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Utilisateur supprim√© avec succ√®s !", "Succ√®s", JOptionPane.INFORMATION_MESSAGE);
 			Gestion_utilisateurs frame = new Gestion_utilisateurs();
 			frame.setVisible(true);
 			dispose();
