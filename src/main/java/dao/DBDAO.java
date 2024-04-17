@@ -105,7 +105,7 @@ public class DBDAO {
 			return false;
 		}
 	
-			public boolean checkUser(String username, String password) {
+			public boolean checkUserA(String username, String password) {
 	    boolean userExists = false;
 	    if (dbConnect()) {
 	        String query = "SELECT * FROM `ps8_bdd`.`user` WHERE `username` = ? AND `password` = SHA2(?,256) AND `userrole` = 0";
@@ -125,6 +125,27 @@ public class DBDAO {
 	    }
 	    return userExists;
 	}
+	public boolean checkUser(String user, String password, int role) {
+			String query = String.format("SELECT * FROM user WHERE username=? AND password=SHA2(?,256) AND userrole=?");
+			try {
+				if (dbConnect()) {
+					try (PreparedStatement ps = conn.prepareStatement(query)) {
+						ps.setString(1, user);
+						ps.setString(2, password);
+						ps.setInt(3, role);
+	
+						try (ResultSet rs = ps.executeQuery()) {
+							return rs.next();
+						}
+					} finally {
+						dbClose();
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
 		public boolean saveTempLogin(LocalDateTime now, int role) {
 			String query = String.format("INSERT INTO timeoflog(idtimeofLog, RoleUser) VALUES (?,?)");
 	
