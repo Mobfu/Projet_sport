@@ -55,7 +55,7 @@ public class ModifUser extends JFrame implements ActionListener {
         roleComboBox = new JComboBox<>();
         roleComboBox.addItem("Admin");
         roleComboBox.addItem("Sportif");
-        roleComboBox.addItem("Membre Minist猫re Sport");
+        roleComboBox.addItem("Membre Ministère Sport");
         roleComboBox.addItem("Elu");
         contentPane.add(roleComboBox);
  
