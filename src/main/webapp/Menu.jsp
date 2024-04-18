@@ -27,7 +27,7 @@
 				<li class="nav-item pe-2"><a class="btn btn-order rounded-0"
 					href="Login.jsp">Connection</a></li>
 					<li class="nav-item pe-2"><a class="nav-link"
-					href="News.jsp">News</a></li>
+					href="NewsPub.jsp">News</a></li>
 			</ul>
 		</div>
 	</div>

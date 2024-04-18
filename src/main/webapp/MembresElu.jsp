@@ -88,43 +88,55 @@
     <section class="suite py-5" >
         <div class="container">
             <div class="row">
-                <div class="card mb-3" border-0 rounded-0">
+		                <div class="card mb-3" border-0 rounded-0">
+		                    <div class="row g-0">
+		                      <div class="col-md-6">
+		                        <img src="./image/MembresFond.jpg"  class="img-fluid " >
+		                      </div>
+		                      <div class="col-md-6">
+		                        <div class="card-body">
+		                          <h5 class="card-title">Nombre d'habitants licenciés</h5>
+		                          <p class="card-text"> Vous pouvez avoir accès aux nombres d'habitants licenciés par 
+		                          commune,régions,départements ainsi que les fédérations auquels ces nombres apparatiennent.Vous pouvez également
+		                          avoir le détail du genre intervenant dans ces statisitiques </p>
+		                          <p class="card-text">
+		                            <a href="./image/Licencies.pdf" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
+		                          </p>
+		                          
+		                        </div>
+		                      </div>
+		                    </div>
+		                </div>
+                
+                		
+                		 <div class="card my-5" border-0 rounded-0">
                     <div class="row g-0">
-                      <div class="col-md-6">
-                        <img src="./image/MembresFond.jpg"  class="img-fluid " >
-                      </div>
+                      
                       <div class="col-md-6">
                         <div class="card-body">
-                          <h5 class="card-title">Nombre d'habitants licenciés</h5>
-                          <p class="card-text"> Vous pouvez avoir accès aux nombres d'habitants licenciés par 
-                          commune,régions,départements ainsi que les fédérations auquels ces nombres apparatiennent.Vous pouvez également
-                          avoir le détail du genre intervenant dans ces statisitiques </p>
+                          <h5 class="card-title">Classements</h5>
                           <p class="card-text">
-                            <a href="./image/Clubs de sport.pdf" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
+                              Voici le classement des federations contenant les licenciés ect..</p>
+                               <p class="card-text">
+                            <a href="./image/Licencies.pdf" class="btn btn-order rounded-0 merriweather">Classement</a>
                           </p>
-                          
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <img src="./image/FondSiteWeb.jpg"  class="img-fluid " alt="...">
+                      </div>
                     </div>
-                </div>
+                  </div>
+              
                 
-              </div>
+                
+                
+           	</div>
               
-              </div>
+          </div>
               
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
+    
+             
               
         </section> 
       
