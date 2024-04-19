@@ -5,6 +5,9 @@ import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dao.DBDAO;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -24,25 +27,28 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JTextField textField_1;
 	private JButton btnAnnuler, btnAppliquer;
+	private JComboBox<String> combobox;
 	public Filtrer_profils() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 		//recuperation de l image depuis le fichier
+		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 
-		String[] choix = {"administrateur", "élu", "acteurs du monde sportif"};
-		JComboBox<String> comboBox = new JComboBox<>(choix);
-		comboBox.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		comboBox.setMaximumRowCount(3);
-		comboBox.setBounds(279, 110, 335, 30);
-
- 
-		contentPane.add(comboBox);
+		String[] choix = {"administrateur","Sportif", "Membre Ministère Sport","élu"};
+		this.combobox = new JComboBox<>(choix);
+		combobox.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		combobox.setMaximumRowCount(3);
+		combobox.setBounds(279, 110, 335, 30);
+		contentPane.add(combobox);
+		
 		//JLButtons
+		
 		this.btnAnnuler = new JButton("annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAnnuler.setBounds(126, 323, 140, 30);
@@ -53,12 +59,16 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 		btnAppliquer.setBounds(381, 323, 222, 30);
 		contentPane.add(btnAppliquer);
 		btnAppliquer.addActionListener(this);
+		
 		//JTextfields
-		textField_1 = new JTextField();
+		
+		this.textField_1 = new JTextField();
 		textField_1.setBounds(279, 198, 335, 30);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
+		
 		//JLabels
+		
 		JLabel lblNewLabel_2 = new JLabel("nom d'utilisateur :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
@@ -78,7 +88,9 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		//insertion de l image dans un JLabel, attention dernier JLabel declare pour qu il reste en fond
+		
 		JLabel imageLabel = new JLabel("");
 		imageLabel.setToolTipText("");
 		imageLabel.setLabelFor(this);
@@ -109,11 +121,17 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 			}
 		});
 	}
- 
+
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==btnAppliquer) {
-			Liste_utilisateurs frame = new Liste_utilisateurs ();
+			String userrole = (String) combobox.getSelectedItem();
+			String username = textField_1.getText();
+			if(username.isEmpty()) {
+				username=null;
+			}
+			DBDAO dbdao = new DBDAO();
+			Resultat_recherche_utilisateur frame = new Resultat_recherche_utilisateur (dbdao.ResultatRecherche(userrole, username));
 			frame.setVisible(true);
 			dispose();
 		}else if(ae.getSource()==btnAnnuler) {
