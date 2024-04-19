@@ -118,7 +118,7 @@
                           <p class="card-text">
                               Voici le classement des federations contenant les licenciés ect..</p>
                                <p class="card-text">
-                            <a href="./image/Licencies.pdf" class="btn btn-order rounded-0 merriweather">Classement</a>
+                            <a href="./image/Nonrepert.pdf" class="btn btn-order rounded-0 merriweather">Classement</a>
                           </p>
                         </div>
                       </div>
