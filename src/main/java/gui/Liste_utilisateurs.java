@@ -15,19 +15,26 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import dao.DBDAO;
+import Module.Utilisateur;
 
 import javax.swing.JScrollPane;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.List;
 import java.sql.ResultSet;
+import javax.swing.JTable;
 
 public class Liste_utilisateurs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton btnRetour, btnAppliquer;
+	private JTable tableUtilisateurs;
+    private DefaultTableModel modelUtilisateurs;
+    
 	/**
 	 * Launch the application.
 	 */
@@ -49,8 +56,6 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 	 */
 	public Liste_utilisateurs() {
 		
-		DBDAO dbdao = new DBDAO();
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
@@ -62,6 +67,20 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
+		
+		//partie insertion des donn√©es dans la JTable
+		
+		modelUtilisateurs = new DefaultTableModel();
+		modelUtilisateurs.addColumn("ID");
+		modelUtilisateurs.addColumn("username");
+		modelUtilisateurs.addColumn("email");
+		modelUtilisateurs.addColumn("role");
+		
+		tableUtilisateurs = new JTable(modelUtilisateurs);
+		JScrollPane scrollPane = new JScrollPane(tableUtilisateurs);
+		contentPane.add(scrollPane);
+		scrollPane.setBounds(10, 56, 666, 234);
+		contentPane.add(scrollPane);
 		
 		//JButtons
 		
@@ -76,10 +95,6 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 		btnRetour.setBounds(113, 312, 140, 30);
 		contentPane.add(btnRetour);
 		btnRetour.addActionListener(this);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(30, 56, 631, 223);
-		contentPane.add(scrollPane);
 		
 		JLabel lblNewLabel = new JLabel("Liste des profils");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -100,8 +115,17 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 		imageLabel.setBounds(0, 0, 686, 373);
 		setLocationRelativeTo(null);
 		
-		//partie r®¶cup®¶ration des donn®¶es depuis la BDD mysql
+		//r√©cup√©ration des donn√©es depuis la BDD mysql
+		insertionDonnees();
 
+	}
+	
+	public void insertionDonnees() {
+		DBDAO dbdao = new DBDAO();
+		List<Utilisateur> utilisateurs = dbdao.listeUtilisateurs();
+		for(Utilisateur utilisateur : utilisateurs) {
+			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), utilisateur.getUserrole()});
+		}
 	}
 	
 	@Override
