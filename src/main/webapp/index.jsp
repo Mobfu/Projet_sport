@@ -29,7 +29,7 @@
 </head>
 <% 
 if (session == null) {
-    session = request.getSession(); // 创建一个新的会话
+    session = request.getSession(); 
 }
 if (session.getAttribute("LogFlag") == null) {
     session.setAttribute("LogFlag", false);

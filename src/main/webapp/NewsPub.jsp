@@ -25,12 +25,11 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
-<title>News</title>
+<title>News Public</title>
 </head>
 <body>
-	<jsp:include page="Menu_conn.jsp" />
+	<jsp:include page="Menu.jsp" />
 	<div class="container">
-		<a id="addCardBtn" class="btn btn-primary" href="addNews.jsp">AddCard</a>
 		<div id="cardsContainer" class="d-flex flex-wrap mt-4">
 			<%
 			DBDAO dao = new DBDAO();
@@ -48,9 +47,7 @@
 					<li class="list-group-item">Horaire:<%=news.getHoraire()%></li>
 					<li class="list-group-item">Montants:<%=news.getMontants()%></li>
 				</ul>
-					<div class="card-body">
-						<a href="modifNews.jsp?id=<%=news.getId()%>" class="btn btn-primary">Modification</a>
-					</div>
+
 			</div>
 			<%
 			}
