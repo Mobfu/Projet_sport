@@ -426,4 +426,114 @@ public class DBDAO {
         return results;
     }
 
+	
+	public List <Utilisateur> listeUtilisateurs(){
+		List<Utilisateur> maListe = new ArrayList<>();
+		if(dbConnect()) {
+			try {
+				String query="SELECT * FROM USER";
+				Statement statement = conn.createStatement();
+				ResultSet resultSet = statement.executeQuery(query);
+				while(resultSet.next()) {
+					int Iduser = resultSet.getInt("Iduser");
+					String username = resultSet.getString("username");
+					String email = resultSet.getString("email");
+					int userrole = resultSet.getInt("userrole");
+					Utilisateur utilisateur = new Utilisateur (Iduser, username, email, userrole);
+					maListe.add(utilisateur);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				dbClose();
+			}
+		}
+		return maListe;
+	}
+	
+	public List <Club> listeClubs(){
+		List<Club> maListe = new ArrayList<>();
+		if(dbConnect()) {
+			try {
+				String query="SELECT * FROM CLUB";
+				Statement statement = conn.createStatement();
+				ResultSet resultSet = statement.executeQuery(query);
+				while(resultSet.next()) {					
+					int Idclub=resultSet.getInt("Idclub");
+					int code_commune=resultSet.getInt("code_commune");
+					String nom_commune=resultSet.getString("nom_commune");
+					String code_qpv=resultSet.getString("code_qpv");
+					String nom_qpv=resultSet.getString("nom_qpv");
+					int deprtement=resultSet.getInt("deprtement");
+					String region=resultSet.getString("region");
+					String statut_geo=resultSet.getString("statut_geo");
+					int code_fede=resultSet.getInt("code_fede");
+					String nom_federation=resultSet.getString("nom_federation");
+					int nbr_clubs=resultSet.getInt("nbr_clubs");
+					int nbr_epa=resultSet.getInt("nbr_epa");
+					int total_epa_clubs=resultSet.getInt("total_epa_clubs");
+					Club club = new Club(Idclub, code_commune, nom_commune, code_qpv, nom_qpv, deprtement, region, statut_geo, code_fede, nom_federation, nbr_clubs, nbr_epa, total_epa_clubs);
+					maListe.add(club);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				dbClose();
+			}
+		}
+		return maListe;
+	}
+	
+	public List <Utilisateur> ResultatRecherche(String role, String username){
+		List<Utilisateur> maListe = new ArrayList<>();
+		int userrole=0;
+		switch(role) {
+		case "Administrateur":
+			userrole = 0;
+        case "Sportif":
+        	userrole = 1;
+        case "Membre Ministère Sport":
+        	userrole = 2;
+        case "Elu":
+        	userrole = 3;
+        default:
+        	userrole = 0; 
+	}
+		if(dbConnect()) {
+			try {
+				String query;
+				if (username == null) {
+	                query = "SELECT * FROM USER WHERE userrole = ?";
+	                PreparedStatement statement = conn.prepareStatement(query);
+	                statement.setInt(1, userrole);
+	                ResultSet resultSet = statement.executeQuery();
+	                while(resultSet.next()) {
+	                	int Iduser = resultSet.getInt("Iduser");
+	                	String email = resultSet.getString("email");
+	                	String username2 = resultSet.getString("username");
+	                	Utilisateur utilisateur = new Utilisateur (Iduser, username2, email, userrole);
+						maListe.add(utilisateur);
+	                }
+	            } else {
+	                query = "SELECT * FROM USER WHERE userrole = ? AND username = ? ";
+	                PreparedStatement statement = conn.prepareStatement(query);
+	                statement.setInt(1, userrole);
+	                statement.setString(2, username);
+	                ResultSet resultSet = statement.executeQuery();
+	                while(resultSet.next()) {
+	                	int Iduser = resultSet.getInt("Iduser");
+	                	String email = resultSet.getString("email");
+	                	Utilisateur utilisateur = new Utilisateur (Iduser, username, email, userrole);
+						maListe.add(utilisateur);
+	                }
+	            }
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				dbClose();
+			}
+		}
+		return maListe;
+	}
+
 }
