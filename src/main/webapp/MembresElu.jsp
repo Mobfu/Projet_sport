@@ -95,7 +95,7 @@
 		                      </div>
 		                      <div class="col-md-6">
 		                        <div class="card-body">
-		                          <h5 class="card-title">Nombre d'habitants licenciés</h5>
+		                          <h5 class="card-title">Habitants licenciés</h5>
 		                          <p class="card-text"> Vous pouvez avoir accès aux nombres d'habitants licenciés par 
 		                          commune,régions,départements ainsi que les fédérations auquels ces nombres apparatiennent.Vous pouvez également
 		                          avoir le détail du genre intervenant dans ces statisitiques </p>
@@ -114,30 +114,59 @@
                       
                       <div class="col-md-6">
                         <div class="card-body">
-                          <h5 class="card-title">Classements</h5>
+                          <h5 class="card-title">Habitants non répertoriés</h5>
                           <p class="card-text">
-                              Voici le classement des federations contenant les licenciés ect..</p>
+	                              Un document contenant les chiffres des habitants non répertoriés de certaines fédérations sportives
+	                               offre une vision précise et exhaustive de la démographie des pratiquants 
+	                               dans le domaine du sport.En mettant en lumière ces chiffres non
+	                                répertoriés, le document fournit des informations cruciales pour orienter les politiques de développement du sport,
+	                                promouvoir l'inclusion et la diversité, et renforcer l'accès équitable à la pratique sportive pour tous.</p>
                                <p class="card-text">
                             <a href="./image/Nonrepert.pdf" class="btn btn-order rounded-0 merriweather">Classement</a>
                           </p>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <img src="./image/FondSiteWeb.jpg"  class="img-fluid " alt="...">
-                      </div>
-                    </div>
-                  </div>
+	                        </div>
+	                      </div>
+	                      <div class="col-md-6">
+	                        <img src="./image/card2.jpg"  class="img-fluid " alt="...">
+	                      </div>
+	                    </div>
+	                  </div>
               
                 
+                
+                
+                <section class="suite py-5" >
+        <div class="container">
+            <div class="row">
+		                <div class="card mb-3" border-0 rounded-0">
+		                    <div class="row g-0">
+		                      <div class="col-md-6">
+		                        <img src="./image/card3.jpg"  class="img-fluid " >
+		                      </div>
+		                      <div class="col-md-6">
+		                        <div class="card-body">
+		                          <h5 class="card-title">Classement</h5>
+			                          <p class="card-text">En compilant ces données, nous pouvons dresser un tableau clair de l'implication des habitants dans les 
+			                          activités sportives, en mettant en évidence les endroits où 
+			                          le sport joue un rôle significatif dans la vie quotidienne.Cette analyse 
+			                          comparative offre des insights utiles pour les décideurs politiques,comme vous en les 
+			                          aidant à identifier les régions où des initiatives de promotion du sport pourraient être 
+			                          les plus bénéfiques, ainsi qu'à comprendre les facteurs socio-économiques qui influent
+			                           sur la participation sportive.  </p>
+		                          <p class="card-text">
+		                            <a href="./image/Classement.pdf" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
+		                          </p>
+		                          
+		                        </div>
+		                      </div>
+		                    </div>
+		                </div>
                 
                 
            	</div>
               
           </div>
-              
-    
-             
-              
+      
         </section> 
       
       
