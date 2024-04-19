@@ -69,13 +69,13 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 		
 		//JLabels
 		
-		JLabel lblNewLabel_2 = new JLabel("lieu (commune, région, département) :");
+		JLabel lblNewLabel_2 = new JLabel("lieu (commune, r茅gion, d茅partement) :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_2.setBounds(54, 198, 375, 27);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nom de fédération :");
+		JLabel lblNewLabel_1 = new JLabel("Nom de f茅d茅ration :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
@@ -129,7 +129,7 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 	        DBDAO dbdao = new DBDAO();
 	        List<String> results = dbdao.searchClubsByFederationAndLocation(federationName, location);
 
-	        // Affichage des résultats dans une nouvelle fenêtre
+	        // Affichage des r茅sultats dans une nouvelle fen锚tre
 	        Resultats_recherche_club resultat = new Resultats_recherche_club(results);
 	        resultat.setVisible(true);
 
