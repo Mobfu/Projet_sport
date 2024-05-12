@@ -28,7 +28,31 @@
 <title>News Public</title>
 </head>
 <body>
+	<%
+	if (session != null && session.getAttribute("LogFlag") != null) {
+		if ((boolean) session.getAttribute("LogFlag") != true) {
+	%>
 	<jsp:include page="Menu.jsp" />
+	<%
+	} else if(session.getAttribute("id")!= null){
+		Object userIdObj = session.getAttribute("id");
+		String userId = userIdObj.toString();
+			switch(userId){
+			case "1":
+				%>
+				<jsp:include page="Menu_elu.jsp" />
+				<%
+				break;
+			case "2":
+				%>
+				<jsp:include page="Menu_conn.jsp" />
+				<%
+				break;
+			}
+		
+	}
+	}
+	%>
 	<div class="container">
 		<div id="cardsContainer" class="d-flex flex-wrap mt-4">
 			<%

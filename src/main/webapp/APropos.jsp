@@ -30,11 +30,42 @@
     </style>
     
 </head>
+<% 
+if (session == null) {
+    session = request.getSession(); 
+}
+if (session.getAttribute("LogFlag") == null) {
+    session.setAttribute("LogFlag", false);
+}
+%>
 
 <body>
  
-
-   	<jsp:include page="Menu.jsp" />
+<%
+	if (session != null && session.getAttribute("LogFlag") != null) {
+		if ((boolean) session.getAttribute("LogFlag") != true) {
+	%>
+	<jsp:include page="Menu.jsp" />
+	<%
+	} else if(session.getAttribute("id")!= null){
+		Object userIdObj = session.getAttribute("id");
+		String userId = userIdObj.toString();
+			switch(userId){
+			case "1":
+				%>
+				<jsp:include page="Menu_elu.jsp" />
+				<%
+				break;
+			case "2":
+				%>
+				<jsp:include page="Menu_conn.jsp" />
+				<%
+				break;
+			}
+		
+	}
+	}
+	%>
       
       
     <section class="presen d-flex justify-content-center align-items-center pt-5">

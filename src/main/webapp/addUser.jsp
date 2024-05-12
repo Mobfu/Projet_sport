@@ -55,10 +55,6 @@
 							class="form-check-input me-1" type="radio" name="role"
 							value="Acteur" id="role_2"> <label
 							class="form-check-label" for="role_2">Acteur</label></li>
-						<li class="list-group-item"><input
-							class="form-check-input me-1" type="radio" name="role"
-							value="User" id="role_3"> <label class="form-check-label"
-							for="role_3">User</label></li>
 					</ul>
 
 

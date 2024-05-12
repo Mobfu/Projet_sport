@@ -43,10 +43,22 @@ if (session.getAttribute("LogFlag") == null) {
 	%>
 	<jsp:include page="Menu.jsp" />
 	<%
-	} else {
-	%>
-	<jsp:include page="Menu_conn.jsp" />
-	<%
+	} else if(session.getAttribute("id")!= null){
+		Object userIdObj = session.getAttribute("id");
+		String userId = userIdObj.toString();
+			switch(userId){
+			case "1":
+				%>
+				<jsp:include page="Menu_elu.jsp" />
+				<%
+				break;
+			case "2":
+				%>
+				<jsp:include page="Menu_conn.jsp" />
+				<%
+				break;
+			}
+		
 	}
 	}
 	%>
