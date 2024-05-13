@@ -23,12 +23,12 @@ import dao.DBDAO;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class Historique_connexions extends JFrame implements ActionListener{
+public class HistoriqueConnexions extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JButton btnRetour, btnAppliquer;
-	private JTable table; // ½« JTable ×÷Îª³ÉÔ±±äÁ¿
+	private JTable table; // å°† JTable ä½œä¸ºæˆå‘˜å˜é‡
     private JScrollPane scrollPane;
     private JComboBox<Integer> roleComboBox;
 	DBDAO dbdao = new DBDAO();
@@ -40,7 +40,7 @@ public class Historique_connexions extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Historique_connexions frame = new Historique_connexions();
+					HistoriqueConnexions frame = new HistoriqueConnexions();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class Historique_connexions extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public Historique_connexions() {
+	public HistoriqueConnexions() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -68,20 +68,20 @@ public class Historique_connexions extends JFrame implements ActionListener{
 		
 		//JButtons
 		
-		this.btnAppliquer = new JButton("appliquer");
+		this.btnAppliquer = new JButton("Appliquer");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAppliquer.setBounds(520, 74, 140, 30);
 		contentPane.add(btnAppliquer);
 		btnAppliquer.addActionListener(this);
 		
-		this.btnRetour = new JButton("retour");
+		this.btnRetour = new JButton("Retour");
 		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnRetour.setBounds(282, 312, 140, 30);
 		contentPane.add(btnRetour);
 		btnRetour.addActionListener(this);
 		
 		
-		JLabel lblListeDesProfils = new JLabel("filtre de recherche :");
+		JLabel lblListeDesProfils = new JLabel("Filtre de recherche :");
 		lblListeDesProfils.setHorizontalAlignment(SwingConstants.CENTER);
 		lblListeDesProfils.setForeground(Color.WHITE);
 		lblListeDesProfils.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
@@ -96,10 +96,10 @@ public class Historique_connexions extends JFrame implements ActionListener{
 		}
 		
 		this.roleComboBox = new JComboBox<>(new Integer[]{0, 1, 2, 3});
-		roleComboBox.setBounds(308, 75, 201, 30); // ¿ÉÒÔµ÷ÕûÎ»ÖÃºÍ´óĞ¡
+		roleComboBox.setBounds(308, 75, 201, 30); // å¯ä»¥è°ƒæ•´ä½ç½®å’Œå¤§å°
         contentPane.add(roleComboBox);
 		
-		JLabel lblNewLabel = new JLabel("connexions r¨¦centes au site web :");
+		JLabel lblNewLabel = new JLabel("Connexions r\u00E9centes au site web :");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(107, 11, 483, 37);
 		contentPane.add(lblNewLabel);
@@ -122,15 +122,15 @@ public class Historique_connexions extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==btnRetour) {
-			Menu_principal frame = new Menu_principal();
+			MenuPrincipal frame = new MenuPrincipal();
 			frame.setVisible(true);
 			dispose();
 		}
 		else if(ae.getSource()==btnAppliquer) {
 			Integer selectedRole = (Integer)roleComboBox.getSelectedItem();
-            // µ÷ÓÃ DBDAO ÀàÖĞµÄĞÂ·½·¨À´»ñÈ¡¹ıÂËºóµÄ DefaultTableModel
+            // è°ƒç”¨ DBDAO ç±»ä¸­çš„æ–°æ–¹æ³•æ¥è·å–è¿‡æ»¤åçš„ DefaultTableModel
             DefaultTableModel filteredModel = dbdao.getTempLoginByRole(selectedRole);
-            // ¸üĞÂ JTable µÄÄ£ĞÍ
+            // æ›´æ–° JTable çš„æ¨¡å‹
             this.table.setModel(filteredModel);
 		}
 		
