@@ -21,14 +21,14 @@ import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Filtrer_clubs extends JFrame implements ActionListener{
+public class FiltrerClubs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JButton btnAnnuler, btnAppliquer;
 	
-	public Filtrer_clubs() {
+	public FiltrerClubs() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -43,13 +43,13 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAnnuler.setBounds(126, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
 		
-		this.btnAppliquer = new JButton("appliquer filtre");
+		this.btnAppliquer = new JButton("Appliquer filtre");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAppliquer.setBounds(381, 323, 222, 30);
 		contentPane.add(btnAppliquer);
@@ -69,19 +69,19 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 		
 		//JLabels
 		
-		JLabel lblNewLabel_2 = new JLabel("lieu (commune, r茅gion, d茅partement) :");
+		JLabel lblNewLabel_2 = new JLabel("Lieu (commune, r\u00E9gion, d\u00E9partement) :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		lblNewLabel_2.setBounds(54, 198, 375, 27);
+		lblNewLabel_2.setBounds(40, 198, 389, 27);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nom de f茅d茅ration :");
+		JLabel lblNewLabel_1 = new JLabel("Nom de la fédération :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(54, 115, 205, 27);
+		lblNewLabel_1.setBounds(183, 115, 261, 27);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Filtrer les clubs de sport");
@@ -111,7 +111,7 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Filtrer_clubs frame = new Filtrer_clubs();
+					FiltrerClubs frame = new FiltrerClubs();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -129,13 +129,13 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 	        DBDAO dbdao = new DBDAO();
 	        List<String> results = dbdao.searchClubsByFederationAndLocation(federationName, location);
 
-	        // Affichage des r茅sultats dans une nouvelle fen锚tre
-	        Resultats_recherche_club resultat = new Resultats_recherche_club(results);
+	        // Affichage des résultats dans une nouvelle fenêtre
+	        ResultatRechercheClub resultat = new ResultatRechercheClub(results);
 	        resultat.setVisible(true);
 
 	        dispose();
 	    } else if(ae.getSource()==btnAnnuler) {
-	        Liste_clubs frame = new Liste_clubs();
+	        ListeClubs frame = new ListeClubs();
 	        frame.setVisible(true);
 	        dispose();
 	    }
