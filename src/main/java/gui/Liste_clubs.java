@@ -117,7 +117,7 @@ public class Liste_clubs extends JFrame implements ActionListener{
 		imageLabel.setBounds(0, 0, 992, 373);
 		setLocationRelativeTo(null);
 		
-		//récupération des données depuis la BDD mysql
+		
 		insertionDonnees();
 	}
 	

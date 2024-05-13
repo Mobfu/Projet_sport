@@ -16,7 +16,9 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
+import Module.Club;
 import Module.News;
+import Module.Utilisateur;
 
 public class DBDAO {
 

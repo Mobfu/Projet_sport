@@ -16,18 +16,21 @@
 			    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
 			   
 			    <link rel="stylesheet" href="./Style/style.css"/>
+			    
+			    <script> src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			    
 			    <title>Elu</title>
 			    
 			    <style>
 			        /* Style pour l'arrière-plan */
 			        body {
-			            /* Définir l'image comme arriÃ¨re-plan */
+			            /* Définir l'image comme arrière-plan */
 			            background-image: url('./image/FondSiteWeb.jpg');
-			            /* Centrer et Ã©tirer l'image pour remplir tout l'Ã©cran */
+			            /* Centrer et étirer l'image pour remplir tout l'é©cran */
 			            background-size: cover;
-			           /* Pour que je puisse positionner l'image au centre de l'Ã©cran */
+			           /* Pour que je puisse positionner l'image au centre de l'é©cran */
 			            background-position: center;
-			            /* RÃ©pÃ©ter l'image si nÃ©cessaire */
+			            /* Répéter l'image si nécessaire */
 			            background-repeat: no-repeat;
 			        }
 			    </style>
