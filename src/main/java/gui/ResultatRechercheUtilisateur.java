@@ -28,7 +28,7 @@ import java.util.List;
 import java.sql.ResultSet;
 import javax.swing.JTable;
 
-public class Resultat_recherche_utilisateur extends JFrame implements ActionListener{
+public class ResultatRechercheUtilisateur extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton btnRetour;
@@ -54,7 +54,7 @@ public class Resultat_recherche_utilisateur extends JFrame implements ActionList
 	/**
 	 * Create the frame.
 	 */
-	public Resultat_recherche_utilisateur(List<Utilisateur> resultats) {
+	public ResultatRechercheUtilisateur(List<Utilisateur> resultats) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -82,7 +82,7 @@ public class Resultat_recherche_utilisateur extends JFrame implements ActionList
 		scrollPane.setBounds(10, 56, 666, 234);
 		contentPane.add(scrollPane);
 		
-		this.btnRetour = new JButton("retour \u00E0 la liste des utilisateurs");
+		this.btnRetour = new JButton("Retour \u00E0 la liste des utilisateurs");
 		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnRetour.setBounds(152, 316, 426, 30);
 		contentPane.add(btnRetour);
@@ -127,7 +127,7 @@ public class Resultat_recherche_utilisateur extends JFrame implements ActionList
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==btnRetour) {
-			Liste_utilisateurs frame = new Liste_utilisateurs();
+			ListeUtilisateurs frame = new ListeUtilisateurs();
 			frame.setVisible(true);
 			dispose();		
 		}
