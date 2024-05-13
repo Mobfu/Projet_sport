@@ -6,29 +6,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class Resultats_recherche_club extends JFrame implements ActionListener {
+public class ResultatRechercheClub extends JFrame implements ActionListener {
     private JTextArea textArea;
     private JButton btnRetour;
 
-    public Resultats_recherche_club(List<String> results) {
+    public ResultatRechercheClub(List<String> results) {
         setTitle("Résultats de la recherche");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 410);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
+        getContentPane().setLayout(new BorderLayout());
 
         // Titre en haut
         JLabel lblNewLabel = new JLabel("Résultats de la recherche");
         lblNewLabel.setForeground(Color.WHITE);
         lblNewLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 30));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        add(lblNewLabel, BorderLayout.NORTH);
+        getContentPane().add(lblNewLabel, BorderLayout.NORTH);
 
         // Zone de texte au centre
         textArea = new JTextArea(10, 30);
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
-        add(scrollPane, BorderLayout.CENTER);
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
 
         // Affichage des résultats dans la JTextArea
         for (String result : results) {
@@ -36,9 +36,9 @@ public class Resultats_recherche_club extends JFrame implements ActionListener {
         }
 
         // Bouton en bas
-        btnRetour = new JButton("retour à la liste des utilisateurs");
+        btnRetour = new JButton("Retour \u00E0 la liste des clubs");
         btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-        add(btnRetour, BorderLayout.SOUTH);
+        getContentPane().add(btnRetour, BorderLayout.SOUTH);
         btnRetour.addActionListener(this);
 
         setVisible(true);
@@ -47,13 +47,13 @@ public class Resultats_recherche_club extends JFrame implements ActionListener {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             List<String> results = List.of("Résultat 1", "Résultat 2", "Résultat 3");
-            new Resultats_recherche_club(results);
+            new ResultatRechercheClub(results);
         });
     }
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnRetour) {
-            Liste_clubs frame = new Liste_clubs();
+            ListeClubs frame = new ListeClubs();
             frame.setVisible(true);
             dispose();
         }
