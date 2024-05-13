@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Window;
  
-public class Page_Connexion extends JFrame implements ActionListener{
+public class PageConnexion extends JFrame implements ActionListener{
  
 	private DBDAO dbdao ;
 	private JPanel contentPane;
@@ -30,7 +30,7 @@ public class Page_Connexion extends JFrame implements ActionListener{
 	private JButton btnAnnuler, btnConnexion;
 	
 	
-	public Page_Connexion() {
+	public PageConnexion() {
 		dbdao = new DBDAO();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -45,13 +45,13 @@ public class Page_Connexion extends JFrame implements ActionListener{
 		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAnnuler.setBounds(148, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
 		
-		this.btnConnexion = new JButton("connexion");
+		this.btnConnexion = new JButton("Connexion");
 		btnConnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnConnexion.setBounds(428, 323, 140, 30);
 		contentPane.add(btnConnexion);
@@ -71,19 +71,19 @@ public class Page_Connexion extends JFrame implements ActionListener{
 		
 		//JLabels
 		
-		JLabel lblNewLabel_2 = new JLabel("mot de passe :");
+		JLabel lblNewLabel_2 = new JLabel("Mot de passe :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_2.setBounds(165, 229, 158, 27);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("login :");
+		JLabel lblNewLabel_1 = new JLabel("Nom d'utilisateur :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(188, 130, 81, 27);
+		lblNewLabel_1.setBounds(127, 130, 196, 27);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Accueil administrateur");
@@ -114,7 +114,7 @@ public class Page_Connexion extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Page_Connexion frame = new Page_Connexion();
+					PageConnexion frame = new PageConnexion();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -130,7 +130,7 @@ public class Page_Connexion extends JFrame implements ActionListener{
 	        String password = textField_1.getText();
 	        if(dbdao.checkUserA(username, password)) {
 	        	JOptionPane.showMessageDialog(null, "Connexion réussie !", "Bienvenue Mr/Mme " + username,JOptionPane.INFORMATION_MESSAGE);
-	            Menu_principal frame=new Menu_principal();
+	            MenuPrincipal frame=new MenuPrincipal();
 	            frame.setVisible(true);
 	            dispose();
 	        } else {
