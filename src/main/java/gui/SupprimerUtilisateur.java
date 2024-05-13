@@ -19,14 +19,14 @@ import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
  
-public class SuppUser extends JFrame implements ActionListener{
+public class SupprimerUtilisateur extends JFrame implements ActionListener{
 	private DBDAO dbdao ;
 	private JPanel contentPane;
 	private JButton btnAnnuler, btnAjouter;
 	private JTextField textField_2;
 	private JLabel lblAfinDeSupprimer;
 	
-	public SuppUser() {
+	public SupprimerUtilisateur() {
 		dbdao = new DBDAO();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,10 +40,10 @@ public class SuppUser extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 		
-		lblAfinDeSupprimer = new JLabel("Afin de supprimer un utilisateur seul son username suffit");
+		lblAfinDeSupprimer = new JLabel("Afin de supprimer un utilisateur seul son nom suffit");
 		lblAfinDeSupprimer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAfinDeSupprimer.setForeground(Color.WHITE);
-		lblAfinDeSupprimer.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+		lblAfinDeSupprimer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblAfinDeSupprimer.setBounds(83, 127, 543, 37);
 		contentPane.add(lblAfinDeSupprimer);
 		
@@ -54,25 +54,25 @@ public class SuppUser extends JFrame implements ActionListener{
 		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAnnuler.setBounds(148, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
 		
-		this.btnAjouter = new JButton("supprimer");
+		this.btnAjouter = new JButton("Supprimer");
 		btnAjouter.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAjouter.setBounds(428, 323, 140, 30);
 		contentPane.add(btnAjouter);
 		btnAjouter.addActionListener(this);
 		
-		JLabel lblNewLabel_1 = new JLabel("Username :");
+		JLabel lblNewLabel_1 = new JLabel("Nom d'utilisateur :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1.setBounds(148, 174, 135, 30);
+		lblNewLabel_1.setBounds(93, 174, 190, 30);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Supprimer un utilisateur");
@@ -102,7 +102,7 @@ public class SuppUser extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SuppUser frame = new SuppUser();
+					SupprimerUtilisateur frame = new SupprimerUtilisateur();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -117,11 +117,11 @@ public class SuppUser extends JFrame implements ActionListener{
 			String name = textField_2.getText();
 			 dbdao.deleteUserByUsername(name);
 			JOptionPane.showMessageDialog(null, "Utilisateur supprimé avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
-			Gestion_utilisateurs frame = new Gestion_utilisateurs();
+			GestionUtilisateurs frame = new GestionUtilisateurs();
 			frame.setVisible(true);
 			dispose();
 		}else if(ae.getSource()==btnAnnuler) {
-			Gestion_utilisateurs frame = new Gestion_utilisateurs();
+			GestionUtilisateurs frame = new GestionUtilisateurs();
 			frame.setVisible(true);			
 			dispose();
 		}
