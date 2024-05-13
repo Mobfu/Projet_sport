@@ -29,7 +29,7 @@
 </head>
 <% 
 if (session == null) {
-    session = request.getSession(); // 创建一个新的会话
+    session = request.getSession(); 
 }
 if (session.getAttribute("LogFlag") == null) {
     session.setAttribute("LogFlag", false);
@@ -43,10 +43,22 @@ if (session.getAttribute("LogFlag") == null) {
 	%>
 	<jsp:include page="Menu.jsp" />
 	<%
-	} else {
-	%>
-	<jsp:include page="Menu_conn.jsp" />
-	<%
+	} else if(session.getAttribute("id")!= null){
+		Object userIdObj = session.getAttribute("id");
+		String userId = userIdObj.toString();
+			switch(userId){
+			case "1":
+				%>
+				<jsp:include page="Menu_elu.jsp" />
+				<%
+				break;
+			case "2":
+				%>
+				<jsp:include page="Menu_conn.jsp" />
+				<%
+				break;
+			}
+		
 	}
 	}
 	%>

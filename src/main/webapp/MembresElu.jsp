@@ -28,7 +28,7 @@
 			            background-image: url('./image/FondSiteWeb.jpg');
 			            /* Centrer et étirer l'image pour remplir tout l'é©cran */
 			            background-size: cover;
-			           /* Pour que je puisse positionner l'image au centre de l'é©cran */
+			           /* Pour que je puisse positionner l'image au centre de l'écran */
 			            background-position: center;
 			            /* Répéter l'image si nécessaire */
 			            background-repeat: no-repeat;

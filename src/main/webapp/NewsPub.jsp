@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
 <%@ page import="dao.DBDAO"%>
@@ -28,7 +28,31 @@
 <title>News Public</title>
 </head>
 <body>
+	<%
+	if (session != null && session.getAttribute("LogFlag") != null) {
+		if ((boolean) session.getAttribute("LogFlag") != true) {
+	%>
 	<jsp:include page="Menu.jsp" />
+	<%
+	} else if(session.getAttribute("id")!= null){
+		Object userIdObj = session.getAttribute("id");
+		String userId = userIdObj.toString();
+			switch(userId){
+			case "1":
+				%>
+				<jsp:include page="Menu_elu.jsp" />
+				<%
+				break;
+			case "2":
+				%>
+				<jsp:include page="Menu_conn.jsp" />
+				<%
+				break;
+			}
+		
+	}
+	}
+	%>
 	<div class="container">
 		<div id="cardsContainer" class="d-flex flex-wrap mt-4">
 			<%
@@ -47,13 +71,13 @@
 					<li class="list-group-item">Horaire:<%=news.getHoraire()%></li>
 					<li class="list-group-item">Montants:<%=news.getMontants()%></li>
 				</ul>
- 
+
 			</div>
 			<%
 			}
 			%>
 		</div>
 	</div>
- 
+
 </body>
 </html>
