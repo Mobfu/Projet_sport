@@ -22,7 +22,7 @@ import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
  
-public class AjoutUser extends JFrame implements ActionListener{
+public class AjouterUtilisateur extends JFrame implements ActionListener{
  
 	private DBDAO dbdao ;
 	private JPanel contentPane;
@@ -31,7 +31,7 @@ public class AjoutUser extends JFrame implements ActionListener{
 	private JTextField textField;
 	private JTextField textField_2;
 	
-	public AjoutUser() {
+	public AjouterUtilisateur() {
 		dbdao = new DBDAO();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,18 +59,18 @@ public class AjoutUser extends JFrame implements ActionListener{
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1_1.setBackground(UIManager.getColor("Button.background"));
-		lblNewLabel_1_1.setBounds(110, 151, 135, 30);
+		lblNewLabel_1_1.setBounds(179, 151, 76, 30);
 		contentPane.add(lblNewLabel_1_1);
 		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAnnuler.setBounds(148, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
 		
-		this.btnAjouter = new JButton("ajouter");
+		this.btnAjouter = new JButton("Ajouter");
 		btnAjouter.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAjouter.setBounds(428, 323, 140, 30);
 		contentPane.add(btnAjouter);
@@ -89,16 +89,16 @@ public class AjoutUser extends JFrame implements ActionListener{
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		lblNewLabel_2.setBounds(110, 212, 158, 30);
+		lblNewLabel_2.setBounds(102, 212, 158, 30);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Username :");
+		JLabel lblNewLabel_1 = new JLabel("Nom d'utilisateur :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1.setBounds(110, 95, 135, 30);
+		lblNewLabel_1.setBounds(69, 94, 199, 30);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Ajouter un utilisateur");
@@ -129,7 +129,7 @@ public class AjoutUser extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AjoutUser frame = new AjoutUser();
+					AjouterUtilisateur frame = new AjouterUtilisateur();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -146,15 +146,15 @@ public class AjoutUser extends JFrame implements ActionListener{
 	        String password = textField_2.getText();
 	        
 	        if(dbdao.addUser(name, email, password)) {
-	            JOptionPane.showMessageDialog(null, "Utilisateur ajout®¶ avec succ®®s !", "Succ®®s", JOptionPane.INFORMATION_MESSAGE);
-	            Gestion_utilisateurs frame = new Gestion_utilisateurs();
+	            JOptionPane.showMessageDialog(null, "Utilisateur ajout√© avec succ√®s !", "Succ√®s", JOptionPane.INFORMATION_MESSAGE);
+	            GestionUtilisateurs frame = new GestionUtilisateurs();
 	            frame.setVisible(true);
 	            dispose();
 	        } else {
 	            JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout de l'utilisateur.", "Erreur", JOptionPane.ERROR_MESSAGE);
 	        }
 	    } else if(ae.getSource()==btnAnnuler) {
-	        Gestion_utilisateurs frame = new Gestion_utilisateurs();
+	    	GestionUtilisateurs frame = new GestionUtilisateurs();
 	        frame.setVisible(true);            
 	        dispose();
 	    }
