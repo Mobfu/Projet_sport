@@ -22,13 +22,13 @@ import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
  
-public class Filtrer_profils extends JFrame implements ActionListener{
+public class FiltrerProfils extends JFrame implements ActionListener{
  
 	private JPanel contentPane;
 	private JTextField textField_1;
 	private JButton btnAnnuler, btnAppliquer;
 	private JComboBox<String> combobox;
-	public Filtrer_profils() {
+	public FiltrerProfils() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
@@ -40,7 +40,7 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 
-		String[] choix = {"administrateur","Sportif", "Membre Ministère Sport","élu"};
+		String[] choix = {"Administrateur","Sportif", "Membre Ministère Sport","Elu"};
 		this.combobox = new JComboBox<>(choix);
 		combobox.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		combobox.setMaximumRowCount(3);
@@ -49,12 +49,12 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAnnuler.setBounds(126, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
-		this.btnAppliquer = new JButton("appliquer filtre");
+		this.btnAppliquer = new JButton("Appliquer filtre");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAppliquer.setBounds(381, 323, 222, 30);
 		contentPane.add(btnAppliquer);
@@ -69,12 +69,12 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 		
 		//JLabels
 		
-		JLabel lblNewLabel_2 = new JLabel("nom d'utilisateur :");
+		JLabel lblNewLabel_2 = new JLabel("Nom d'utilisateur :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_2.setBounds(55, 199, 222, 27);
 		contentPane.add(lblNewLabel_2);
-		JLabel lblNewLabel_1 = new JLabel("rôle :");
+		JLabel lblNewLabel_1 = new JLabel("Rôle :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
@@ -113,7 +113,7 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Filtrer_profils frame = new Filtrer_profils();
+					FiltrerProfils frame = new FiltrerProfils();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -131,11 +131,11 @@ public class Filtrer_profils extends JFrame implements ActionListener{
 				username=null;
 			}
 			DBDAO dbdao = new DBDAO();
-			Resultat_recherche_utilisateur frame = new Resultat_recherche_utilisateur (dbdao.ResultatRecherche(userrole, username));
+			ResultatRechercheUtilisateur frame = new ResultatRechercheUtilisateur (dbdao.ResultatRecherche(userrole, username));
 			frame.setVisible(true);
 			dispose();
 		}else if(ae.getSource()==btnAnnuler) {
-			Liste_utilisateurs frame = new Liste_utilisateurs ();
+			ListeUtilisateurs frame = new ListeUtilisateurs ();
 			frame.setVisible(true);
 			dispose();
 		}
