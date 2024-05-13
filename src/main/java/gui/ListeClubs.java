@@ -24,7 +24,7 @@ import Module.Utilisateur;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class Liste_clubs extends JFrame implements ActionListener{
+public class ListeClubs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton btnRetour, btnAppliquer;
@@ -37,7 +37,7 @@ public class Liste_clubs extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Liste_clubs frame = new Liste_clubs();
+					ListeClubs frame = new ListeClubs();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class Liste_clubs extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public Liste_clubs() {
+	public ListeClubs() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 999, 410);
@@ -86,13 +86,13 @@ public class Liste_clubs extends JFrame implements ActionListener{
 		
 		//JButtons
 		
-		this.btnAppliquer = new JButton("appliquer un filtre");
+		this.btnAppliquer = new JButton("Appliquer un filtre");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAppliquer.setBounds(619, 312, 238, 30);
 		contentPane.add(btnAppliquer);
 		btnAppliquer.addActionListener(this);
 		
-		this.btnRetour = new JButton("retour");
+		this.btnRetour = new JButton("Retour");
 		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnRetour.setBounds(137, 312, 140, 30);
 		contentPane.add(btnRetour);
@@ -125,19 +125,19 @@ public class Liste_clubs extends JFrame implements ActionListener{
 		DBDAO dbdao = new DBDAO();
 		List<Club> clubs = dbdao.listeClubs();
 		for(Club club : clubs) {
-			modelClubs.addRow(new Object[] {club.getIdclub(), club.getCode_commune(), club.getDeprtement(), club.getCode_fede(), club.getNbr_clubs(), club.getNbr_epa(), club.getTotal_epa_clubs(), club.getNom_commune(), club.getRegion(), club.getStatut_geo(), club.getNom_federation(), club.getCode_qpv(), club.getNom_qpv()});
+			modelClubs.addRow(new Object[] {club.getIdclub(), club.getCode_commune(), club.getNom_commune(), club.getCode_qpv(), club.getNom_qpv(), club.getDeprtement(), club.getRegion(), club.getStatut_geo(), club.getCode_fede(), club.getNom_federation(), club.getNbr_clubs(), club.getNbr_epa(), club.getTotal_epa_clubs()});
 		}
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==btnRetour) {
-			Menu_principal frame = new Menu_principal();
+			MenuPrincipal frame = new MenuPrincipal();
 			frame.setVisible(true);
 			dispose();
 		}
 		else if(ae.getSource()==btnAppliquer) {
-			Filtrer_clubs frame = new Filtrer_clubs();
+			FiltrerClubs frame = new FiltrerClubs();
 			frame.setVisible(true);
 			dispose();
 		}
