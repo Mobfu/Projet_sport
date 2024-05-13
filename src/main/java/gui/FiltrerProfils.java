@@ -1,10 +1,13 @@
- package gui;
- import java.awt.EventQueue;
-import dao.DBDAO;
+package gui;
+ 
+import java.awt.EventQueue;
 import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dao.DBDAO;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -19,16 +22,13 @@ import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
  
-public class SuppUser extends JFrame implements ActionListener{
-	private DBDAO dbdao ;
+public class FiltrerProfils extends JFrame implements ActionListener{
+ 
 	private JPanel contentPane;
-	private JButton btnAnnuler, btnAjouter;
-	private JTextField textField_2;
-	private JLabel lblAfinDeSupprimer;
-	
-	public SuppUser() {
-		dbdao = new DBDAO();
-		
+	private JTextField textField_1;
+	private JButton btnAnnuler, btnAppliquer;
+	private JComboBox<String> combobox;
+	public FiltrerProfils() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
@@ -39,45 +39,52 @@ public class SuppUser extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
-		
-		lblAfinDeSupprimer = new JLabel("Afin de supprimer un utilisateur seul son username suffit");
-		lblAfinDeSupprimer.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAfinDeSupprimer.setForeground(Color.WHITE);
-		lblAfinDeSupprimer.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-		lblAfinDeSupprimer.setBounds(83, 127, 543, 37);
-		contentPane.add(lblAfinDeSupprimer);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(293, 175, 263, 30);
-		contentPane.add(textField_2);
+
+		String[] choix = {"Administrateur","Sportif", "Membre Ministère Sport","Elu"};
+		this.combobox = new JComboBox<>(choix);
+		combobox.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		combobox.setMaximumRowCount(3);
+		combobox.setBounds(279, 110, 335, 30);
+		contentPane.add(combobox);
 		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler.setBounds(148, 323, 140, 30);
+		btnAnnuler.setBounds(126, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
+		this.btnAppliquer = new JButton("Appliquer filtre");
+		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnAppliquer.setBounds(381, 323, 222, 30);
+		contentPane.add(btnAppliquer);
+		btnAppliquer.addActionListener(this);
 		
-		this.btnAjouter = new JButton("supprimer");
-		btnAjouter.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAjouter.setBounds(428, 323, 140, 30);
-		contentPane.add(btnAjouter);
-		btnAjouter.addActionListener(this);
+		//JTextfields
 		
-		JLabel lblNewLabel_1 = new JLabel("Username :");
+		this.textField_1 = new JTextField();
+		textField_1.setBounds(279, 198, 335, 30);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		//JLabels
+		
+		JLabel lblNewLabel_2 = new JLabel("Nom d'utilisateur :");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_2.setBounds(55, 199, 222, 27);
+		contentPane.add(lblNewLabel_2);
+		JLabel lblNewLabel_1 = new JLabel("Rôle :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1.setBounds(148, 174, 135, 30);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(55, 112, 176, 27);
 		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel = new JLabel("Supprimer un utilisateur");
+		JLabel lblNewLabel = new JLabel("Filtrer les profils utilisateurs");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(165, 8, 347, 37);
+		lblNewLabel.setBounds(149, 8, 417, 37);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -92,9 +99,13 @@ public class SuppUser extends JFrame implements ActionListener{
 		imageLabel.setIcon(new ImageIcon(background));
 		contentPane.add(imageLabel);
 		imageLabel.setBounds(0, 0, 686, 373);
+		JLabel lblNewLabel_2_2 = new JLabel("rôle ");
+		lblNewLabel_2_2.setForeground(Color.WHITE);
+		lblNewLabel_2_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_2_2.setBounds(198, 237, 79, 27);
+		contentPane.add(lblNewLabel_2_2);
 		setLocationRelativeTo(null);
 	}
-	
 	/**
 	 * Launch the application.
 	 */
@@ -102,7 +113,7 @@ public class SuppUser extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SuppUser frame = new SuppUser();
+					FiltrerProfils frame = new FiltrerProfils();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -110,22 +121,23 @@ public class SuppUser extends JFrame implements ActionListener{
 			}
 		});
 	}
- 
+
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		if(ae.getSource()==btnAjouter) {
-			String name = textField_2.getText();
-			 dbdao.deleteUserByUsername(name);
-			JOptionPane.showMessageDialog(null, "Utilisateur supprimé avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
-			Gestion_utilisateurs frame = new Gestion_utilisateurs();
+		if(ae.getSource()==btnAppliquer) {
+			String userrole = (String) combobox.getSelectedItem();
+			String username = textField_1.getText();
+			if(username.isEmpty()) {
+				username=null;
+			}
+			DBDAO dbdao = new DBDAO();
+			ResultatRechercheUtilisateur frame = new ResultatRechercheUtilisateur (dbdao.ResultatRecherche(userrole, username));
 			frame.setVisible(true);
 			dispose();
 		}else if(ae.getSource()==btnAnnuler) {
-			Gestion_utilisateurs frame = new Gestion_utilisateurs();
-			frame.setVisible(true);			
+			ListeUtilisateurs frame = new ListeUtilisateurs ();
+			frame.setVisible(true);
 			dispose();
 		}
-		
 	}
 }
- 

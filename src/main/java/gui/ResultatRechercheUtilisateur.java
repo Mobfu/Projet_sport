@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,40 +18,43 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import dao.DBDAO;
+import Module.Utilisateur;
 
 import javax.swing.JScrollPane;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.List;
+import java.sql.ResultSet;
 import javax.swing.JTable;
 
-public class Historique_connexions extends JFrame implements ActionListener{
+public class ResultatRechercheUtilisateur extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JButton btnRetour, btnAppliquer;
-	private JTable table; // 将 JTable 作为成员变量
-    private JScrollPane scrollPane;
-    private JComboBox<Integer> roleComboBox;
-	DBDAO dbdao = new DBDAO();
-	DefaultTableModel tableModel = dbdao.getTempLoginTableModel();
+	private JButton btnRetour;
+	private JTable tableUtilisateurs;
+    private DefaultTableModel modelUtilisateurs;
+    
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Historique_connexions frame = new Historique_connexions();
+					Resultat_recherche_utilisateur frame = new Resultat_recherche_utilisateur(List<Utilisateur> resultats);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public Historique_connexions() {
+	public ResultatRechercheUtilisateur(List<Utilisateur> resultats) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -66,42 +68,29 @@ public class Historique_connexions extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 		
-		//JButtons
+		//partie insertion des donn茅es dans la JTable
 		
-		this.btnAppliquer = new JButton("appliquer");
-		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAppliquer.setBounds(520, 74, 140, 30);
-		contentPane.add(btnAppliquer);
-		btnAppliquer.addActionListener(this);
+		modelUtilisateurs = new DefaultTableModel();
+		modelUtilisateurs.addColumn("ID");
+		modelUtilisateurs.addColumn("username");
+		modelUtilisateurs.addColumn("email");
+		modelUtilisateurs.addColumn("role");
 		
-		this.btnRetour = new JButton("retour");
+		tableUtilisateurs = new JTable(modelUtilisateurs);
+		JScrollPane scrollPane = new JScrollPane(tableUtilisateurs);
+		contentPane.add(scrollPane);
+		scrollPane.setBounds(10, 56, 666, 234);
+		contentPane.add(scrollPane);
+		
+		this.btnRetour = new JButton("Retour \u00E0 la liste des utilisateurs");
 		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnRetour.setBounds(282, 312, 140, 30);
+		btnRetour.setBounds(152, 316, 426, 30);
 		contentPane.add(btnRetour);
 		btnRetour.addActionListener(this);
 		
-		
-		JLabel lblListeDesProfils = new JLabel("filtre de recherche :");
-		lblListeDesProfils.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListeDesProfils.setForeground(Color.WHITE);
-		lblListeDesProfils.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
-		lblListeDesProfils.setBounds(29, 74, 300, 30);
-		contentPane.add(lblListeDesProfils);
-		
-		if (tableModel != null) {
-		    this.table = new JTable(tableModel);
-		    this.scrollPane = new JScrollPane(table);
-		    scrollPane.setBounds(29, 115, 631, 173);
-		    contentPane.add(scrollPane);
-		}
-		
-		this.roleComboBox = new JComboBox<>(new Integer[]{0, 1, 2, 3});
-		roleComboBox.setBounds(308, 75, 201, 30); // 可以调整位置和大小
-        contentPane.add(roleComboBox);
-		
-		JLabel lblNewLabel = new JLabel("connexions récentes au site web :");
+		JLabel lblNewLabel = new JLabel("R\u00E9sultat de la recherche");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(107, 11, 483, 37);
+		lblNewLabel.setBounds(152, 8, 387, 37);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -117,22 +106,30 @@ public class Historique_connexions extends JFrame implements ActionListener{
 		contentPane.add(imageLabel);
 		imageLabel.setBounds(0, 0, 686, 373);
 		setLocationRelativeTo(null);
+		
+		//r茅cup茅ration des donn茅es depuis la BDD mysql
+		//insertionDonnees();
+		for(Utilisateur utilisateur : resultats) {
+			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), utilisateur.getUserrole()});
+		}
+
 	}
+	
+	/*public void insertionDonnees() {
+		DBDAO dbdao = new DBDAO();
+		String username, userrole;
+		List<Utilisateur> resultats = dbdao.ResultatRecherche(userrole, username);
+		for(Utilisateur utilisateur : resultats) {
+			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), utilisateur.getUserrole()});
+		}
+	}*/
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==btnRetour) {
-			Menu_principal frame = new Menu_principal();
+			ListeUtilisateurs frame = new ListeUtilisateurs();
 			frame.setVisible(true);
-			dispose();
+			dispose();		
 		}
-		else if(ae.getSource()==btnAppliquer) {
-			Integer selectedRole = (Integer)roleComboBox.getSelectedItem();
-            // 调用 DBDAO 类中的新方法来获取过滤后的 DefaultTableModel
-            DefaultTableModel filteredModel = dbdao.getTempLoginByRole(selectedRole);
-            // 更新 JTable 的模型
-            this.table.setModel(filteredModel);
-		}
-		
 	}
 }

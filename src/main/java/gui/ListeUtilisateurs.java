@@ -28,33 +28,33 @@ import java.util.List;
 import java.sql.ResultSet;
 import javax.swing.JTable;
 
-public class Resultat_recherche_utilisateur extends JFrame implements ActionListener{
+public class ListeUtilisateurs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JButton btnRetour;
+	private JButton btnRetour, btnAppliquer;
 	private JTable tableUtilisateurs;
     private DefaultTableModel modelUtilisateurs;
     
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Resultat_recherche_utilisateur frame = new Resultat_recherche_utilisateur(List<Utilisateur> resultats);
+					ListeUtilisateurs frame = new ListeUtilisateurs();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Resultat_recherche_utilisateur(List<Utilisateur> resultats) {
+	public ListeUtilisateurs() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -82,15 +82,23 @@ public class Resultat_recherche_utilisateur extends JFrame implements ActionList
 		scrollPane.setBounds(10, 56, 666, 234);
 		contentPane.add(scrollPane);
 		
-		this.btnRetour = new JButton("retour \u00E0 la liste des utilisateurs");
+		//JButtons
+		
+		this.btnAppliquer = new JButton("Appliquer un filtre");
+		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnAppliquer.setBounds(356, 312, 236, 30);
+		contentPane.add(btnAppliquer);
+		btnAppliquer.addActionListener(this);
+		
+		this.btnRetour = new JButton("Retour");
 		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnRetour.setBounds(152, 316, 426, 30);
+		btnRetour.setBounds(113, 312, 140, 30);
 		contentPane.add(btnRetour);
 		btnRetour.addActionListener(this);
 		
-		JLabel lblNewLabel = new JLabel("R\u00E9sultat de la recherche");
+		JLabel lblNewLabel = new JLabel("Liste des profils");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(152, 8, 387, 37);
+		lblNewLabel.setBounds(165, 8, 347, 37);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -108,28 +116,30 @@ public class Resultat_recherche_utilisateur extends JFrame implements ActionList
 		setLocationRelativeTo(null);
 		
 		//récupération des données depuis la BDD mysql
-		//insertionDonnees();
-		for(Utilisateur utilisateur : resultats) {
-			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), utilisateur.getUserrole()});
-		}
+		insertionDonnees();
 
 	}
 	
-	/*public void insertionDonnees() {
+	public void insertionDonnees() {
 		DBDAO dbdao = new DBDAO();
-		String username, userrole;
-		List<Utilisateur> resultats = dbdao.ResultatRecherche(userrole, username);
-		for(Utilisateur utilisateur : resultats) {
+		List<Utilisateur> utilisateurs = dbdao.listeUtilisateurs();
+		for(Utilisateur utilisateur : utilisateurs) {
 			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), utilisateur.getUserrole()});
 		}
-	}*/
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==btnRetour) {
-			Liste_utilisateurs frame = new Liste_utilisateurs();
+			MenuPrincipal frame = new MenuPrincipal();
 			frame.setVisible(true);
-			dispose();		
+			dispose();
 		}
+		else if(ae.getSource()==btnAppliquer) {
+			FiltrerProfils frame = new FiltrerProfils();
+			frame.setVisible(true);
+			dispose();
+		}
+		
 	}
 }

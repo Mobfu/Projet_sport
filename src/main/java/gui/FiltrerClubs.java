@@ -1,13 +1,11 @@
 package gui;
+
 import java.awt.EventQueue;
- 
 import java.awt.Image;
+import dao.DBDAO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
- 
-import dao.DBDAO;
- 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -18,21 +16,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
- 
-public class AjoutUser extends JFrame implements ActionListener{
- 
-	private DBDAO dbdao ;
+
+public class FiltrerClubs extends JFrame implements ActionListener{
+
 	private JPanel contentPane;
-	private JTextField textField_1;
-	private JButton btnAnnuler, btnAjouter;
 	private JTextField textField;
-	private JTextField textField_2;
+	private JTextField textField_1;
+	private JButton btnAnnuler, btnAppliquer;
 	
-	public AjoutUser() {
-		dbdao = new DBDAO();
+	public FiltrerClubs() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -44,64 +40,51 @@ public class AjoutUser extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(305, 95, 263, 30);
-		contentPane.add(textField_2);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(305, 152, 263, 30);
-		contentPane.add(textField);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Email :");
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		lblNewLabel_1_1.setBackground(UIManager.getColor("Button.background"));
-		lblNewLabel_1_1.setBounds(110, 151, 135, 30);
-		contentPane.add(lblNewLabel_1_1);
 		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler.setBounds(148, 323, 140, 30);
+		btnAnnuler.setBounds(126, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
 		
-		this.btnAjouter = new JButton("ajouter");
-		btnAjouter.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAjouter.setBounds(428, 323, 140, 30);
-		contentPane.add(btnAjouter);
-		btnAjouter.addActionListener(this);
+		this.btnAppliquer = new JButton("Appliquer filtre");
+		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnAppliquer.setBounds(381, 323, 222, 30);
+		contentPane.add(btnAppliquer);
+		btnAppliquer.addActionListener(this);
 		
 		//JTextfields
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(305, 213, 263, 30);
+		textField_1.setBounds(454, 197, 222, 30);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
+		textField = new JTextField();
+		textField.setBounds(454, 114, 222, 30);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
 		//JLabels
 		
-		JLabel lblNewLabel_2 = new JLabel("Mot de passe :");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
+		JLabel lblNewLabel_2 = new JLabel("Lieu (commune, r\u00E9gion, d\u00E9partement) :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		lblNewLabel_2.setBounds(110, 212, 158, 30);
+		lblNewLabel_2.setBounds(40, 198, 389, 27);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Username :");
+		JLabel lblNewLabel_1 = new JLabel("Nom de la f√©d√©ration :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1.setBounds(110, 95, 135, 30);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(183, 115, 261, 27);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel("Ajouter un utilisateur");
+		JLabel lblNewLabel = new JLabel("Filtrer les clubs de sport");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(165, 8, 347, 37);
 		contentPane.add(lblNewLabel);
@@ -125,11 +108,10 @@ public class AjoutUser extends JFrame implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AjoutUser frame = new AjoutUser();
+					FiltrerClubs frame = new FiltrerClubs();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -137,28 +119,26 @@ public class AjoutUser extends JFrame implements ActionListener{
 			}
 		});
 	}
- 
+
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-	    if(ae.getSource()==btnAjouter) {
-	        String name = textField_1.getText();
-	        String email = textField.getText();
-	        String password = textField_2.getText();
-	        
-	        if(dbdao.addUser(name, email, password)) {
-	            JOptionPane.showMessageDialog(null, "Utilisateur ajout®¶ avec succ®®s !", "Succ®®s", JOptionPane.INFORMATION_MESSAGE);
-	            Gestion_utilisateurs frame = new Gestion_utilisateurs();
-	            frame.setVisible(true);
-	            dispose();
-	        } else {
-	            JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout de l'utilisateur.", "Erreur", JOptionPane.ERROR_MESSAGE);
-	        }
+	    if(ae.getSource()==btnAppliquer) {
+	        String federationName = textField.getText();
+	        String location = textField_1.getText();
+
+	        DBDAO dbdao = new DBDAO();
+	        List<String> results = dbdao.searchClubsByFederationAndLocation(federationName, location);
+
+	        // Affichage des r√©sultats dans une nouvelle fen√™tre
+	        ResultatRechercheClub resultat = new ResultatRechercheClub(results);
+	        resultat.setVisible(true);
+
+	        dispose();
 	    } else if(ae.getSource()==btnAnnuler) {
-	        Gestion_utilisateurs frame = new Gestion_utilisateurs();
-	        frame.setVisible(true);            
+	        ListeClubs frame = new ListeClubs();
+	        frame.setVisible(true);
 	        dispose();
 	    }
 	}
- 
- 
+
 }

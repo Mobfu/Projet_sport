@@ -1,7 +1,6 @@
-package gui;
+ package gui;
+ import java.awt.EventQueue;
 import dao.DBDAO;
- 
-import java.awt.EventQueue;
 import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,27 +9,25 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
- 
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
- 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Window;
+import java.awt.event.*;
+import javax.swing.*;
  
-public class Page_Connexion extends JFrame implements ActionListener{
+public class SupprimerMotDePasse extends JFrame implements ActionListener{
  
 	private DBDAO dbdao ;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JButton btnAnnuler, btnConnexion;
+	private JButton btnAnnuler, btnAjouter;
+	private JTextField textField_2;
+	private JLabel lblAfinDeSupprimer;
 	
-	
-	public Page_Connexion() {
+	public SupprimerMotDePasse() {
 		dbdao = new DBDAO();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -43,52 +40,44 @@ public class Page_Connexion extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 		
+		lblAfinDeSupprimer = new JLabel("Afin de supprimer un mot de passe le nom de l'utilisateur suffit");
+		lblAfinDeSupprimer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAfinDeSupprimer.setForeground(Color.WHITE);
+		lblAfinDeSupprimer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblAfinDeSupprimer.setBounds(10, 127, 666, 37);
+		contentPane.add(lblAfinDeSupprimer);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(293, 175, 263, 30);
+		contentPane.add(textField_2);
+		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAnnuler.setBounds(148, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
 		
-		this.btnConnexion = new JButton("connexion");
-		btnConnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnConnexion.setBounds(428, 323, 140, 30);
-		contentPane.add(btnConnexion);
-		btnConnexion.addActionListener(this);
+		this.btnAjouter = new JButton("Supprimer");
+		btnAjouter.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnAjouter.setBounds(428, 323, 140, 30);
+		contentPane.add(btnAjouter);
+		btnAjouter.addActionListener(this);
 		
-		//JTextfields
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(359, 228, 170, 30);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField = new JTextField();
-		textField.setBounds(359, 129, 170, 30);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		//JLabels
-		
-		JLabel lblNewLabel_2 = new JLabel("mot de passe :");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		lblNewLabel_2.setBounds(165, 229, 158, 27);
-		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_1 = new JLabel("login :");
+		JLabel lblNewLabel_1 = new JLabel("Nom de l'utilisateur :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(188, 130, 81, 27);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1.setBounds(67, 174, 216, 30);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel("Accueil administrateur");
+		JLabel lblNewLabel = new JLabel("Supprimer  le mot de passe d'un utilisateur");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(165, 8, 347, 37);
+		lblNewLabel.setBounds(10, 8, 666, 37);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -110,11 +99,10 @@ public class Page_Connexion extends JFrame implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
- 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Page_Connexion frame = new Page_Connexion();
+					SupprimerMotDePasse frame = new SupprimerMotDePasse();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -125,21 +113,18 @@ public class Page_Connexion extends JFrame implements ActionListener{
  
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-	    if(ae.getSource()==btnConnexion) {
-	        String username = textField.getText();
-	        String password = textField_1.getText();
-	        if(dbdao.checkUserA(username, password)) {
-	        	JOptionPane.showMessageDialog(null, "Connexion réussie !", "Bienvenue Mr/Mme " + username,JOptionPane.INFORMATION_MESSAGE);
-	            Menu_principal frame=new Menu_principal();
-	            frame.setVisible(true);
-	            dispose();
-	        } else {
-	        	JOptionPane.showMessageDialog(null, "Nom d'utilisateur ou mot de passe incorrect", " Connexion échouée.",JOptionPane.INFORMATION_MESSAGE);
-	        }
-	    } else if(ae.getSource()==btnAnnuler) {
-	        dispose();
-	    }
+		if(ae.getSource()==btnAjouter) {
+			String name = textField_2.getText();
+			dbdao.deleteUserPassword(name);
+			JOptionPane.showMessageDialog(null, "Mot de passe de l'utilisateur supprimé avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
+			MenuPrincipal frame=new MenuPrincipal();
+			frame.setVisible(true);
+			dispose();
+		}else if(ae.getSource()==btnAnnuler) {
+			GestionUtilisateurs frame = new GestionUtilisateurs();
+			frame.setVisible(true);			
+			dispose();
+		}
+		
 	}
- 
- 
 }

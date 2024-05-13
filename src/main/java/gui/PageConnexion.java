@@ -1,8 +1,8 @@
 package gui;
-
+import dao.DBDAO;
+ 
 import java.awt.EventQueue;
 import java.awt.Image;
-import dao.DBDAO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,26 +10,28 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+ 
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+ 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.awt.Window;
-import java.awt.event.*;
-import javax.swing.*;
-
-public class Filtrer_clubs extends JFrame implements ActionListener{
-
+ 
+public class PageConnexion extends JFrame implements ActionListener{
+ 
+	private DBDAO dbdao ;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JButton btnAnnuler, btnAppliquer;
+	private JButton btnAnnuler, btnConnexion;
 	
-	public Filtrer_clubs() {
-		
+	
+	public PageConnexion() {
+		dbdao = new DBDAO();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
@@ -43,48 +45,48 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("annuler");
+		this.btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler.setBounds(126, 323, 140, 30);
+		btnAnnuler.setBounds(148, 323, 140, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
 		
-		this.btnAppliquer = new JButton("appliquer filtre");
-		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAppliquer.setBounds(381, 323, 222, 30);
-		contentPane.add(btnAppliquer);
-		btnAppliquer.addActionListener(this);
+		this.btnConnexion = new JButton("Connexion");
+		btnConnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		btnConnexion.setBounds(428, 323, 140, 30);
+		contentPane.add(btnConnexion);
+		btnConnexion.addActionListener(this);
 		
 		//JTextfields
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(454, 197, 222, 30);
+		textField_1.setBounds(359, 228, 170, 30);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField = new JTextField();
-		textField.setBounds(454, 114, 222, 30);
+		textField.setBounds(359, 129, 170, 30);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		//JLabels
 		
-		JLabel lblNewLabel_2 = new JLabel("lieu (commune, r茅gion, d茅partement) :");
+		JLabel lblNewLabel_2 = new JLabel("Mot de passe :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		lblNewLabel_2.setBounds(54, 198, 375, 27);
+		lblNewLabel_2.setBounds(165, 229, 158, 27);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nom de f茅d茅ration :");
+		JLabel lblNewLabel_1 = new JLabel("Nom d'utilisateur :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(54, 115, 205, 27);
+		lblNewLabel_1.setBounds(127, 130, 196, 27);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel("Filtrer les clubs de sport");
+		JLabel lblNewLabel = new JLabel("Accueil administrateur");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(165, 8, 347, 37);
 		contentPane.add(lblNewLabel);
@@ -108,10 +110,11 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+ 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Filtrer_clubs frame = new Filtrer_clubs();
+					PageConnexion frame = new PageConnexion();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -119,26 +122,24 @@ public class Filtrer_clubs extends JFrame implements ActionListener{
 			}
 		});
 	}
-
+ 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-	    if(ae.getSource()==btnAppliquer) {
-	        String federationName = textField.getText();
-	        String location = textField_1.getText();
-
-	        DBDAO dbdao = new DBDAO();
-	        List<String> results = dbdao.searchClubsByFederationAndLocation(federationName, location);
-
-	        // Affichage des r茅sultats dans une nouvelle fen锚tre
-	        Resultats_recherche_club resultat = new Resultats_recherche_club(results);
-	        resultat.setVisible(true);
-
-	        dispose();
+	    if(ae.getSource()==btnConnexion) {
+	        String username = textField.getText();
+	        String password = textField_1.getText();
+	        if(dbdao.checkUserA(username, password)) {
+	        	JOptionPane.showMessageDialog(null, "Connexion réussie !", "Bienvenue Mr/Mme " + username,JOptionPane.INFORMATION_MESSAGE);
+	            MenuPrincipal frame=new MenuPrincipal();
+	            frame.setVisible(true);
+	            dispose();
+	        } else {
+	        	JOptionPane.showMessageDialog(null, "Nom d'utilisateur ou mot de passe incorrect", " Connexion échouée.",JOptionPane.INFORMATION_MESSAGE);
+	        }
 	    } else if(ae.getSource()==btnAnnuler) {
-	        Liste_clubs frame = new Liste_clubs();
-	        frame.setVisible(true);
 	        dispose();
 	    }
 	}
-
+ 
+ 
 }
