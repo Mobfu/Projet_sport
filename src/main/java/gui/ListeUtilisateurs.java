@@ -28,7 +28,7 @@ import java.util.List;
 import java.sql.ResultSet;
 import javax.swing.JTable;
 
-public class Liste_utilisateurs extends JFrame implements ActionListener{
+public class ListeUtilisateurs extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton btnRetour, btnAppliquer;
@@ -42,7 +42,7 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Liste_utilisateurs frame = new Liste_utilisateurs();
+					ListeUtilisateurs frame = new ListeUtilisateurs();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,7 +54,7 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public Liste_utilisateurs() {
+	public ListeUtilisateurs() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
@@ -84,13 +84,13 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 		
 		//JButtons
 		
-		this.btnAppliquer = new JButton("appliquer un filtre");
+		this.btnAppliquer = new JButton("Appliquer un filtre");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAppliquer.setBounds(356, 312, 236, 30);
 		contentPane.add(btnAppliquer);
 		btnAppliquer.addActionListener(this);
 		
-		this.btnRetour = new JButton("retour");
+		this.btnRetour = new JButton("Retour");
 		btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnRetour.setBounds(113, 312, 140, 30);
 		contentPane.add(btnRetour);
@@ -131,12 +131,12 @@ public class Liste_utilisateurs extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==btnRetour) {
-			Menu_principal frame = new Menu_principal();
+			MenuPrincipal frame = new MenuPrincipal();
 			frame.setVisible(true);
 			dispose();
 		}
 		else if(ae.getSource()==btnAppliquer) {
-			Filtrer_profils frame = new Filtrer_profils();
+			FiltrerProfils frame = new FiltrerProfils();
 			frame.setVisible(true);
 			dispose();
 		}
