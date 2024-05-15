@@ -5,7 +5,8 @@ import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
- 
+
+import Module.Utilisateur;
 import dao.DBDAO;
  
 import javax.swing.JLabel;
@@ -18,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
@@ -144,14 +146,17 @@ public class AjouterUtilisateur extends JFrame implements ActionListener{
 	        String name = textField_1.getText();
 	        String email = textField.getText();
 	        String password = textField_2.getText();
-	        
-	        if(dbdao.addUser(name, email, password)) {
+	        if(dbdao.addUser(name, email, password)){
 	            JOptionPane.showMessageDialog(null, "Utilisateur ajouté avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
 	            GestionUtilisateurs frame = new GestionUtilisateurs();
 	            frame.setVisible(true);
 	            dispose();
 	        } else {
-	            JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout de l'utilisateur.", "Erreur", JOptionPane.ERROR_MESSAGE);
+	        	if(!dbdao.verifNomUnique(name)) {
+	        		JOptionPane.showMessageDialog(null, "Nom d'utilisateur déjà utilisé", "Erreur", JOptionPane.ERROR_MESSAGE);
+	        	}else {
+	        		JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout de l'utilisateur.", "Erreur", JOptionPane.ERROR_MESSAGE);
+	        	}
 	        }
 	    } else if(ae.getSource()==btnAnnuler) {
 	    	GestionUtilisateurs frame = new GestionUtilisateurs();
