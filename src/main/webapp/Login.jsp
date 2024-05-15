@@ -19,18 +19,18 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
 <link rel="stylesheet" href="./Style/map.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-   
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-   
-    <link rel="stylesheet" href="./Style/style.css"/>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="./Style/style.css" />
 
 <title>Login</title>
 </head>
 <body>
 
 	<jsp:include page="Menu.jsp" />
-	
 	<%
 	if (session != null && session.getAttribute("LoginFailed") != null) {
 		Boolean LoginFailed = (Boolean) session.getAttribute("LoginFailed");
@@ -40,7 +40,6 @@
 		}
 	}
 	session.setAttribute("isFirstVisit", true);
-	
 	%>
 	<div class="container">
 		<div class="card">
@@ -91,6 +90,13 @@
 			%>
 			<div class="alert alert-success" role="alert">
 				<%=session.getAttribute("messageS")%>
+			</div>
+
+			<%
+			} else {
+			%>
+			<div class="alert alert-danger" role="alert">
+				<%=session.getAttribute("messageF")%>
 			</div>
 			<%
 			}
