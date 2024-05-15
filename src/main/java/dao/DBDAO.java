@@ -537,5 +537,15 @@ public class DBDAO {
 		}
 		return maListe;
 	}
-
+	
+	public boolean verifNomUnique (String name) {
+		boolean a=false;
+		List<Utilisateur> maListe = listeUtilisateurs();
+		for (Utilisateur utilisateur : maListe) {
+			if(name==utilisateur.getUsername()) {
+				a = true;
+			}
+		}
+		return a;
+	}
 }
