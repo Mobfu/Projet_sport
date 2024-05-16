@@ -22,15 +22,15 @@
 			    <title>Elu</title>
 			    
 			    <style>
-			        /* Style pour l'arrière-plan */
+			        /* Style pour l'arriÃ©re-plan */
 			        body {
-			            /* Définir l'image comme arrière-plan */
+			            /* DÃ©finir l'image comme arriÃ©re-plan */
 			            background-image: url('./image/FondSiteWeb.jpg');
-			            /* Centrer et étirer l'image pour remplir tout l'é©cran */
+			            /* Centrer et Ã©tirer l'image pour remplir tout l'Ã©cran */
 			            background-size: cover;
-			           /* Pour que je puisse positionner l'image au centre de l'écran */
+			           /* Pour que je puisse positionner l'image au centre de l'Ã©cran */
 			            background-position: center;
-			            /* Répéter l'image si nécessaire */
+			            /* RÃ©pÃ©ter l'image si nÃ©cessaire */
 			            background-repeat: no-repeat;
 			        }
 			    </style>
@@ -69,17 +69,18 @@
        <section class="banner d-flex justify-content-center align-items-center pt-5">
         <div class="container my-5 py-5">
             <p class="texte-capitalize py-3 redressed banner-desc" style="color: white;"> <u> DOSPORT</u></p>
-            <div class ="row">
+            <div class ="row">  
                 
                 <div class="col-md-6">
-                    <p class="texte-capitalize py-3 redressed banner-desc "  style="color: white;"> Bienvenue à vous membre Elu </p>
+                    <p class="texte-capitalize py-3 redressed banner-desc "  style="color: white;"> Bienvenue vous membre Elu </p>
                 </div>
                 
                 <div class="col-md-8">
                 
                     <h1  class="texte-capitalize py-3 redressed banner-desc" style="color: white;">
                     
-                         Voici les indicateurs statistiques générales
+                         Voici les indicateurs statistiques gÃ©nÃ©rales
+                        
                          
                     </h1>    
                    
@@ -98,10 +99,10 @@
 		                      </div>
 		                      <div class="col-md-6">
 		                        <div class="card-body">
-		                          <h5 class="card-title">Habitants licenciés</h5>
-		                          <p class="card-text"> Vous pouvez avoir accès aux nombres d'habitants licenciés par 
-		                          commune,régions,départements ainsi que les fédérations auquels ces nombres apparatiennent.Vous pouvez également
-		                          avoir le détail du genre intervenant dans ces statisitiques </p>
+		                          <h5 class="card-title">Habitants licenciÃ©s</h5>
+		                          <p class="card-text"> Vous pouvez avoir accÃ©s aux nombres d'habitants licenciÃ©s par 
+		                          commune,rÃ©gions,dÃ©partements ainsi que les fÃ©dÃ©rations auquels ces nombres apparatiennent.Vous pouvez Ã©galement
+		                          avoir le dÃ©tail du genre intervenant dans ces statisitiques </p>
 		                          <p class="card-text">
 		                            <a href="./image/Licencies.pdf" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
 		                          </p>
@@ -117,13 +118,13 @@
                       
                       <div class="col-md-6">
                         <div class="card-body">
-                          <h5 class="card-title">Habitants non répertoriés</h5>
+                          <h5 class="card-title">Habitants non rÃ©pertoriÃ©s</h5>
                           <p class="card-text">
-	                              Un document contenant les chiffres des habitants non répertoriés de certaines fédérations sportives
-	                               offre une vision précise et exhaustive de la démographie des pratiquants 
-	                               dans le domaine du sport.En mettant en lumière ces chiffres non
-	                                répertoriés, le document fournit des informations cruciales pour orienter les politiques de développement du sport,
-	                                promouvoir l'inclusion et la diversité, et renforcer l'accès équitable à la pratique sportive pour tous.</p>
+	                              Un document contenant les chiffres des habitants non rÃ©pertoriÃ©s de certaines fÃ©dÃ©rations sportives
+	                               offre une vision prÃ©cise et exhaustive de la dÃ©mographie des pratiquants 
+	                               dans le domaine du sport.En mettant en lumiÃ©re ces chiffres non
+	                                rÃ©pertoriÃ©s, le document fournit des informations cruciales pour orienter les politiques de dÃ©veloppement du sport,
+	                                promouvoir l'inclusion et la diversitÃ©, et renforcer l'accÃ©s Ã©quitable Ã© la pratique sportive pour tous.</p>
                                <p class="card-text">
                             <a href="./image/Nonrepert.pdf" class="btn btn-order rounded-0 merriweather">Classement</a>
                           </p>
@@ -149,12 +150,12 @@
 		                      <div class="col-md-6">
 		                        <div class="card-body">
 		                          <h5 class="card-title">Classement</h5>
-			                          <p class="card-text">En compilant ces données, nous pouvons dresser un tableau clair de l'implication des habitants dans les 
-			                          activités sportives, en mettant en évidence les endroits où 
-			                          le sport joue un rôle significatif dans la vie quotidienne.Cette analyse 
-			                          comparative offre des insights utiles pour les décideurs politiques,comme vous en les 
-			                          aidant à identifier les régions où des initiatives de promotion du sport pourraient être 
-			                          les plus bénéfiques, ainsi qu'à comprendre les facteurs socio-économiques qui influent
+			                          <p class="card-text">En compilant ces donnÃ©es, nous pouvons dresser un tableau clair de l'implication des habitants dans les 
+			                          activitÃ©s sportives, en mettant en Ã©vidence les endroits oÃ© 
+			                          le sport joue un rÃ©le significatif dans la vie quotidienne.Cette analyse 
+			                          comparative offre des insights utiles pour les dÃ©cideurs politiques,comme vous en les 
+			                          aidant Ã© identifier les rÃ©gions oÃ© des initiatives de promotion du sport pourraient Ã©tre 
+			                          les plus bÃ©nÃ©fiques, ainsi qu'Ã© comprendre les facteurs socio-Ã©conomiques qui influent
 			                           sur la participation sportive.  </p>
 		                          <p class="card-text">
 		                            <a href="./image/Classement.pdf" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
@@ -196,8 +197,6 @@
         </div>
     </div>
   </section>
-      
-      
       
 			</body>
 

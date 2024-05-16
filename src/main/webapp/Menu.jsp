@@ -20,7 +20,7 @@
 					aria-current="page" href="index.jsp">Accueil</a></li>
 
 				<li class="nav-item pe-2"><a class="nav-link"
-					href="APropos.jsp">Presentation</a></li>
+					href="APropos.jsp">Présentation</a></li>
 
 				<li class="nav-item pe-2"><a class="nav-link"
 					href="addUser.jsp">Devenir membre</a></li>
