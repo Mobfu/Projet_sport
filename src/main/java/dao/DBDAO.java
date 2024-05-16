@@ -427,7 +427,6 @@ public class DBDAO {
         }
         return results;
     }
-
 	
 	public List <Utilisateur> listeUtilisateurs(){
 		List<Utilisateur> maListe = new ArrayList<>();
@@ -462,11 +461,11 @@ public class DBDAO {
 				ResultSet resultSet = statement.executeQuery(query);
 				while(resultSet.next()) {					
 					int Idclub=resultSet.getInt("Idclub");
-					int code_commune=resultSet.getInt("code_commune");
+					String code_commune=resultSet.getString("code_commune");
 					String nom_commune=resultSet.getString("nom_commune");
 					String code_qpv=resultSet.getString("code_qpv");
 					String nom_qpv=resultSet.getString("nom_qpv");
-					int deprtement=resultSet.getInt("deprtement");
+					String deprtement=resultSet.getString("deprtement");
 					String region=resultSet.getString("region");
 					String statut_geo=resultSet.getString("statut_geo");
 					int code_fede=resultSet.getInt("code_fede");
@@ -498,8 +497,6 @@ public class DBDAO {
         	userrole = 2;
         case "Elu":
         	userrole = 3;
-        default:
-        	userrole = 0; 
 	}
 		if(dbConnect()) {
 			try {
@@ -537,5 +534,24 @@ public class DBDAO {
 		}
 		return maListe;
 	}
-
+	
+	public boolean verifNomUnique(String name) {
+	    List<Utilisateur> maListe = listeUtilisateurs();
+	    for (Utilisateur utilisateur : maListe) {
+	        if (name.equals(utilisateur.getUsername())) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+	
+	public boolean verifMailUnique(String mail) {
+	    List<Utilisateur> maListe = listeUtilisateurs();
+	    for (Utilisateur utilisateur : maListe) {
+	        if (mail.equals(utilisateur.getEmail())) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}	
 }
