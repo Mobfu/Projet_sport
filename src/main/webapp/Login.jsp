@@ -44,14 +44,13 @@
 	%>
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-primary text-white">Please enter
-				your login information</div>
+			<div class="card-header bg-primary text-white"> Veuillez entrer vos informations s'il vous plait </div>
 			<div class="card-body">
 				<form action="UserLogin" method="post">
-					<h4 class="card-title">UserName:</h4>
+					<h4 class="card-title">Nom:</h4>
 					<label for="user"></label> <input type="text" id="user" name="user"
 						required><br>
-					<h4 class="card-title">Password:</h4>
+					<h4 class="card-title">Mot de passe:</h4>
 					<label for="password"></label> <input type="password" id="password"
 						name="password" required>
 					<ul class="list-group">
@@ -65,7 +64,7 @@
 							class="form-check-label" for="role_2">Acteur</label></li>
 					</ul>
 
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">Soumettre</button>
 				</form>
 				<br> <a href='./addUser.jsp'>
 					<button type="text" class="btn btn-primary">Inscription</button>
@@ -76,8 +75,8 @@
 			if (session.getAttribute("isFirstVisit") != null && (boolean) session.getAttribute("isFirstVisit")) {
 			%>
 			<div class="alert alert-primary" role="alert">
-				<p>This site uses cookies. By continuing to browse this site,
-					you are agreeing to our use of cookies.</p>
+				<p>Ce site utilise des cookies. En continuant à naviguer sur ce site, vous 
+				acceptez notre utilisation des cookies.</p>
 			</div>
 			<%
 			session.removeAttribute("isFirstVisit");

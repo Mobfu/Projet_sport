@@ -38,15 +38,14 @@
 
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-primary text-white">Please enter
-				your information for Inscription</div>
+			<div class="card-header bg-primary text-white">Veuillez entrer vos informations</div>
 			<div class="card-body">
 				<form action="AdUser" method="post">
-					<h4 class="class-title">UserName:</h4>
+					<h4 class="class-title">Nom d'utilisateur:</h4>
 					<label for="name"></label> <input type="text" id="name" name="name"
 						required><br>
 
-					<h4 class="class-title">Password:</h4>
+					<h4 class="class-title">Mot de passe:</h4>
 					<label for="password"></label> <input type="password" id="password"
 						name="password" required><br>
 						

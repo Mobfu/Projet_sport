@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -26,7 +27,26 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
 <title>News</title>
+
+
+
+   <style>
+			        /* Style pour l'arriére-plan */
+			        
+			        body {
+			            /* Définir l'image comme arriére-plan */
+			            background-image: url('./image/Information.jpg');
+			            /* Centrer et étirer l'image pour remplir tout l'écran */
+			            background-size: cover;
+			           /* Pour que je puisse positionner l'image au centre de l'écran */
+			            background-position: center;
+			            /* Répéter l'image si nécessaire */
+			            background-repeat: no-repeat;
+			        }
+    </style>
+    
 </head>
+
 <body>
 	<jsp:include page="Menu_conn.jsp" />
 	<div class="container">
