@@ -22,15 +22,15 @@
 			    <title>Elu</title>
 			    
 			    <style>
-			        /* Style pour l'arriÃ©re-plan */
+			        /* Style pour l'arriére-plan */
 			        body {
-			            /* DÃ©finir l'image comme arriÃ©re-plan */
+			            /* Définir l'image comme arriére-plan */
 			            background-image: url('./image/FondSiteWeb.jpg');
-			            /* Centrer et Ã©tirer l'image pour remplir tout l'Ã©cran */
+			            /* Centrer et étirer l'image pour remplir tout l'écran */
 			            background-size: cover;
-			           /* Pour que je puisse positionner l'image au centre de l'Ã©cran */
+			           /* Pour que je puisse positionner l'image au centre de l'écran */
 			            background-position: center;
-			            /* RÃ©pÃ©ter l'image si nÃ©cessaire */
+			            /* Répéter l'image si nécessaire */
 			            background-repeat: no-repeat;
 			        }
 			    </style>
@@ -79,7 +79,7 @@
                 
                     <h1  class="texte-capitalize py-3 redressed banner-desc" style="color: white;">
                     
-                         Voici les indicateurs statistiques gÃ©nÃ©rales
+                         Voici les indicateurs statistiques générales
                         
                          
                     </h1>    
@@ -99,12 +99,12 @@
 		                      </div>
 		                      <div class="col-md-6">
 		                        <div class="card-body">
-		                          <h5 class="card-title">Habitants licenciÃ©s</h5>
-		                          <p class="card-text"> Vous pouvez avoir accÃ©s aux nombres d'habitants licenciÃ©s par 
-		                          commune,rÃ©gions,dÃ©partements ainsi que les fÃ©dÃ©rations auquels ces nombres apparatiennent.Vous pouvez Ã©galement
-		                          avoir le dÃ©tail du genre intervenant dans ces statisitiques </p>
+		                          <h5 class="card-title">Habitants licenciéss</h5>
+		                          <p class="card-text"> Vous pouvez avoir accès aux nombres d'habitants licenciés par 
+		                          commune,régions,départements ainsi que les fédérations auquels ces nombres apparatiennent.Vous pouvez également
+		                          avoir le détail du genre intervenant dans ces statisitiques </p>
 		                          <p class="card-text">
-		                            <a href="./image/Licencies.pdf" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
+		                            <a href="Visual.jsp" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
 		                          </p>
 		                          
 		                        </div>
@@ -118,13 +118,13 @@
                       
                       <div class="col-md-6">
                         <div class="card-body">
-                          <h5 class="card-title">Habitants non rÃ©pertoriÃ©s</h5>
+                          <h5 class="card-title">Habitants non répertoriés</h5>
                           <p class="card-text">
-	                              Un document contenant les chiffres des habitants non rÃ©pertoriÃ©s de certaines fÃ©dÃ©rations sportives
-	                               offre une vision prÃ©cise et exhaustive de la dÃ©mographie des pratiquants 
-	                               dans le domaine du sport.En mettant en lumiÃ©re ces chiffres non
-	                                rÃ©pertoriÃ©s, le document fournit des informations cruciales pour orienter les politiques de dÃ©veloppement du sport,
-	                                promouvoir l'inclusion et la diversitÃ©, et renforcer l'accÃ©s Ã©quitable Ã© la pratique sportive pour tous.</p>
+	                              Un document contenant les chiffres des habitants non répertoriés de certaines fédérations sportives
+	                               offre une vision précise et exhaustive de la démographie des pratiquants 
+	                               dans le domaine du sport.En mettant en lumiére ces chiffres non
+	                                répertoriés, le document fournit des informations cruciales pour orienter les politiques de développement du sport,
+	                                promouvoir l'inclusion et la diversité, et renforcer l'accés équitable é la pratique sportive pour tous.</p>
                                <p class="card-text">
                             <a href="./image/Nonrepert.pdf" class="btn btn-order rounded-0 merriweather">Classement</a>
                           </p>
@@ -150,15 +150,15 @@
 		                      <div class="col-md-6">
 		                        <div class="card-body">
 		                          <h5 class="card-title">Classement</h5>
-			                          <p class="card-text">En compilant ces donnÃ©es, nous pouvons dresser un tableau clair de l'implication des habitants dans les 
-			                          activitÃ©s sportives, en mettant en Ã©vidence les endroits oÃ© 
-			                          le sport joue un rÃ©le significatif dans la vie quotidienne.Cette analyse 
-			                          comparative offre des insights utiles pour les dÃ©cideurs politiques,comme vous en les 
-			                          aidant Ã© identifier les rÃ©gions oÃ© des initiatives de promotion du sport pourraient Ã©tre 
-			                          les plus bÃ©nÃ©fiques, ainsi qu'Ã© comprendre les facteurs socio-Ã©conomiques qui influent
+			                          <p class="card-text">En compilant ces données, nous pouvons dresser un tableau clair de l'implication des habitants dans les 
+			                          activités sportives, en mettant en évidence les endroits où 
+			                          le sport joue un réle significatif dans la vie quotidienne.Cette analyse 
+			                          comparative offre des insights utiles pour les décideurs politiques,comme vous en les 
+			                          aidant é identifier les régions oé des initiatives de promotion du sport pourraient étre 
+			                          les plus bénéfiques, ainsi qu'é comprendre les facteurs socio-économiques qui influent
 			                           sur la participation sportive.  </p>
 		                          <p class="card-text">
-		                            <a href="./image/Classement.pdf" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
+		                            <a href="Visual3.jsp" class="btn btn-order rounded-0 merriweather">Voici la visualisation</a>
 		                          </p>
 		                          
 		                        </div>
