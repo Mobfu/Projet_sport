@@ -23,6 +23,7 @@ import Module.Utilisateur;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 
 public class ListeClubs extends JFrame implements ActionListener{
 
@@ -30,6 +31,10 @@ public class ListeClubs extends JFrame implements ActionListener{
 	private JButton btnRetour, btnAppliquer;
 	private JTable tableClubs;
     private DefaultTableModel modelClubs;
+    private JTextField textFieldNom;
+    private JLabel lblNewLabel_2;
+    private JTextField textFieldLieu;
+    private JLabel lblNewLabel_3;
 	/**
 	 * Launch the application.
 	 */
@@ -78,15 +83,57 @@ public class ListeClubs extends JFrame implements ActionListener{
 		modelClubs.addColumn("nbr_clubs");
 		modelClubs.addColumn("nbr_epa");
 		modelClubs.addColumn("total_epa_clubs");
+		
+		lblNewLabel_3 = new JLabel("d\u00E9partement, commune) :");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_3.setBackground(UIManager.getColor("Button.background"));
+		lblNewLabel_3.setBounds(477, 271, 265, 30);
+		contentPane.add(lblNewLabel_3);
+		
+		textFieldLieu = new JTextField();
+		textFieldLieu.setColumns(10);
+		textFieldLieu.setBounds(737, 262, 238, 26);
+		contentPane.add(textFieldLieu);
+		
+		lblNewLabel_2 = new JLabel("Lieu (r\u00E9gion,");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_2.setBackground(UIManager.getColor("Button.background"));
+		lblNewLabel_2.setBounds(544, 245, 140, 30);
+		contentPane.add(lblNewLabel_2);
+		
+		textFieldNom = new JTextField();
+		textFieldNom.setColumns(10);
+		textFieldNom.setBounds(229, 262, 238, 26);
+		contentPane.add(textFieldNom);
+		
+		JLabel lblNewLabel_1 = new JLabel("Nom de la f\u00E9d\u00E9ration :");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_1.setBackground(UIManager.getColor("Button.background"));
+		lblNewLabel_1.setBounds(0, 259, 238, 30);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("Appliquer un filtre de recherche ");
+		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_2.setForeground(Color.WHITE);
+		lblNewLabel_1_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_1_2.setBackground(UIManager.getColor("Button.background"));
+		lblNewLabel_1_2.setBounds(333, 215, 329, 30);
+		contentPane.add(lblNewLabel_1_2);
 		tableClubs = new JTable(modelClubs);
 		JScrollPane scrollPane = new JScrollPane(tableClubs);
 		contentPane.add(scrollPane);
-		scrollPane.setBounds(0, 56, 985, 234);
+		scrollPane.setBounds(0, 56, 985, 148);
 		contentPane.add(scrollPane);
 		
 		//JButtons
 		
-		this.btnAppliquer = new JButton("Appliquer un filtre");
+		this.btnAppliquer = new JButton("Appliquer filtre");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAppliquer.setBounds(619, 312, 238, 30);
 		contentPane.add(btnAppliquer);
@@ -117,15 +164,22 @@ public class ListeClubs extends JFrame implements ActionListener{
 		imageLabel.setBounds(0, 0, 992, 373);
 		setLocationRelativeTo(null);
 		
-		
-		insertionDonnees();
+		//récupération des données depuis la BDD mysql
+		insertionDonnees("", "");
 	}
 	
-	public void insertionDonnees() {
+	public void insertionDonnees(String lieu, String nom_federation) {
 		DBDAO dbdao = new DBDAO();
-		List<Club> clubs = dbdao.listeClubs();
-		for(Club club : clubs) {
-			modelClubs.addRow(new Object[] {club.getIdclub(), club.getCode_commune(), club.getNom_commune(), club.getCode_qpv(), club.getNom_qpv(), club.getDeprtement(), club.getRegion(), club.getStatut_geo(), club.getCode_fede(), club.getNom_federation(), club.getNbr_clubs(), club.getNbr_epa(), club.getTotal_epa_clubs()});
+		if(lieu.equals("")&&nom_federation.equals("")) {
+			List<Club> clubs = dbdao.listeClubs();
+			for (Club club : clubs) {
+				modelClubs.addRow(new Object[] {club.getIdclub(), club.getCode_commune(), club.getNom_commune(), club.getCode_qpv(), club.getNom_qpv(), club.getDeprtement(), club.getRegion(), club.getStatut_geo(), club.getCode_fede(), club.getNom_federation(), club.getNbr_clubs(), club.getNbr_epa(), club.getTotal_epa_clubs()});
+			}
+		}else {
+			List<Club> clubs=dbdao.ResultatRechercheClub(lieu, nom_federation);
+			for (Club club : clubs) {
+				modelClubs.addRow(new Object[] {club.getIdclub(), club.getCode_commune(), club.getNom_commune(), club.getCode_qpv(), club.getNom_qpv(), club.getDeprtement(), club.getRegion(), club.getStatut_geo(), club.getCode_fede(), club.getNom_federation(), club.getNbr_clubs(), club.getNbr_epa(), club.getTotal_epa_clubs()});
+			}
 		}
 	}
 	
@@ -137,9 +191,10 @@ public class ListeClubs extends JFrame implements ActionListener{
 			dispose();
 		}
 		else if(ae.getSource()==btnAppliquer) {
-			FiltrerClubs frame = new FiltrerClubs();
-			frame.setVisible(true);
-			dispose();
+			String nom_federation=textFieldNom.getText();
+			String lieu=textFieldLieu.getText();
+			modelClubs.setRowCount(0);
+			insertionDonnees(lieu, nom_federation);
 		}
 		
 	}
