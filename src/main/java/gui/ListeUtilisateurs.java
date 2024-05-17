@@ -27,6 +27,8 @@ import java.sql.Statement;
 import java.util.List;
 import java.sql.ResultSet;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.JComboBox;
 
 public class ListeUtilisateurs extends JFrame implements ActionListener{
 
@@ -34,6 +36,8 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 	private JButton btnRetour, btnAppliquer;
 	private JTable tableUtilisateurs;
     private DefaultTableModel modelUtilisateurs;
+    private JTextField textFieldNom;
+    private JComboBox<String> combobox;
     
 	/**
 	 * Launch the application.
@@ -76,15 +80,51 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 		modelUtilisateurs.addColumn("email");
 		modelUtilisateurs.addColumn("role");
 		
+		String[] choix = {"", "Administrateur","Sportif", "Membre Ministère Sport","Elu"};
+		this.combobox = new JComboBox<>(choix);
+		combobox.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		combobox.setMaximumRowCount(5);
+		combobox.setBounds(500, 241, 176, 26);
+		contentPane.add(combobox);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("Appliquer un filtre de recherche ");
+		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_2.setForeground(Color.WHITE);
+		lblNewLabel_1_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_1_2.setBackground(UIManager.getColor("Button.background"));
+		lblNewLabel_1_2.setBounds(195, 189, 329, 30);
+		contentPane.add(lblNewLabel_1_2);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("R\u00F4le :");
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_1_1.setBackground(UIManager.getColor("Button.background"));
+		lblNewLabel_1_1.setBounds(420, 241, 70, 30);
+		contentPane.add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("Nom d'utilisateur :");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_1.setBackground(UIManager.getColor("Button.background"));
+		lblNewLabel_1.setBounds(10, 238, 199, 30);
+		contentPane.add(lblNewLabel_1);
+		
+		textFieldNom = new JTextField();
+		textFieldNom.setBounds(200, 241, 176, 26);
+		contentPane.add(textFieldNom);
+		textFieldNom.setColumns(10);
+		
 		tableUtilisateurs = new JTable(modelUtilisateurs);
 		JScrollPane scrollPane = new JScrollPane(tableUtilisateurs);
 		contentPane.add(scrollPane);
-		scrollPane.setBounds(10, 56, 666, 234);
+		scrollPane.setBounds(10, 56, 666, 122);
 		contentPane.add(scrollPane);
 		
 		//JButtons
 		
-		this.btnAppliquer = new JButton("Appliquer un filtre");
+		this.btnAppliquer = new JButton("Appliquer filtre");
 		btnAppliquer.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnAppliquer.setBounds(356, 312, 236, 30);
 		contentPane.add(btnAppliquer);
@@ -116,16 +156,49 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 		setLocationRelativeTo(null);
 		
 		//récupération des données depuis la BDD mysql
-		insertionDonnees();
-
+		insertionDonnees("", "");
 	}
 	
-	public void insertionDonnees() {
+	public void insertionDonnees(String role, String nom) {
 		DBDAO dbdao = new DBDAO();
-		List<Utilisateur> utilisateurs = dbdao.listeUtilisateurs();
-		for(Utilisateur utilisateur : utilisateurs) {
-			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), utilisateur.getUserrole()});
+		if (nom.equals("")&&role.equals("")) {
+			List<Utilisateur> utilisateurs = dbdao.listeUtilisateurs();
+			for(Utilisateur utilisateur : utilisateurs) {
+				String a="pas encore défini";
+				switch(utilisateur.getUserrole()) {
+					case 0 :
+						a="administrateur";
+						break;
+					case 1 :
+						a="sportif";
+						break;
+					case 2 :a="ministère du sport";
+						break;
+					case 3 : a="élu";
+						break;
+				}
+				modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), a});
+			}
+		}else {
+			List<Utilisateur> utilisateurs=dbdao.ResultatRecherche(role, nom);
+			for(Utilisateur utilisateur : utilisateurs) {
+				String a="pas encore défini";
+				switch(utilisateur.getUserrole()) {
+					case 0 :
+						a="administrateur";
+						break;
+					case 1 :
+						a="sportif";
+						break;
+					case 2 :a="ministère du sport";
+						break;
+					case 3 : a="élu";
+						break;
+				}
+				modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), a});
+			}
 		}
+		
 	}
 	
 	@Override
@@ -136,10 +209,10 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 			dispose();
 		}
 		else if(ae.getSource()==btnAppliquer) {
-			FiltrerProfils frame = new FiltrerProfils();
-			frame.setVisible(true);
-			dispose();
+			String nom=textFieldNom.getText();
+			String role=(String) combobox.getSelectedItem();
+			modelUtilisateurs.setRowCount(0);
+			insertionDonnees(role, nom);
 		}
-		
 	}
 }
