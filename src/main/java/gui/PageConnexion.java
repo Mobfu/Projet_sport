@@ -20,15 +20,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Window;
+import javax.swing.JPasswordField;
  
 public class PageConnexion extends JFrame implements ActionListener{
  
 	private DBDAO dbdao ;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JButton btnAnnuler, btnConnexion;
-	
+	private JButton btnAnnuler, btnConnexion, icone;
+	private JPasswordField textField_1;
+	private boolean MDPVisible = false;
 	
 	public PageConnexion() {
 		dbdao = new DBDAO();
@@ -43,26 +44,36 @@ public class PageConnexion extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 		
+		 // Charger et redimensionner l'image
+		
+        ImageIcon imageDeBase = new ImageIcon(getClass().getResource("/gui/eye.png"));
+        Image oeilimage = imageDeBase.getImage().getScaledInstance(40, 23, Image.SCALE_SMOOTH);
+        ImageIcon oeil2 = new ImageIcon(oeilimage);
+
+        // Créer le bouton avec l'icône redimensionnée
+        
+        this.icone = new JButton(oeil2);
+        icone.setBounds(536, 228, 31, 30);
+        contentPane.add(icone);
+        icone.addActionListener(this);
+		
+		textField_1 = new JPasswordField();
+		textField_1.setBounds(359, 228, 170, 30);
+		contentPane.add(textField_1);
+		
 		//JLButtons
 		
-		this.btnAnnuler = new JButton("Annuler");
+		this.btnAnnuler = new JButton("Fermer l'application");
 		btnAnnuler.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAnnuler.setBounds(148, 323, 140, 30);
+		btnAnnuler.setBounds(82, 323, 234, 30);
 		contentPane.add(btnAnnuler);
 		btnAnnuler.addActionListener(this);
 		
 		this.btnConnexion = new JButton("Connexion");
 		btnConnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnConnexion.setBounds(428, 323, 140, 30);
+		btnConnexion.setBounds(446, 323, 140, 30);
 		contentPane.add(btnConnexion);
 		btnConnexion.addActionListener(this);
-		
-		//JTextfields
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(359, 228, 170, 30);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
 		
 		textField = new JTextField();
 		textField.setBounds(359, 129, 170, 30);
@@ -138,8 +149,14 @@ public class PageConnexion extends JFrame implements ActionListener{
 	        }
 	    } else if(ae.getSource()==btnAnnuler) {
 	        dispose();
+	    }else if(ae.getSource()==icone) {
+	    	 if (MDPVisible) {
+	    		 textField_1.setEchoChar('*');
+	    		 MDPVisible = false;
+	         } else {
+	        	 textField_1.setEchoChar((char) 0);
+	        	 MDPVisible = true;
+	         }
 	    }
 	}
- 
- 
 }
