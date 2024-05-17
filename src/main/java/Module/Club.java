@@ -1,13 +1,13 @@
 package Module;
 
 public class Club {
-	private int Idclub, code_commune, deprtement, code_fede, nbr_clubs, nbr_epa, total_epa_clubs;
-	private String nom_commune, region, statut_geo, nom_federation, code_qpv, nom_qpv;
+	private int Idclub, code_fede, nbr_clubs, nbr_epa, total_epa_clubs;
+	private String nom_commune, code_commune, region, statut_geo, nom_federation, code_qpv, nom_qpv, deprtement;
 	
 	//Idclub, code_commune, nom_commune, code_qpv, nom_qpv, deprtement, region, statut_geo, code_fede, nom_federation
 	//nbr_clubs, nbr_epa, total_epa_clubs
 	
-	public Club (int Idclub, int code_commune, String nom_commune, String code_qpv, String nom_qpv, int deprtement, String region, String statut_geo, int code_fede, String nom_federation, int nbr_clubs, int nbr_epa, int total_epa_clubs) {
+	public Club (int Idclub, String code_commune, String nom_commune, String code_qpv, String nom_qpv, String deprtement, String region, String statut_geo, int code_fede, String nom_federation, int nbr_clubs, int nbr_epa, int total_epa_clubs) {
 		this.Idclub=Idclub;
 		this.code_commune=code_commune;
 		this.nom_commune=nom_commune;
@@ -27,11 +27,11 @@ public class Club {
 		return Idclub;
 	}
 	
-	public int getCode_commune() {
+	public String getCode_commune() {
 		return code_commune;
 	}
 	
-	public int getDeprtement() {
+	public String getDeprtement() {
 		return deprtement;
 	}
 	
@@ -79,11 +79,11 @@ public class Club {
 		this.Idclub=Idclub;
 	}
 	
-	public void setCode_commune(int code_commune) {
+	public void setCode_commune(String code_commune) {
 		this.code_commune=code_commune;
 	}
 	
-	public void setDeprtement(int deprtement) {
+	public void setDeprtement(String deprtement) {
 		this.deprtement=deprtement;
 	}
 	
