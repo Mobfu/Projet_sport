@@ -25,6 +25,14 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
+<style>
+/* Style pour l'arrière-plan */
+body {
+	/* Définir l'image comme arriÃ¨re-plan */
+	background-image: url('./image/news.jpeg');
+	background-repeat: no-repeat;
+}
+</style>
 <title>News</title>
 </head>
 <body>

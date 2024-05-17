@@ -25,7 +25,14 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="./Style/style.css" />
-
+<style>
+/* Style pour l'arrière-plan */
+body {
+	/* Définir l'image comme arriÃ¨re-plan */
+	background-image: url('./image/login.jpg');
+	background-repeat: no-repeat;
+}
+</style>
 <title>Login</title>
 </head>
 <body>
@@ -39,7 +46,6 @@
 			session.removeAttribute("LoginFailed");
 		}
 	}
-	session.setAttribute("isFirstVisit", true);
 	%>
 	<div class="container">
 		<div class="card">
@@ -71,38 +77,17 @@
 				</a>
 			</div>
 
-			<%
-			if (session.getAttribute("isFirstVisit") != null && (boolean) session.getAttribute("isFirstVisit")) {
-			%>
-			<div class="alert alert-primary" role="alert">
-				<p>This site uses cookies. By continuing to browse this site,
-					you are agreeing to our use of cookies.</p>
-			</div>
-			<%
-			session.removeAttribute("isFirstVisit");
-			%>
-			<%
-			}
-			%>
 
 			<%
-			if (session != null && session.getAttribute("addSucce") != null && (Boolean) session.getAttribute("addSucce")) {
-			%>
-			<div class="alert alert-success" role="alert">
-				<%=session.getAttribute("messageS")%>
-			</div>
-
-			<%
-			} else {
+			if (session != null && session.getAttribute("info") != null) {
 			%>
 			<div class="alert alert-danger" role="alert">
-				<%=session.getAttribute("messageF")%>
+				<%=session.getAttribute("info")%>
 			</div>
 			<%
 			}
-			session.removeAttribute("messageS");
+			session.removeAttribute("info");
 			%>
-
 		</div>
 
 	</div>

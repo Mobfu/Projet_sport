@@ -29,28 +29,36 @@
 <body>
 	<jsp:include page="Menu_conn.jsp" />
 	<div class="container mt-5">
-		
-			<h2>Insert Information</h2>
-			<form action="AddNews" method="post">
-				<div class="mb-3">
-					<label for="largeText" class="form-label">NEWS</label>
-					<textarea class="form-control" id="news" rows="3" name="news"
-						placeholder="Enter news ici..."></textarea>
-				</div>
+		<%
+		if (session != null && session.getAttribute("addnewsFailed") != null) {
+		%>
+		<div class="alert alert-danger" role="alert">Add News Failed!</div>
+		<%
+		}
+		session.removeAttribute("addnewsFailed");
+		%>
+		<h2>Insert Information</h2>
+		<form action="AddNews" method="post">
+			<div class="mb-3">
+				<label for="largeText" class="form-label">NEWS</label>
+				<textarea class="form-control" id="news" rows="3" name="news"
+					placeholder="Enter news ici..."></textarea>
+			</div>
 
-				<div class="mb-3">
-					<label for="datePicker" class="form-label">Select Date</label> <input
-						type="date" class="form-control" id="date" name="date">
-				</div>
+			<div class="mb-3">
+				<label for="datePicker" class="form-label">Select Date</label> <input
+					type="date" class="form-control" id="date" name="date">
+			</div>
 
-				<div class="mb-3">
-					<label for="textInput" class="form-label">Les montants</label> <input
-						type="text" class="form-control" id="montants" name="montants"
-						placeholder="Enter montants ici...">
-				</div>
+			<div class="mb-3">
+				<label for="textInput" class="form-label">Les montants</label> <input
+					type="text" class="form-control" id="montants" name="montants"
+					placeholder="Enter montants ici...">
+			</div>
 
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form></div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
 
 
 </body>

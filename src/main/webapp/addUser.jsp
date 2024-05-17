@@ -22,6 +22,14 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
+<style>
+/* Style pour l'arrière-plan */
+body {
+	/* Définir l'image comme arriÃ¨re-plan */
+	background-image: url('./image/adduser.jpeg');
+	background-repeat: no-repeat;
+}
+</style>
 <title>AddUser</title>
 </head>
 <body>
@@ -56,22 +64,18 @@
 							value="Acteur" id="role_2"> <label
 							class="form-check-label" for="role_2">Acteur</label></li>
 					</ul>
-
-
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 				<%
 				if (session != null && session.getAttribute("addFailed") != null && (Boolean) session.getAttribute("addFailed")) {
 				%>
 				<div class="alert alert-danger" role="alert">
-					<%=session.getAttribute("messageF")%>
+					Add User Failed !
 				</div>
 				<%
 				}
-				session.removeAttribute("messageF");
+				session.removeAttribute("addFailed");
 				%>
-
-
 			</div>
 		</div>
 		<a href="Login.jsp">retourne Login</a>

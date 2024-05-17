@@ -34,6 +34,15 @@
 		int id = 0;
 		id = Integer.parseInt(idStr);
 		%>
+		<%
+			if(session != null && session.getAttribute("modifFailed")!=null){
+				%>
+				<div class="alert alert-danger" role="alert">
+					Modif News Failed !
+				</div>
+				<%
+			}
+		%>
 		<h2>Change Information</h2>
 		<form action="ModifNews" method="post">
 			<input type="hidden" name="id" value=<%=id%>>
