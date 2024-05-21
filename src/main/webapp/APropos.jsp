@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,9 +19,9 @@
       <style>
         /* Style pour l'arriÃ¨re-plan */
         body {
-            /* DÃ©finir l'image comme arriÃ¨re-plan */
+            /* définir l'image comme arrière paln ' */
             background-image: url('./image/FondSiteWeb.jpg');
-            /* Centrer et attirer l'image pour remplir tout l'ÃƒÂ©cran */
+            /* Centrer et attirer l'image pour remplir tout l'écran */
             background-size: cover;
            /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
             background-position: center;
@@ -82,56 +82,54 @@ if (session.getAttribute("LogFlag") == null) {
                      
                          <h4 class="text-center "> <u> Votre Compagnon numérique pour Trouver le Club de Sport Idéal </u></h4>
 		                        <p class="text-center">
-                                    Dans un monde où l'activité
+			                        Dans un monde où l'activité
 			                        physique est plus importante que jamais pour le bien-être 
 			                        physique et mental, DOSPORT se présente comme la solution
 			                         incontournable pour tous les passionnéss de sport. 
 			                         En tant que portail en ligne dédiés exclusivement aux amateurs de sports,
 			                          DOSPORT offre une plateforme dynamique et intuitive pour explorer et 
 			                          découvrir des clubs
-			                         sportifs adaptés à tous les niveaux et intérêts.
-
+			                         sportifs adaptés à  tous les niveaux et intérêts.
 		                          </p>
                        
-                        <h4 class="text-center "> <u> Recherche PersonnalisÃ©e de Clubs de Sport </u></h4>
+                        <h4 class="text-center "> <u> Recherche Personnalisée de Clubs de Sport </u></h4>
                         
 		                        <p class="text-center"> DOSPORT simplifie la 
-                                    recherche de clubs de sport grâce à une interface conviviale et 
-                                    des fonctionnalités de recherche avancés. Que vous soyez débutant
-                                     à la recherche d'un club de jogging local ou un athlète expérimenté
-                                     en quête d'un club d'aviron compétitif, notre service couvre une 
-                                     vaste gamme de disciplines sportives. Grâce à notre moteur de 
-                                     recherche détaillés, vous pouvez filtrer les clubs selon des critères spécifiques tels 
-                                     que la localisation, le niveau de compétence requis, les types d'activités
-                                     proposées, et même les horaires d'entrainement</p>
+		                        recherche de clubs de sport grâce à  une interface conviviale et 
+		                        des fonctionnalités de recherche avancés. Que vous soyez débutant
+		                         Ã  la recherche d'un club de jogging local ou un athlète expérimenté
+		                         en quête d'un club d'aviron compétitif, notre service couvre une 
+		                         vaste gamme de disciplines sportives. Grâce à  notre moteur de 
+		                         recherche détaillés, vous pouvez filtrer les clubs selon des critères spécifiques tels 
+		                         que la localisation, le niveau de compétence requis, les types d'activités
+		                         proposées, et même les horaires d'entrainement</p>
                    
-                        <h4 class="text-center"><u> Aide à la Décision pour Votre Choix de Clubs </u> </h4>
+                        <h4 class="text-center"><u> Aide à  la Décision pour Votre Choix de Clubs </u> </h4>
                         
-		                        <p class="text-center "> Choisir le bon club de sport peut être une décision complexe, 
-                                    influence par divers facteurs allant de la proximité géographique à l'ambiance du club. 
-                                    DOSPORT va au-dela de la simple mise en relation en offrant des guides détaillés et des conseils
-                                     personnalisés pour vous aider dans votre choix. Notre système de recommandations est alimenté par
-                                      des avis vérifiés et desévaluations des membres, vous permettant ainsi de bénéficier des expériences d'autres sportifs. 
-                                      De plus, des articles réguliers et des blogs spécialisés vous fournissent
-                                     des informations précieuses sur les tendances sportives et des conseils pour
-                                      s'épanouir dans votre discipline choisie.    </p>
+		                        <p class="text-center ">Choisir le bon club de sport peut être une décision complexe, 
+		                        influence par divers facteurs allant de la proximité géographique à l'ambiance du club. 
+		                        DOSPORT va au-dela de la simple mise en relation en offrant des guides détaillés et des conseils
+		                         personnalisés pour vous aider dans votre choix. Notre système de recommandations est alimenté par
+		                          des avis vérifiés et des évaluations des membres, vous permettant ainsi de bénéficier des expériences d'autres sportifs. 
+		                          De plus, des articles réguliers et des blogs spécialisés vous fournissent
+		                         des informations précieuses sur les tendances sportives et des conseils pour
+		                          s'épanouir dans votre discipline choisie.   </p>
                        
-                        <h4 class="text-center "><u>Engagement envers l'Excellence</u>  </h4>
+                        <h4 class="text-center "><u> Engagement envers l'Excellence</u>  </h4>
                         
-		                        <p class="text-center">Chez DOSPORT, notre mission
-                                    est de vous fournir un service exceptionnel et fiable.
-                                     Nous nous engageons à maintenir la plus haute qualité de contenu, 
-                                     des informations à jour et des fonctionnalités innovantes qui répondent 
-                                     à vos besoins sportifs. Avec l'aide de technologies de pointe et uneéquipe dévouée à  votre
-                                    service, nous nous assurons que votre expérience 
-                                    sur DOSPORT soit non seulement utile, mais aussi inspirante. </p>
+		                        <p class="text-center"> Chez DOSPORT, notre mission
+		                         est de vous fournir un service exceptionnel et fiable.
+		                          Nous nous engageons à  maintenir la plus haute qualité de contenu, 
+		                          des informations à jour et des fonctionnalités innovantes qui répondent 
+		                          Ã  vos besoins sportifs. Avec l'aide de technologies de pointe et uneéquipe dévouée à  votre
+		                         service, nous nous assurons que votre expérience 
+		                         sur DOSPORT soit non seulement utile, mais aussi inspirante. </p>
 		                       
                        
                    
-                        <p class="text-center">   Rejoignez DOSPORT aujourd'hui et transformez votre parcours 
-                            sportif avec le meilleur outil de recherche et de communauté pour les amateurs de sports.
-                             Explorez, connectez-vous, et excellez avec DOSPORT à votre porte d'entrée vers le monde du sport.
-    
+                        <p class="text-center">  Rejoignez DOSPORT aujourd'hui et transformez votre parcours 
+                        sportif avec le meilleur outil de recherche et de communauté pour les amateurs de sports.
+                         Explorez, connectez-vous, et excellez avec DOSPORT à  votre porte d'entrée vers le monde du sport.
                         </p>
                      
                  													  

@@ -25,7 +25,7 @@
             background-size: cover;
            /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
             background-position: center;
-            /* RÃƒÂ©pÃƒÂ©ter l'image si nÃ©cessaire */
+            /* Répété l'image si nécéssaire' */
             background-repeat: no-repeat;
         }
     </style>
@@ -73,11 +73,10 @@ if (session.getAttribute("LogFlag") == null) {
     <section class="presen d-flex justify-content-center align-items-center pt-5">
         <div class="container  ">
             <div class ="row ">
-                    <h1 class="text-center redressed">Voisi les visualisations</h1>
+                    <h1 class="text-center redressed">Voici les visualisations</h1>
                      <h2 class="text-center redressed " >
                      
-    <iframe title="PS8" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=c984d332-fa5d-4ae0-afc6-2c8d2f1733b4&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>                 
-			
+    <iframe title="Classement" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=529e75b9-85f7-4ff6-846e-a5450c769198&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>
   
   <section class="footer py-5 d-flex justify-content-center">
     <div class="container">
