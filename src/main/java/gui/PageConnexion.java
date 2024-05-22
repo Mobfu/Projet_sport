@@ -85,16 +85,16 @@ public class PageConnexion extends JFrame implements ActionListener{
 		JLabel lblNewLabel_2 = new JLabel("Mot de passe :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		lblNewLabel_2.setBounds(165, 229, 158, 27);
+		lblNewLabel_2.setBounds(199, 231, 158, 27);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nom d'utilisateur :");
+		JLabel lblNewLabel_1 = new JLabel("Nom d'utilisateur ou adresse mail :");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		lblNewLabel_1.setBackground(new Color(240, 240, 240));
 		lblNewLabel_1.setLabelFor(this);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(127, 130, 196, 27);
+		lblNewLabel_1.setBounds(0, 130, 349, 27);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Accueil administrateur");
