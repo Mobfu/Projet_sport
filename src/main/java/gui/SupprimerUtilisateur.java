@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.Window;
 import java.awt.event.*;
 import javax.swing.*;
@@ -115,14 +116,18 @@ public class SupprimerUtilisateur extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==btnAjouter) {
 			String name = textField_2.getText();
-			if(dbdao.verifNomUnique(name)) {
-				dbdao.deleteUserByUsername(name);
-				JOptionPane.showMessageDialog(null, "Utilisateur supprimé avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
-				GestionUtilisateurs frame = new GestionUtilisateurs();
-				frame.setVisible(true);
-				dispose();
-			}else {
-				JOptionPane.showMessageDialog(null, "Utilisateur introuvable", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+			try {
+				if(dbdao.verifNomUnique(name)) {
+					dbdao.deleteUserByUsername(name);
+					JOptionPane.showMessageDialog(null, "Utilisateur supprimé avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
+					GestionUtilisateurs frame = new GestionUtilisateurs();
+					frame.setVisible(true);
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "Utilisateur introuvable", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
 			}
 		}else if(ae.getSource()==btnAnnuler) {
 			GestionUtilisateurs frame = new GestionUtilisateurs();
@@ -132,4 +137,3 @@ public class SupprimerUtilisateur extends JFrame implements ActionListener{
 		
 	}
 }
- 
