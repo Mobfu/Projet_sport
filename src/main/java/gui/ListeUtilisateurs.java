@@ -214,5 +214,6 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 			modelUtilisateurs.setRowCount(0);
 			insertionDonnees(role, nom);
 		}
+		
 	}
 }
