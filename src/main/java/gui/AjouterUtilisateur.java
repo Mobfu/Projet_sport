@@ -2,23 +2,18 @@ package gui;
 import java.awt.EventQueue;
  
 import java.awt.Image;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import javax.swing.border.EmptyBorder;
 
 import Module.Utilisateur;
 import dao.DBDAO;
- 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+
 import java.awt.Font;
-import javax.swing.JLayeredPane;
 import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.awt.Window;
 import java.awt.event.*;
@@ -28,10 +23,11 @@ public class AjouterUtilisateur extends JFrame implements ActionListener{
  
 	private DBDAO dbdao ;
 	private JPanel contentPane;
-	private JTextField textField_1;
-	private JButton btnAnnuler, btnAjouter;
+	private JPasswordField textField_1;
+	private JButton btnAnnuler, btnAjouter, icone;
 	private JTextField textField;
 	private JTextField textField_2;
+	private boolean MDPVisible=false;
 	
 	public AjouterUtilisateur() {
 		dbdao = new DBDAO();
@@ -46,10 +42,23 @@ public class AjouterUtilisateur extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
+		
+		// Charger et redimensionner l'image
+				
+		ImageIcon imageDeBase = new ImageIcon(getClass().getResource("/gui/eye.png"));
+		Image oeilimage = imageDeBase.getImage().getScaledInstance(40, 23, Image.SCALE_SMOOTH);
+		ImageIcon oeil2 = new ImageIcon(oeilimage);
+
+		// Créer le bouton avec l'icône redimensionnée
+		
+		this.icone = new JButton(oeil2);
+		icone.setBounds(578, 213, 31, 30);
+		contentPane.add(icone);
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBounds(305, 95, 263, 30);
 		contentPane.add(textField_2);
+		icone.addActionListener(this);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -80,7 +89,7 @@ public class AjouterUtilisateur extends JFrame implements ActionListener{
 		
 		//JTextfields
 		
-		textField_1 = new JTextField();
+		textField_1 = new JPasswordField();
 		textField_1.setBounds(305, 213, 263, 30);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
@@ -146,24 +155,41 @@ public class AjouterUtilisateur extends JFrame implements ActionListener{
 	        String name = textField_2.getText();
 	        String email = textField.getText();
 	        String password = textField_1.getText();
-	        if(dbdao.addUser(name, email, password)){
-	            JOptionPane.showMessageDialog(null, "Utilisateur ajouté avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
-	            GestionUtilisateurs frame = new GestionUtilisateurs();
-	            frame.setVisible(true);
-	            dispose();
-	        } else {
-	        	if(dbdao.verifNomUnique(name)) {
-	        		JOptionPane.showMessageDialog(null, "Nom d'utilisateur déjà utilisé", "Erreur", JOptionPane.ERROR_MESSAGE);
-	        	}else if(dbdao.verifMailUnique(email)){
-	        		JOptionPane.showMessageDialog(null, "Email déjà utilisé", "Erreur", JOptionPane.ERROR_MESSAGE);
-	        	}else {
-	        		JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout de l'utilisateur.", "Erreur", JOptionPane.ERROR_MESSAGE);
-	        	}
+	        if(email.contains("@")) {
+	        	try {
+		        	if(dbdao.addUser(name, email, password)){
+			            JOptionPane.showMessageDialog(null, "Utilisateur ajouté avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
+			            GestionUtilisateurs frame = new GestionUtilisateurs();
+			            frame.setVisible(true);
+			            dispose();
+			        } else {
+			        	if(dbdao.verifNomUnique(name)) {
+			        		JOptionPane.showMessageDialog(null, "Nom d'utilisateur déjà utilisé", "Erreur", JOptionPane.ERROR_MESSAGE);
+			        	}else if(dbdao.verifMailUnique(email)){
+			        		JOptionPane.showMessageDialog(null, "Email déjà utilisé", "Erreur", JOptionPane.ERROR_MESSAGE);
+			        	}else {
+			        		JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout de l'utilisateur.", "Erreur", JOptionPane.ERROR_MESSAGE);
+			        	}
+			        }
+	        	}catch(SQLIntegrityConstraintViolationException e) {
+	        		System.err.println("Erreur duplicité du nom d'utilisateur");
+	        	}		        
+	        }else {
+	        	JOptionPane.showMessageDialog(null, "Format de l'email incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
 	        }
 	    } else if(ae.getSource()==btnAnnuler) {
 	    	GestionUtilisateurs frame = new GestionUtilisateurs();
 	        frame.setVisible(true);            
 	        dispose();
+	    }else if(ae.getSource()==icone) {
+	    	 if (MDPVisible) {
+	    		 textField_1.setEchoChar('*');
+	    		 MDPVisible = false;
+	         } else {
+	        	 textField_1.setEchoChar((char) 0);
+	        	 MDPVisible = true;
+	         }
 	    }
+	    
 	}
 }
