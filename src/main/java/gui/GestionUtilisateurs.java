@@ -29,7 +29,6 @@ public class GestionUtilisateurs extends JFrame implements ActionListener{
     private JButton btnAjouter, btnModifier, btnSupprimer, btnSupprimerMdp, btnRetour;
 	private JTable tableUtilisateurs;
     private DefaultTableModel modelUtilisateurs;
-    
  
     public GestionUtilisateurs() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,7 +128,20 @@ public class GestionUtilisateurs extends JFrame implements ActionListener{
 		DBDAO dbdao = new DBDAO();
 		List<Utilisateur> utilisateurs = dbdao.listeUtilisateurs();
 		for(Utilisateur utilisateur : utilisateurs) {
-			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), utilisateur.getUserrole()});
+			String a="pas encore défini";
+			switch(utilisateur.getUserrole()) {
+				case 0 :
+					a="administrateur";
+					break;
+				case 1 :
+					a="sportif";
+					break;
+				case 2 :a="ministère du sport";
+					break;
+				case 3 : a="élu";
+					break;
+			}
+			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), a});
 		}
 	}
  
