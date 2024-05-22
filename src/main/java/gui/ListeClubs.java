@@ -6,6 +6,9 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,6 +27,7 @@ import Module.Utilisateur;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.JComboBox;
 
 public class ListeClubs extends JFrame implements ActionListener{
 
@@ -31,10 +35,10 @@ public class ListeClubs extends JFrame implements ActionListener{
 	private JButton btnRetour, btnAppliquer;
 	private JTable tableClubs;
     private DefaultTableModel modelClubs;
-    private JTextField textFieldNom;
     private JLabel lblNewLabel_2;
     private JTextField textFieldLieu;
     private JLabel lblNewLabel_3;
+    private JComboBox<String> comboBox;
 	/**
 	 * Launch the application.
 	 */
@@ -75,7 +79,7 @@ public class ListeClubs extends JFrame implements ActionListener{
 		modelClubs.addColumn("nom_commune");
 		modelClubs.addColumn("code_qpv");
 		modelClubs.addColumn("nom_qpv");
-		modelClubs.addColumn("deprtement");
+		modelClubs.addColumn("departement");
 		modelClubs.addColumn("region");
 		modelClubs.addColumn("statut_geo");
 		modelClubs.addColumn("code_fede");
@@ -83,6 +87,28 @@ public class ListeClubs extends JFrame implements ActionListener{
 		modelClubs.addColumn("nbr_clubs");
 		modelClubs.addColumn("nbr_epa");
 		modelClubs.addColumn("total_epa_clubs");
+		
+		
+		//récupération du nom des différentes fédérations et suppression des doublons
+		
+		this.comboBox=new JComboBox<>();
+		
+		DBDAO dbdao = new DBDAO();
+		List<Club> maListe=dbdao.listeClubs();
+		List<String> maListe2 = new ArrayList<>();
+		for(Club club : maListe) {
+			maListe2.add(club.getNom_federation());
+		}
+		HashSet<String> ensembleSansDoublons = new HashSet<>(maListe2);
+		ArrayList<String> listeSansDoublons = new ArrayList<>(ensembleSansDoublons);
+		Collections.sort(listeSansDoublons);
+		listeSansDoublons.add(0, "");
+		for (String valeur : listeSansDoublons) {
+			comboBox.addItem(valeur);
+		}
+			
+		comboBox.setBounds(230, 262, 238, 26);
+		contentPane.add(comboBox);
 		
 		lblNewLabel_3 = new JLabel("d\u00E9partement, commune) :");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.LEFT);
@@ -104,11 +130,6 @@ public class ListeClubs extends JFrame implements ActionListener{
 		lblNewLabel_2.setBackground(UIManager.getColor("Button.background"));
 		lblNewLabel_2.setBounds(544, 245, 140, 30);
 		contentPane.add(lblNewLabel_2);
-		
-		textFieldNom = new JTextField();
-		textFieldNom.setColumns(10);
-		textFieldNom.setBounds(229, 262, 238, 26);
-		contentPane.add(textFieldNom);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nom de la f\u00E9d\u00E9ration :");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -191,7 +212,7 @@ public class ListeClubs extends JFrame implements ActionListener{
 			dispose();
 		}
 		else if(ae.getSource()==btnAppliquer) {
-			String nom_federation=textFieldNom.getText();
+			String nom_federation=(String) comboBox.getSelectedItem();
 			String lieu=textFieldLieu.getText();
 			modelClubs.setRowCount(0);
 			insertionDonnees(lieu, nom_federation);
