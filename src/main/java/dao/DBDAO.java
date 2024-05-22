@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -78,7 +79,7 @@ public class DBDAO {
 			return false;
 		}
 	
-		public Boolean addUser(String name, String email, String password) {
+		public Boolean addUser(String name, String email, String password)  {
 			if (dbConnect()) {
 				String query = "INSERT INTO `ps8_bdd`.`user` (`username`, `email`, `password`, `create_time`, `userrole`) VALUES (?, ?, SHA2(?,256), ?, ?)";
 				try (PreparedStatement ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -98,7 +99,10 @@ public class DBDAO {
 							return true;
 						}
 					}
+				} catch (SQLIntegrityConstraintViolationException e) {
+					System.err.println("Erreur duplicité du nom d'utilisateur");
 				} catch (SQLException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} finally {
 					dbClose();
@@ -110,10 +114,11 @@ public class DBDAO {
 			public boolean checkUserA(String username, String password) {
 	    boolean userExists = false;
 	    if (dbConnect()) {
-	        String query = "SELECT * FROM `ps8_bdd`.`user` WHERE `username` = ? AND `password` = SHA2(?,256) AND `userrole` = 0";
+	        String query = "SELECT * FROM `ps8_bdd`.`user` WHERE (`username` = ? OR `email` = ?) AND `password` = SHA2(?,256) AND `userrole` = 0";
 	        try (PreparedStatement ps = conn.prepareStatement(query)) {
 	            ps.setString(1, username);
-	            ps.setString(2, password);
+	            ps.setString(2, username);
+	            ps.setString(3, password);
  
 	            ResultSet rs = ps.executeQuery();
 	            if (rs.next()) {
@@ -550,7 +555,7 @@ public class DBDAO {
 		return maListe;
 	}
 	
-	public boolean verifNomUnique(String name) {
+	public boolean verifNomUnique(String name) throws SQLIntegrityConstraintViolationException {
 	    List<Utilisateur> maListe = listeUtilisateurs();
 	    for (Utilisateur utilisateur : maListe) {
 	        if (name.equals(utilisateur.getUsername())) {
