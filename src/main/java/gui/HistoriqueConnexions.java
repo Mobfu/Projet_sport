@@ -28,7 +28,7 @@ public class HistoriqueConnexions extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JTextField textField;
 	private JButton btnRetour, btnAppliquer;
-	private JTable table; // 将 JTable 作为成员变量
+	private JTable table;
     private JScrollPane scrollPane;
     private JComboBox<Integer> roleComboBox;
 	DBDAO dbdao = new DBDAO();
