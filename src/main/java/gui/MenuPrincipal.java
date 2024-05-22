@@ -1,4 +1,4 @@
- package gui;
+package gui;
  
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -6,7 +6,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
- 
+import java.awt.image.BufferedImage;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +21,9 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 	 
 	private JPanel contentPane;
 	private JButton btnDeconnexion, btnHistoriqueConnexion, btnAffichageClub, btnAffichageUtilisateurs, btnGestionUtilisateurs;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
 	/**
 	 * Launch the application.
 	 */
@@ -49,6 +53,17 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
+		
+		lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/gui/gestion (1).jpg")));
+		lblNewLabel_3.setBounds(86, 208, 100, 100);
+		contentPane.add(lblNewLabel_3);
+		
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/gui/info (1).png")));
+		lblNewLabel_2.setBounds(463, 44, 131, 137);
+		contentPane.add(lblNewLabel_2);
+		
 		JLabel lblGestionsConnexionsEt = new JLabel("Gestion connexions et profils");
 		lblGestionsConnexionsEt.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGestionsConnexionsEt.setForeground(Color.WHITE);
