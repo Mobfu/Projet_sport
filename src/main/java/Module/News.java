@@ -1,61 +1,57 @@
 package Module;
 
 public class News {
+    private int id;
+    private int userid;
+    private String username;
+    private String news;
+    private String horaire;
 
-	private int id;
-	private String username;
-	private String news;
-	private String horaire;
-	private String montants;
+    public News(int id, int userid, String username, String news, String horaire) {
+        this.id = id;
+        this.userid = userid;
+        this.username = username;
+        this.news = news;
+        this.horaire = horaire;
+    }
 
-	public News(int id, String username, String news, String horaire, String montants) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.news = news;
-		this.horaire = horaire;
-		this.montants = montants;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getUserId() {  
+        return userid;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setUserId(int userId) {  
+        this.userid = userId;
+    }
 
-	public String getNews() {
-		return news;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getHoraire() {
-		return horaire;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getMontants() {
-		return montants;
-	}
+    public String getNews() {
+        return news;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setNews(String news) {
+        this.news = news;
+    }
 
-	public void setNews(String news) {
-		this.news = news;
-	}
+    public String getHoraire() {
+        return horaire;
+    }
 
-	public void setHoraire(String horaire) {
-		this.horaire = horaire;
-	}
-
-	public void setMontants(String montants) {
-		this.montants = montants;
-	}
-	
-	
+    public void setHoraire(String horaire) {
+        this.horaire = horaire;
+    }
 }

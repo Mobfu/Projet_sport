@@ -30,7 +30,7 @@ public class UserLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("user");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String role = request.getParameter("role");
 
@@ -43,9 +43,6 @@ public class UserLogin extends HttpServlet {
 		case "Acteur":
 			choix = 2;
 			break;
-		case "User":
-			choix = 3;
-			break;
 		}
 
 		DBDAO dao = new DBDAO();
@@ -54,14 +51,24 @@ public class UserLogin extends HttpServlet {
 		LocalDateTime now = LocalDateTime.now();
 		System.out.println(now);
 		
-		if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
+		if (email == null || password == null || email.isEmpty() || password.isEmpty()) {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN, "Bad Request");
 		}
-		if (dao.checkUser(username, password,choix)) {
+		if (dao.checkUser(email, password,choix)) {
+			int id = dao.getIdByEmail(email);
+			String username = dao.getNameByEmail(email);
 			session.setAttribute("LogFlag", true);
+			session.setAttribute("id", id);
 			session.setAttribute("username", username);
+			session.setAttribute("role", choix);
 			dao.saveTempLogin(now, choix);
-			response.sendRedirect("./index.jsp");
+			if(choix==1) {
+				response.sendRedirect("./MembresElu.jsp");
+			}
+			if(choix==2) {
+				response.sendRedirect("./index.jsp");
+			}
+			
 		} else {
 			/* response.sendError(HttpServletResponse.SC_FORBIDDEN, "FORBIDDEN"); */
 			 response.sendRedirect("./Login.jsp"); 

@@ -16,6 +16,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 import Module.News;
+import Module.User;
 
 public class DBDAO {
 
@@ -54,26 +55,37 @@ public class DBDAO {
 	}
 
 	public Boolean insertUser(String name, String email, String password, int role) {
-		if (dbConnect()) {
-			String query = String.format(
-					"INSERT INTO user (username, email, password, create_time, userrole) VALUES (?, ?, SHA2(?,256), ?,?)");
-			try (PreparedStatement ps = conn.prepareStatement(query)) {
-				ps.setString(1, name);
-				ps.setString(2, email);
-				ps.setString(3, password);
-				ps.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
-				ps.setInt(5, role);
+	    if (dbConnect()) {
+	        try {
+	            String checkQuery = "SELECT count(*) FROM user WHERE email = ?";
+	            try (PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
+	                checkStmt.setString(1, email);
+	                ResultSet rs = checkStmt.executeQuery();
+	                if (rs.next() && rs.getInt(1) > 0) {
+	                    return false;
+	                }
+	            }
 
-				int rs = ps.executeUpdate();
-				return rs > 0;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				dbClose();
-			}
-		}
-		return false;
+	            String query = "INSERT INTO user (username, email, password, create_time, userrole) VALUES (?, ?, SHA2(?,256), ?,?)";
+	            try (PreparedStatement ps = conn.prepareStatement(query)) {
+	                ps.setString(1, name);
+	                ps.setString(2, email);
+	                ps.setString(3, password);
+	                ps.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+	                ps.setInt(5, role);
+
+	                int result = ps.executeUpdate();
+	                return result > 0;
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            dbClose();
+	        }
+	    }
+	    return false;
 	}
+
 
 	public Boolean addUser(String name, String email, String password) {
 		if (dbConnect()) {
@@ -104,12 +116,12 @@ public class DBDAO {
 		return false;
 	}
 
-	public boolean checkUser(String user, String password, int role) {
-		String query = String.format("SELECT * FROM user WHERE username=? AND password=SHA2(?,256) AND userrole=?");
+	public boolean checkUser(String email, String password, int role) {
+		String query = String.format("SELECT * FROM ps8_bdd.user WHERE email=? AND password=SHA2(?,256) AND userrole=?");
 		try {
 			if (dbConnect()) {
 				try (PreparedStatement ps = conn.prepareStatement(query)) {
-					ps.setString(1, user);
+					ps.setString(1, email);
 					ps.setString(2, password);
 					ps.setInt(3, role);
 
@@ -125,6 +137,47 @@ public class DBDAO {
 		}
 		return false;
 	}
+	
+	public int getIdByEmail(String email) {
+		int id = -1;
+		if(dbConnect()) {
+			String query = "SELECT iduser FROM ps8_bdd.user WHERE email = ?";
+			try(PreparedStatement ps = conn.prepareStatement(query)){
+				ps.setString(1, email);
+				
+				ResultSet rs = ps.executeQuery();
+				if(rs.next()) {
+					id = rs.getInt("iduser");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				dbClose();
+			}
+		}
+		return id;
+	}
+	
+	public String getNameByEmail(String email) {
+		String username = null;
+		if(dbConnect()) {
+			String query = "SELECT username FROM ps8_bdd.user WHERE email = ?";
+			try(PreparedStatement ps = conn.prepareStatement(query)){
+				ps.setString(1, email);
+				
+				ResultSet rs = ps.executeQuery();
+				if(rs.next()) {
+					username = rs.getString("username");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				dbClose();
+			}
+		}
+		return username;
+	}
+	
 
 	public boolean saveTempLogin(LocalDateTime now, int role) {
 		String query = String.format("INSERT INTO timeoflog(idtimeofLog, RoleUser) VALUES (?,?)");
@@ -135,7 +188,7 @@ public class DBDAO {
 					ps.setObject(1, now);
 					ps.setInt(2, role);
 
-					int rs = ps.executeUpdate(); // 执行更新
+					int rs = ps.executeUpdate();
 					return rs > 0;
 				} finally {
 					dbClose();
@@ -316,14 +369,14 @@ public class DBDAO {
 		return false;
 	}
 
-	public Boolean insertNews(String username, String news, String horaire, String montants) {
+	public Boolean insertNews(int userid, String username, String news, String horaire) {
 		if (dbConnect()) {
-			String query = String.format("INSERT INTO news (username, news, horaire, montants) VALUES (?,?,?,?)");
+			String query = String.format("INSERT INTO news (userid, username, news, horaire) VALUES (?,?,?,?)");
 			try (PreparedStatement ps = conn.prepareStatement(query)) {
-				ps.setString(1, username);
-				ps.setString(2, news);
-				ps.setString(3, horaire);
-				ps.setString(4, montants);
+				ps.setInt(1, userid);
+				ps.setString(2, username);
+				ps.setString(3, news);
+				ps.setString(4, horaire);
 
 				int rs = ps.executeUpdate();
 				return rs > 0;
@@ -337,46 +390,65 @@ public class DBDAO {
 	}
 
 	public List<News> getNews() {
-	    List<News> newsList = new ArrayList<>();
-	    if (dbConnect()) {
-	        String query = "SELECT id, username, news, horaire, montants FROM news";
-	        try (PreparedStatement ps = conn.prepareStatement(query);
-	             ResultSet rs = ps.executeQuery()) { 
-	            while (rs.next()) {
-	            	int id = rs.getInt("id");
-	                String username = rs.getString("username");
-	                String news = rs.getString("news");
-	                String horaire = rs.getString("horaire");
-	                String montants = rs.getString("montants");
-	                newsList.add(new News(id, username, news, horaire, montants));
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        } finally {
-	            dbClose();
-	        }
-	    }
-	    return newsList;
+		List<News> newsList = new ArrayList<>();
+		if (dbConnect()) {
+			String query = "SELECT id, userid, username, news, horaire FROM news";
+			try (PreparedStatement ps = conn.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					int userid = rs.getInt("userid");
+					String username = rs.getString("username");
+					String news = rs.getString("news");
+					String horaire = rs.getString("horaire");
+					newsList.add(new News(id, userid, username, news, horaire));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+		}
+		return newsList;
 	}
 
-	public Boolean modifNews(String username, String news, String horaire, String montants) {
-	    if (dbConnect()) {
-	        String query = "UPDATE news SET news = ?, horaire = ?, montants = ? WHERE username = ?";
-	        try (PreparedStatement ps = conn.prepareStatement(query)) {
-	            ps.setString(1, news);
-	            ps.setString(2, horaire);
-	            ps.setString(3, montants);
-	            ps.setString(4, username);
+	public Boolean modifNews(int id, String news, String horaire) {
+		if (dbConnect()) {
+			String query = "UPDATE news SET news = ?, horaire = ? WHERE id = ?";
+			try (PreparedStatement ps = conn.prepareStatement(query)) {
+				ps.setString(1, news);
+				ps.setString(2, horaire);
+				ps.setInt(3, id);
 
-	            int rs = ps.executeUpdate();
-	            return rs > 0;
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        } finally {
-	            dbClose();
-	        }
-	    }
-	    return false;
+				int rs = ps.executeUpdate();
+				System.out.println("Modification reussi!");
+				return rs > 0;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("failed to modification!");
+			} finally {
+				dbClose();
+			}
+		}
+		return false;
 	}
 
+	public boolean SuprimerNews(int idnews) {
+		if (dbConnect()) {
+			String query = "DELETE FROM ps8_bdd.news WHERE id = ? ";
+			try (PreparedStatement ps = conn.prepareStatement(query)) {
+				ps.setInt(1, idnews);
+
+				int rs = ps.executeUpdate();
+				System.out.println("suprime reussi!");
+				return rs > 0;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("failed to supression!");
+			} finally {
+				dbClose();
+			}
+		}
+		return false;
+	}
+	
 }

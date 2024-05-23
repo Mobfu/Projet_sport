@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+import Module.News;
+
 /**
  * Servlet implementation class ModifNews
  */
@@ -30,14 +32,19 @@ public class ModifNews extends HttpServlet {
 		// TODO Auto-generated method stub
 		String news = request.getParameter("news");
 		String data = request.getParameter("date");
-		String montants = request.getParameter("montants");
+		String id = request.getParameter("id");
+		
+		int newsid = Integer.parseInt(id);
+
 		
 		System.out.println(data);
 		DBDAO dao = new DBDAO();
-		HttpSession session = request.getSession();
-		String username = (String) session.getAttribute("username");
-		if(dao.modifNews(username,news,data, montants)) {
+		System.out.println(newsid);
+		if(dao.modifNews(newsid,news,data)) {
 			response.sendRedirect("News.jsp");
+		}else {
+			request.getSession().setAttribute("modifFailed", true);
+			response.sendRedirect("modifNews.jsp");
 		}
 	}
 
