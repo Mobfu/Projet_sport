@@ -50,12 +50,6 @@
 					type="date" class="form-control" id="date" name="date">
 			</div>
 
-			<div class="mb-3">
-				<label for="textInput" class="form-label">Les montants</label> <input
-					type="text" class="form-control" id="montants" name="montants"
-					placeholder="Enter montants ici...">
-			</div>
-
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>

@@ -3,6 +3,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="ProjetSport.DBDAO"%>
 <%@ page import="Module.News"%>
+<%@ page import="Module.User"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,20 @@ body {
 <body>
 	<jsp:include page="Menu_conn.jsp" />
 	<div class="container">
-		<a id="addCardBtn" class="btn btn-primary" href="addNews.jsp">AddCard</a>
+		<a id="addCardBtn" class="btn btn-primary" href="addNews.jsp">AjouteNews</a>
+
+		<%
+		if (session != null && session.getAttribute("supsucce") != null) {
+		%>
+		<div class="alert alert-primary" role="alert">Supression Succe !
+		</div>
+		<%
+		session.removeAttribute("supsucce");
+		%>
+		<%
+		}
+		%>
+
 		<div id="cardsContainer" class="d-flex flex-wrap mt-4">
 			<%
 			DBDAO dao = new DBDAO();
@@ -48,23 +62,39 @@ body {
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
 					<h5 class="card-title">
-						UserName:<%=news.getUsername()%></h5>
+						NomUtilisateur:<%=news.getUsername()%></h5>
 					<p class="card-text">
 						News:<%=news.getNews()%></p>
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">Horaire:<%=news.getHoraire()%></li>
-					<li class="list-group-item">Montants:<%=news.getMontants()%></li>
 				</ul>
+
+				<%
+				if (session != null && session.getAttribute("id") != null) {
+					Object iduser = session.getAttribute("id");
+					int id = Integer.parseInt(iduser.toString());
+					if (id == news.getUserId()) {
+				%>
+				<form action="SuprimNews" method="post">
 					<div class="card-body">
-						<a href="modifNews.jsp?id=<%=news.getId()%>" class="btn btn-primary">Modification</a>
+						<input type="hidden" name="id" value=<%=news.getId()%>> <a
+							href="modifNews.jsp?id=<%=news.getId()%>" class="btn btn-primary">Modification</a>
+						<button type="submit" class="btn btn-danger">Supression</button>
 					</div>
+				</form>
+				<%
+				}
+				%>
 			</div>
+			<%
+			}
+			%>
 			<%
 			}
 			%>
 		</div>
 	</div>
-
 </body>
+
 </html>

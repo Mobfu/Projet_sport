@@ -53,8 +53,8 @@ body {
 				your login information</div>
 			<div class="card-body">
 				<form action="UserLogin" method="post">
-					<h4 class="card-title">UserName:</h4>
-					<label for="user"></label> <input type="text" id="user" name="user"
+					<h4 class="card-title">E-mail:</h4>
+					<label for="user"></label> <input type="text" id="email" name="email"
 						required><br>
 					<h4 class="card-title">Password:</h4>
 					<label for="password"></label> <input type="password" id="password"

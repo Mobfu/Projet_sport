@@ -59,4 +59,14 @@
     <servlet-name>ModifNews</servlet-name>
     <url-pattern>/ModifNews</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SuprimNews</display-name>
+    <servlet-name>SuprimNews</servlet-name>
+    <servlet-class>ProjetSport.SuprimNews</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuprimNews</servlet-name>
+    <url-pattern>/SuprimNews</url-pattern>
+  </servlet-mapping>
 </web-app>

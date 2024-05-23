@@ -37,14 +37,6 @@ body {
 
 
 </head>
-<%
-if (session == null) {
-	session = request.getSession();
-}
-if (session.getAttribute("LogFlag") == null) {
-	session.setAttribute("LogFlag", false);
-}
-%>
 
 <body>
 
@@ -54,22 +46,22 @@ if (session.getAttribute("LogFlag") == null) {
 	%>
 	<jsp:include page="Menu.jsp" />
 	<%
-	} else if (session.getAttribute("id") != null) {
-	Object userIdObj = session.getAttribute("id");
-	String userId = userIdObj.toString();
-	switch (userId) {
-	case "1":
-	%>
-	<jsp:include page="Menu_elu.jsp" />
-	<%
-	break;
-	case "2":
-	%>
-	<jsp:include page="Menu_conn.jsp" />
-	<%
-	break;
-	}
-
+	} else if(session.getAttribute("role")!= null){
+		Object userRoleObj = session.getAttribute("role");
+		String userRole = userRoleObj.toString();
+			switch(userRole){
+			case "1":
+				%>
+				<jsp:include page="Menu_elu.jsp" />
+				<%
+				break;
+			case "2":
+				%>
+				<jsp:include page="Menu_conn.jsp" />
+				<%
+				break;
+			}
+		
 	}
 	}
 	%>

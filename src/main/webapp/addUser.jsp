@@ -70,7 +70,7 @@ body {
 				if (session != null && session.getAttribute("addFailed") != null && (Boolean) session.getAttribute("addFailed")) {
 				%>
 				<div class="alert alert-danger" role="alert">
-					Add User Failed !
+					Cet email est déjà utilisé !
 				</div>
 				<%
 				}
