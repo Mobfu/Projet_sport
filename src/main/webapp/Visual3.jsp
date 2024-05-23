@@ -14,18 +14,18 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
    
     <link rel="stylesheet" href="./Style/style.css"/>
-    <title> A propos</title>
+    <title> Classement des régions</title>
     
-      <style>
-        /* Style pour l'arriÃ¨re-plan */
+       <style>
+        /* Style pour l'arrière-plan */
         body {
-            /* DÃ©finir l'image comme arriÃ¨re-plan */
+            /* Définir l'image comme arrière-plan */
             background-image: url('./image/FondSiteWeb.jpg');
-            /* Centrer et attirer l'image pour remplir tout l'ÃƒÂ©cran */
+            /* Centrer et attirer l'image pour remplir tout l'écran */
             background-size: cover;
-           /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
+           /* Pour que je puisse positionner l'image au centre de l'écran */
             background-position: center;
-            /* RÃƒÂ©pÃƒÂ©ter l'image si nÃ©cessaire */
+            /* Répéter l'image si nécessaire' */
             background-repeat: no-repeat;
         }
     </style>
@@ -78,32 +78,9 @@ if (session.getAttribute("LogFlag") == null) {
                      
                      
                      
-     <iframe title="PS8 1" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=69b6487a-01cf-43c2-8605-ea8b90f26bdf&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>              
+ <iframe title="Classement 1" width="1140" height="810" src="https://app.powerbi.com/reportEmbed?reportId=dfe3c6e2-4fd5-49f7-bbcb-f5f87ba3a7e4&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>     
 			
   
-  <section class="footer py-5 d-flex justify-content-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-6 d-flex align-items-center">
-                <p class="text-white">&copy; 2024 Rouen | All rights reserved.</p>
-            </div>
-            <div class="col-6">
-                <ul class="nav text-center">
-                       
-                <li class="nav-item">
-                        <a href="APropos.jsp" class="nav-link text-white">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Recherche</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Contact</a>
-                    </li>
-                </ul>
-            </div>    
-        </div>
-    </div>
-  </section>
   
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>

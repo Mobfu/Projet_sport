@@ -14,18 +14,18 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
    
     <link rel="stylesheet" href="./Style/style.css"/>
-    <title> A propos</title>
+    <title>Habitants non répertoriés </title>
     
       <style>
-        /* Style pour l'arriÃ¨re-plan */
+        /* Style pour l'arrière-plan */
         body {
-            /* DÃ©finir l'image comme arriÃ¨re-plan */
+            /* Définir l'image comme arrière-plan */
             background-image: url('./image/FondSiteWeb.jpg');
-            /* Centrer et attirer l'image pour remplir tout l'ÃƒÂ©cran */
+            /* Centrer et attirer l'image pour remplir tout l'écran */
             background-size: cover;
-           /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
+           /* Pour que je puisse positionner l'image au centre de l'écran */
             background-position: center;
-            /* Répété l'image si nécéssaire' */
+            /* Répéter l'image si nécessaire' */
             background-repeat: no-repeat;
         }
     </style>
@@ -75,33 +75,11 @@ if (session.getAttribute("LogFlag") == null) {
             <div class ="row ">
                     <h1 class="text-center redressed">Voici les visualisations</h1>
                      <h2 class="text-center redressed " >
-                     
-    <iframe title="PS8" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=c984d332-fa5d-4ae0-afc6-2c8d2f1733b4&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>                 
+                             
+	 /* Centrer et attirer l'image pour remplir tout l'écran */
 			
-  
-  <section class="footer py-5 d-flex justify-content-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-6 d-flex align-items-center">
-                <p class="text-white">&copy; 2024 Rouen | All rights reserved.</p>
-            </div>
-            <div class="col-6">
-                <ul class="nav text-center">
-                       
-                <li class="nav-item">
-                        <a href="APropos.jsp" class="nav-link text-white">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Recherche</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Contact</a>
-                    </li>
-                </ul>
-            </div>    
-        </div>
-    </div>
-  </section>
+  <iframe title="Nombre d'habitants non répertoriés" width="1140" height="810" src="https://app.powerbi.com/reportEmbed?reportId=cfca5483-2c77-435b-9e65-82d90db9f390&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>
+   
   
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>

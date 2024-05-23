@@ -14,18 +14,18 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
    
     <link rel="stylesheet" href="./Style/style.css"/>
-    <title> A propos</title>
+    <title>Habitants licenciés</title>
     
       <style>
-        /* Style pour l'arriÃ¨re-plan */
+        /* Style pour l'arrière-plan */
         body {
-            /* DÃ©finir l'image comme arriÃ¨re-plan */
+            /* Définir l'image comme arrière-plan */
             background-image: url('./image/FondSiteWeb.jpg');
-            /* Centrer et attirer l'image pour remplir tout l'ÃƒÂ©cran */
+            /* Centrer et attirer l'image pour remplir tout l'écran */
             background-size: cover;
-           /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
+           /* Pour que je puisse positionner l'image au centre de l'écran */
             background-position: center;
-            /* Répété l'image si nécéssaire' */
+            /* Répéter l'image si nécessaire' */
             background-repeat: no-repeat;
         }
     </style>
@@ -76,31 +76,7 @@ if (session.getAttribute("LogFlag") == null) {
                     <h1 class="text-center redressed">Voici les visualisations</h1>
                      <h2 class="text-center redressed " >
                      
-    <iframe title="Classement" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=529e75b9-85f7-4ff6-846e-a5450c769198&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>
-  
-  <section class="footer py-5 d-flex justify-content-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-6 d-flex align-items-center">
-                <p class="text-white">&copy; 2024 Rouen | All rights reserved.</p>
-            </div>
-            <div class="col-6">
-                <ul class="nav text-center">
-                       
-                <li class="nav-item">
-                        <a href="APropos.jsp" class="nav-link text-white">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Recherche</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Contact</a>
-                    </li>
-                </ul>
-            </div>    
-        </div>
-    </div>
-  </section>
+   <iframe title="Nombre dâ€™habitants licenciés par fédération" width="1140" height="810" src="https://app.powerbi.com/reportEmbed?reportId=33321683-f01e-470b-9fc8-fe1531985f5e&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>
   
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
