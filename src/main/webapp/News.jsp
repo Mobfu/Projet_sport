@@ -3,11 +3,11 @@
 <%@ page import="java.util.List"%>
 <%@ page import="dao.DBDAO"%>
 <%@ page import="Module.News"%>
+<%@ page import="Module.User"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -26,31 +26,33 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
+<style>
+/* Style pour l'arrière-plan */
+body {
+	/* Définir l'image comme arriÃ¨re-plan */
+	background-image: url('./image/news.jpeg');
+	background-repeat: no-repeat;
+}
+</style>
 <title>News</title>
-
-
-
-   <style>
-			        /* Style pour l'arriére-plan */
-			        
-			        body {
-			            /* Définir l'image comme arriére-plan */
-			            background-image: url('./image/Information.jpg');
-			            /* Centrer et étirer l'image pour remplir tout l'écran */
-			            background-size: cover;
-			           /* Pour que je puisse positionner l'image au centre de l'écran */
-			            background-position: center;
-			            /* Répéter l'image si nécessaire */
-			            background-repeat: no-repeat;
-			        }
-    </style>
-    
 </head>
-
 <body>
 	<jsp:include page="Menu_conn.jsp" />
 	<div class="container">
-		<a id="addCardBtn" class="btn btn-primary" href="addNews.jsp">AddCard</a>
+		<a id="addCardBtn" class="btn btn-primary" href="addNews.jsp">AjouteNews</a>
+
+		<%
+		if (session != null && session.getAttribute("supsucce") != null) {
+		%>
+		<div class="alert alert-primary" role="alert">Supression Succe !
+		</div>
+		<%
+		session.removeAttribute("supsucce");
+		%>
+		<%
+		}
+		%>
+
 		<div id="cardsContainer" class="d-flex flex-wrap mt-4">
 			<%
 			DBDAO dao = new DBDAO();
@@ -60,24 +62,39 @@
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
 					<h5 class="card-title">
-						UserName:<%=news.getUsername()%></h5>
+						NomUtilisateur:<%=news.getUsername()%></h5>
 					<p class="card-text">
 						News:<%=news.getNews()%></p>
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">Horaire:<%=news.getHoraire()%></li>
-					<li class="list-group-item">Montants:<%=news.getMontants()%></li>
 				</ul>
-				<div class="card-body">
-					<a href="modifNews.jsp?id=<%=news.getId()%>" class="btn btn-primary">Modification</a>
-				</div>
 
+				<%
+				if (session != null && session.getAttribute("id") != null) {
+					Object iduser = session.getAttribute("id");
+					int id = Integer.parseInt(iduser.toString());
+					if (id == news.getUserId()) {
+				%>
+				<form action="SuprimNews" method="post">
+					<div class="card-body">
+						<input type="hidden" name="id" value=<%=news.getId()%>> <a
+							href="modifNews.jsp?id=<%=news.getId()%>" class="btn btn-primary">Modification</a>
+						<button type="submit" class="btn btn-danger">Supression</button>
+					</div>
+				</form>
+				<%
+				}
+				%>
 			</div>
+			<%
+			}
+			%>
 			<%
 			}
 			%>
 		</div>
 	</div>
-
 </body>
+
 </html>

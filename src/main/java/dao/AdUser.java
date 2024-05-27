@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 /**
- * Servlet implementation class AdUser
+ * Servlet implementation class AddUser
  */
 public class AdUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -51,13 +51,12 @@ public class AdUser extends HttpServlet {
 		boolean res = dao.insertUser(name,email, password, choix);
 
 		if (res) {
-			request.getSession().setAttribute("messageS", "User inscrp succe");
 			request.getSession().setAttribute("addSucce", true);
 			response.sendRedirect("Login.jsp");
 
 		} else {
-			request.getSession().setAttribute("messageF", "User inscrp Non succe");
 			request.getSession().setAttribute("addFailed", true);
+			response.sendRedirect("addUser.jsp");
 		}
 	}
 

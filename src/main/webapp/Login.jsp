@@ -19,18 +19,25 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
 <link rel="stylesheet" href="./Style/map.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-   
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-   
-    <link rel="stylesheet" href="./Style/style.css"/>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="./Style/style.css" />
+<style>
+/* Style pour l'arrière-plan */
+body {
+	/* Définir l'image comme arriÃ¨re-plan */
+	background-image: url('./image/login.jpg');
+	background-repeat: no-repeat;
+}
+</style>
 <title>Login</title>
 </head>
 <body>
 
 	<jsp:include page="Menu.jsp" />
-	
 	<%
 	if (session != null && session.getAttribute("LoginFailed") != null) {
 		Boolean LoginFailed = (Boolean) session.getAttribute("LoginFailed");
@@ -39,18 +46,17 @@
 			session.removeAttribute("LoginFailed");
 		}
 	}
-	session.setAttribute("isFirstVisit", true);
-	
 	%>
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-primary text-white"> Veuillez entrer vos informations s'il vous plait </div>
+			<div class="card-header bg-primary text-white">Please enter
+				your login information</div>
 			<div class="card-body">
 				<form action="UserLogin" method="post">
-					<h4 class="card-title">Nom:</h4>
-					<label for="user"></label> <input type="text" id="user" name="user"
+					<h4 class="card-title">E-mail:</h4>
+					<label for="user"></label> <input type="text" id="email" name="email"
 						required><br>
-					<h4 class="card-title">Mot de passe:</h4>
+					<h4 class="card-title">Password:</h4>
 					<label for="password"></label> <input type="password" id="password"
 						name="password" required>
 					<ul class="list-group">
@@ -64,38 +70,24 @@
 							class="form-check-label" for="role_2">Acteur</label></li>
 					</ul>
 
-					<button type="submit" class="btn btn-primary">Soumettre</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 				<br> <a href='./addUser.jsp'>
 					<button type="text" class="btn btn-primary">Inscription</button>
 				</a>
 			</div>
 
-			<%
-			if (session.getAttribute("isFirstVisit") != null && (boolean) session.getAttribute("isFirstVisit")) {
-			%>
-			<div class="alert alert-primary" role="alert">
-				<p>Ce site utilise des cookies. En continuant à naviguer sur ce site, vous 
-				acceptez notre utilisation des cookies.</p>
-			</div>
-			<%
-			session.removeAttribute("isFirstVisit");
-			%>
-			<%
-			}
-			%>
 
 			<%
-			if (session != null && session.getAttribute("addSucce") != null && (Boolean) session.getAttribute("addSucce")) {
+			if (session != null && session.getAttribute("info") != null) {
 			%>
-			<div class="alert alert-success" role="alert">
-				<%=session.getAttribute("messageS")%>
+			<div class="alert alert-danger" role="alert">
+				<%=session.getAttribute("info")%>
 			</div>
 			<%
 			}
-			session.removeAttribute("messageS");
+			session.removeAttribute("info");
 			%>
-
 		</div>
 
 	</div>

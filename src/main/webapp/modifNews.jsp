@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,34 +22,44 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
 <meta charset="UTF-8">
-<title>Modifier le Card</title>
+<title>Modifier la Carte</title>
 </head>
 <body>
 
-<jsp:include page="Menu_conn.jsp" />
+	<jsp:include page="Menu_conn.jsp" />
 	<div class="container mt-5">
-		
-			<h2>Change Information</h2>
-			<form action="ModifNews" method="post">
-				<div class="mb-3">
-					<label for="largeText" class="form-label">NEWS</label>
-					<textarea class="form-control" id="news" rows="3" name="news"
-						placeholder="Enter news ici..."></textarea>
-				</div>
 
-				<div class="mb-3">
-					<label for="datePicker" class="form-label">Select Date</label> <input
-						type="date" class="form-control" id="date" name="date">
+		<%
+		String idStr = request.getParameter("id");
+		int id = 0;
+		id = Integer.parseInt(idStr);
+		%>
+		<%
+			if(session != null && session.getAttribute("modifFailed")!=null){
+				%>
+				<div class="alert alert-danger" role="alert">
+					Modif News Failed !
 				</div>
+				<%
+			}
+		%>
+		<h2>Change Information</h2>
+		<form action="ModifNews" method="post">
+			<input type="hidden" name="id" value=<%=id%>>
+			<div class="mb-3">
+				<label for="largeText" class="form-label">NEWS</label>
+				<textarea class="form-control" id="news" rows="3" name="news"
+					placeholder="Enter news ici..."></textarea>
+			</div>
 
-				<div class="mb-3">
-					<label for="textInput" class="form-label">Les montants</label> <input
-						type="text" class="form-control" id="montants" name="montants"
-						placeholder="Enter montants ici...">
-				</div>
+			<div class="mb-3">
+				<label for="datePicker" class="form-label">Select Date</label> <input
+					type="date" class="form-control" id="date" name="date">
+			</div>
 
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form></div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
 
 </body>
 </html>

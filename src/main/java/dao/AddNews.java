@@ -1,4 +1,4 @@
- package dao;
+package dao;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,14 +30,18 @@ public class AddNews extends HttpServlet {
 		// TODO Auto-generated method stub
 		String news = request.getParameter("news");
 		String data = request.getParameter("date");
-		String montants = request.getParameter("montants");
 		
 		System.out.println(data);
 		DBDAO dao = new DBDAO();
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
-		if(dao.insertNews(username,news,data, montants)) {
+		int userid = (int) session.getAttribute("id");
+		if(dao.insertNews(userid,username,news,data)) {
+			request.getSession().setAttribute("addnewsSucce", true);
 			response.sendRedirect("News.jsp");
+		}else {
+			request.getSession().setAttribute("addnewsFailed", true);
+			response.sendRedirect("addNews.jsp");
 		}
 	}
 

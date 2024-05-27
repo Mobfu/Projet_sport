@@ -3,49 +3,49 @@
 <!DOCTYPE html>
 <html>
 <head>
- <link href="./image/IconWeb.jpg" rel="icon" type="image/x-icon">
- <link rel="stylesheet" href="./Style/style.css"/>
 <meta charset="ISO-8859-1">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="...">
-    
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="..." crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-   
-    	<link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-	
-<title>Inscription</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+<link rel="stylesheet" href="./Style/map.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="./Style/style.css" />
+<style>
+/* Style pour l'arrière-plan */
+body {
+	/* Définir l'image comme arriÃ¨re-plan */
+	background-image: url('./image/adduser.jpeg');
+	background-repeat: no-repeat;
+}
+</style>
+<title>AddUser</title>
 </head>
-
-
-	 <style>
-        /* Style pour l'arrière-plan */
-        body {
-            /* DÃ©finir l'image comme arriÃ¨re-plan */
-            background-image: url('./image/FondSiteWeb.jpg');
-            /* Centrer et Ã©tirer l'image pour remplir tout l'Ã©cran */
-            background-size: cover;
-           /* Pour que je puisse positionner l'image au centre de l'Ã©cran */
-            background-position: center;
-            /* RÃ©pÃ©ter l'image si nÃ©cessaire */
-            background-repeat: no-repeat;
-        }
-    </style>
-    
 <body>
-<jsp:include page="Menu.jsp" />
-      
-      
 
+<jsp:include page="Menu.jsp"/>
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-primary text-white">Veuillez entrer vos informations</div>
+			<div class="card-header bg-primary text-white">Please enter
+				your information for Inscription</div>
 			<div class="card-body">
-				<form action="AdUser" method="post">
-					<h4 class="class-title">Nom d'utilisateur:</h4>
+				<form action="AddUser" method="post">
+					<h4 class="class-title">UserName:</h4>
 					<label for="name"></label> <input type="text" id="name" name="name"
 						required><br>
 
-					<h4 class="class-title">Mot de passe:</h4>
+					<h4 class="class-title">Password:</h4>
 					<label for="password"></label> <input type="password" id="password"
 						name="password" required><br>
 						
@@ -63,58 +63,22 @@
 							class="form-check-input me-1" type="radio" name="role"
 							value="Acteur" id="role_2"> <label
 							class="form-check-label" for="role_2">Acteur</label></li>
-						<li class="list-group-item"><input
-							class="form-check-input me-1" type="radio" name="role"
-							value="User" id="role_3"> <label class="form-check-label"
-							for="role_3">User</label></li>
 					</ul>
-
-
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 				<%
 				if (session != null && session.getAttribute("addFailed") != null && (Boolean) session.getAttribute("addFailed")) {
 				%>
 				<div class="alert alert-danger" role="alert">
-					<%=session.getAttribute("messageF")%>
+					Cet email est déjà utilisé !
 				</div>
 				<%
 				}
-				session.removeAttribute("messageF");
+				session.removeAttribute("addFailed");
 				%>
-
-
 			</div>
 		</div>
 		<a href="Login.jsp">retourne Login</a>
 	</div>
-	
-	
-	 <section class="footer py-5 d-flex justify-content-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-6 d-flex align-items-center">
-                <p class="text-white">&copy; 2024 Rouen | All rights reserved.</p>
-            </div>
-            <div class="col-6">
-                <ul class="nav text-center">
-                       
-                <li class="nav-item">
-                        <a href="APropos.jsp" class="nav-link text-white">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Recherche</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Contact</a>
-                    </li>
-                </ul>
-            </div>    
-        </div>
-    </div>
-  </section>
-  
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  
 </body>
 </html>

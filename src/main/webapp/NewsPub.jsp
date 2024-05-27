@@ -25,23 +25,14 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
+<style>
+/* Style pour l'arrière-plan */
+body {
+	background-image: url('./image/news.jpeg');
+	background-repeat: no-repeat;
+}
+</style>
 <title>News Public</title>
-
-
-  <style>
-			        /* Style pour l'arriére-plan */
-			        
-			        body {
-			            /* Définir l'image comme arriére-plan */
-			            background-image: url('./image/Information.jpg');
-			            /* Centrer et étirer l'image pour remplir tout l'écran */
-			            background-size: cover;
-			           /* Pour que je puisse positionner l'image au centre de l'écran */
-			            background-position: center;
-			            /* Répéter l'image si nécessaire */
-			            background-repeat: no-repeat;
-			        }
-    </style>
 </head>
 <body>
 	<%
@@ -50,10 +41,10 @@
 	%>
 	<jsp:include page="Menu.jsp" />
 	<%
-	} else if(session.getAttribute("id")!= null){
-		Object userIdObj = session.getAttribute("id");
-		String userId = userIdObj.toString();
-			switch(userId){
+	} else if(session.getAttribute("role")!= null){
+		Object userRoleObj = session.getAttribute("role");
+		String userRole = userRoleObj.toString();
+			switch(userRole){
 			case "1":
 				%>
 				<jsp:include page="Menu_elu.jsp" />
@@ -85,7 +76,6 @@
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">Horaire:<%=news.getHoraire()%></li>
-					<li class="list-group-item">Montants:<%=news.getMontants()%></li>
 				</ul>
 
 			</div>
