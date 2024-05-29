@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import dao.DBDAO;
  
 public class MenuPrincipal extends JFrame implements ActionListener{
 	 
@@ -92,7 +94,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		btnAffichageUtilisateurs.setBounds(24, 81, 355, 30);
 		contentPane.add(btnAffichageUtilisateurs);
 		btnAffichageUtilisateurs.addActionListener(this);
-		this.btnGestionUtilisateurs = new JButton("Gérer les utilisateurs");
+		this.btnGestionUtilisateurs = new JButton("G茅rer les utilisateurs");
 		btnGestionUtilisateurs.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnGestionUtilisateurs.setBounds(299, 279, 355, 30);
 		contentPane.add(btnGestionUtilisateurs);
@@ -102,7 +104,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 	        btnEnvoyerNotification.setBounds(261, 259, 355, 30);
 	        contentPane.add(btnEnvoyerNotification);
 	        btnEnvoyerNotification.addActionListener(this);
-		this.btnDeconnexion = new JButton("Déconnexion");
+		this.btnDeconnexion = new JButton("D茅connexion");
 		btnDeconnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnDeconnexion.setBounds(261, 332, 163, 30);
 		contentPane.add(btnDeconnexion);
