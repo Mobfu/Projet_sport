@@ -42,21 +42,20 @@ body {
 	if (session != null && session.getAttribute("LoginFailed") != null) {
 		Boolean LoginFailed = (Boolean) session.getAttribute("LoginFailed");
 		if (LoginFailed) {
-			session.setAttribute("info", "Invalid login or password");
+			session.setAttribute("info", "Mot de passe ou email incorrect ");
 			session.removeAttribute("LoginFailed");
 		}
 	}
 	%>
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-primary text-white">Please enter
-				your login information</div>
+			<div class="card-header bg-primary text-white">Veuillez entrer vos informations de connexion</div>
 			<div class="card-body">
 				<form action="UserLogin" method="post">
 					<h4 class="card-title">E-mail:</h4>
 					<label for="user"></label> <input type="text" id="email" name="email"
 						required><br>
-					<h4 class="card-title">Password:</h4>
+					<h4 class="card-title">Mot De passe:</h4>
 					<label for="password"></label> <input type="password" id="password"
 						name="password" required>
 					<ul class="list-group">
@@ -70,7 +69,7 @@ body {
 							class="form-check-label" for="role_2">Acteur</label></li>
 					</ul>
 
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">Envoyez</button>
 				</form>
 				<br> <a href='./addUser.jsp'>
 					<button type="text" class="btn btn-primary">Inscription</button>
