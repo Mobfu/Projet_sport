@@ -10,7 +10,7 @@ public class EmailSender {
 
     
 	public static void sendEmail(String email, int code) {
-		String message= "Cemessage est généré automatiquement ni répondez pas. Votre code de vérification est: "+code;
+		String message= "Ce message est généré automatiquement ni répondez pas. Votre code de vérification est: "+code;
 		String subject= "Code de Vérification";
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp-mail.outlook.com");
@@ -27,7 +27,7 @@ public class EmailSender {
 	 
 		try {
 			MimeMessage mimeMessage = new MimeMessage(session);
-			mimeMessage.setFrom(new InternetAddress("joseph.ouassa@groupe-esigelec.org"));
+			mimeMessage.setFrom(new InternetAddress("fitgroove@outlook.fr"));
 			mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 			mimeMessage.setSubject(subject);
 			mimeMessage.setText(message);
