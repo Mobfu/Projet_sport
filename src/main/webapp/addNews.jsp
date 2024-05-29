@@ -20,11 +20,16 @@
 <link rel="stylesheet" href="./Style/map.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-
 <link rel="stylesheet" href="./Style/style.css" />
 <title>AddNews</title>
+<style >
+.dropdown img {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="Menu_conn.jsp" />
@@ -56,4 +61,5 @@
 
 
 </body>
+
 </html>

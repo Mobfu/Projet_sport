@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,6 @@
 <link rel="stylesheet" href="./Style/map.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
 <style>
 /* Style pour l'arrière-plan */
@@ -28,6 +27,12 @@ body {
 	/* Définir l'image comme arriÃ¨re-plan */
 	background-image: url('./image/adduser.jpeg');
 	background-repeat: no-repeat;
+}
+.dropdown img {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
 }
 </style>
 <title>AddUser</title>
@@ -63,6 +68,10 @@ body {
 							class="form-check-input me-1" type="radio" name="role"
 							value="Acteur" id="role_2"> <label
 							class="form-check-label" for="role_2">Acteur</label></li>
+							<li class="list-group-item"><input
+							class="form-check-input me-1" type="radio" name="role"
+							value="User" id="role_3"> <label
+							class="form-check-label" for="role_3">User</label></li>
 					</ul>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
