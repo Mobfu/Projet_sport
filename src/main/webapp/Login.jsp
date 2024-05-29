@@ -26,9 +26,9 @@
 
 <link rel="stylesheet" href="./Style/style.css" />
 <style>
-/* Style pour l'arri�re-plan */
+/* Style pour l'arrière-plan */
 body {
-	/* D�finir l'image comme arrière-plan */
+	/* Définir l'image comme arriÃ¨re-plan */
 	background-image: url('./image/login.jpg');
 	background-repeat: no-repeat;
 }
@@ -75,21 +75,71 @@ body {
 				<br> <a href='./addUser.jsp'>
 					<button type="text" class="btn btn-primary">Inscription</button>
 				</a>
-			</div>
+			<br>
+            <a href='./MotDepasseOublie.jsp'>
+                <button type="button" class="btn btn-secondary mt-2">Mot de passe oublié</button>
+            </a>
+        </div>
+        <%
+        if (session.getAttribute("info") != null) {
+        %>
+        <div class="alert alert-danger" role="alert">
+            <%=session.getAttribute("info")%>
+        </div>
+        <%
+        }
+        %>
 
+        <%
+        if (session.getAttribute("isFirstVisit") != null && (boolean) session.getAttribute("isFirstVisit")) {
+        %>
+        <div class="alert alert-primary" role="alert">
+            <p>Ce site utilise des cookies. En continuant à naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
+        </div>
+        <%
+        session.removeAttribute("isFirstVisit");
+        %>
+        <%
+        }
+        %>
 
-			<%
-			if (session != null && session.getAttribute("info") != null) {
-			%>
-			<div class="alert alert-danger" role="alert">
-				<%=session.getAttribute("info")%>
-			</div>
-			<%
-			}
-			session.removeAttribute("info");
-			%>
-		</div>
+        <%
+        if (session != null && session.getAttribute("addSucce") != null && (Boolean) session.getAttribute("addSucce")) {
+        %>
+        <div class="alert alert-success" role="alert">
+            <%=session.getAttribute("messageS")%>
+        </div>
+        <%
+        }
+        session.removeAttribute("messageS");
+        %>
+    </div>
+</div>
 
-	</div>
+<section class="footer py-5 d-flex justify-content-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 d-flex align-items-center">
+                <p class="text-white">&copy; 2024 Rouen | Tous droits réservés.</p>
+            </div>
+            <div class="col-6">
+                <ul class="nav text-center">
+                    <li class="nav-item">
+                        <a href="APropos.jsp" class="nav-link text-white">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">Recherche</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
