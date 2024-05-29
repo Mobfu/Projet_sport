@@ -102,7 +102,7 @@ body {
         }
         %>
 
-<<<<<<< HEAD
+
 			<%
 			if (session != null && session.getAttribute("info") != null) {
 			%>
@@ -116,7 +116,6 @@ body {
 		</div>
 		
 		<jsp:include page="Footer.jsp" />
-=======
         <%
         if (session != null && session.getAttribute("addSucce") != null && (Boolean) session.getAttribute("addSucce")) {
         %>
@@ -130,31 +129,7 @@ body {
     </div>
 </div>
 
-<section class="footer py-5 d-flex justify-content-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-6 d-flex align-items-center">
-                <p class="text-white">&copy; 2024 Rouen | Tous droits réservés.</p>
-            </div>
-            <div class="col-6">
-                <ul class="nav text-center">
-                    <li class="nav-item">
-                        <a href="APropos.jsp" class="nav-link text-white">À propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Recherche</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
 
-<script src="assets/js/bootstrap.bundle.min.js"></script>
->>>>>>> 12881dfbba4f8c86ac4ebfd50eb73121401d942e
 
 </body>
 </html>

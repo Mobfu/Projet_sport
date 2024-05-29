@@ -11,6 +11,20 @@
     <link rel="stylesheet" href="./Style/styles.css">
     
 </head>
+
+	  <style>
+        /* Style pour l'arrière-plan */
+        body {
+            /* d�finir l'image comme arri�re paln ' */
+            background-image: url('./image/card2.jpg');
+            /* Centrer et attirer l'image pour remplir tout l'�cran */
+            background-size: cover;
+           /* Pour que je puisse positionner l'image au centre de l'Ã©cran */
+            background-position: center;
+            /* RÃ©pÃ©ter l'image si nécessaire */
+            background-repeat: no-repeat;
+        }
+    </style>
 <body>
     <nav class="navbar">
         <div class="container-fluid">
@@ -26,9 +40,10 @@
           </div>
           <div class="col-md-4 right-div" id="sidetext">
              Vous pouvez
-            <button type="button" class="btn btn-dark"><a href="Login.jsp">Vous connectez</a></button>
-            <button type="button" class="btn btn-dark"><a href="listClub.jsp">Rechercher des clubs</a></button></button>
-            
+              <a href="Login.jsp" class="btn btn-light d-block mb-2">Vous connectez</a>
+              <a href="listClub.jsp" class="btn btn-light d-block mb-2">Rechercher des clubs</a>
+              <a href="News.jsp" class="btn btn-light d-block mb-2">Visualiser les News du monde sportif</a>
+          
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Index du Sport</title>
+<title>Recherche de clubs</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -135,7 +135,7 @@ if (session.getAttribute("LogFlag") == null) {
     <button type="submit" class="btn btn-secondary ms-4" id="searchButton" >Rechercher</button>
     <div class="form-check form-switch" style="margin-top:7px;">
     <input class="form-check-input ms-4" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="switchDisplay">
-    <label for="flexSwitchCheckDefault" class="switch-label">Carte</label>
+    <label  for="flexSwitchCheckDefault" class="switch-label">Carte</label>
 </div>
 
 <input type="hidden" id="pageInput" name="page" value="<%= request.getParameter("page") != null ? request.getParameter("page") : "1" %>">
@@ -286,9 +286,11 @@ if (session.getAttribute("LogFlag") == null) {
 </div>
     </div>
 </div> </div>
+
   <div class="card-footer text-body-secondary">
-  Footer
+   <jsp:include page="Footer.jsp" />
   </div>
+  
 </div>
   
 <script>
