@@ -76,7 +76,7 @@ body {
 				</a>
 			<br>
             <a href='./MotDepasseOublie.jsp'>
-                <button type="button" class="btn btn-secondary mt-2">Mot de passe oubliÃ©</button>
+                <button type="button" class="btn btn-secondary mt-2">Mot de passe oublié</button>
             </a>
         </div>
         <%
@@ -93,7 +93,7 @@ body {
         if (session.getAttribute("isFirstVisit") != null && (boolean) session.getAttribute("isFirstVisit")) {
         %>
         <div class="alert alert-primary" role="alert">
-            <p>Ce site utilise des cookies. En continuant Ã  naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
+            <p>Ce site utilise des cookies. En continuant à  naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
         </div>
         <%
         session.removeAttribute("isFirstVisit");
