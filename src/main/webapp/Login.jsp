@@ -26,9 +26,9 @@
 
 <link rel="stylesheet" href="./Style/style.css" />
 <style>
-/* Style pour l'arri�re-plan */
+/* Style pour l'arrière-plan */
 body {
-	/* D�finir l'image comme arrière-plan */
+	/* Définir l'image comme arriÃ¨re-plan */
 	background-image: url('./image/login.jpg');
 	background-repeat: no-repeat;
 }
@@ -42,21 +42,20 @@ body {
 	if (session != null && session.getAttribute("LoginFailed") != null) {
 		Boolean LoginFailed = (Boolean) session.getAttribute("LoginFailed");
 		if (LoginFailed) {
-			session.setAttribute("info", "Invalid login or password");
+			session.setAttribute("info", "Mot de passe ou email incorrect ");
 			session.removeAttribute("LoginFailed");
 		}
 	}
 	%>
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-primary text-white">Please enter
-				your login information</div>
+			<div class="card-header bg-primary text-white">Veuillez entrer vos informations de connexion</div>
 			<div class="card-body">
 				<form action="UserLogin" method="post">
 					<h4 class="card-title">E-mail:</h4>
 					<label for="user"></label> <input type="text" id="email" name="email"
 						required><br>
-					<h4 class="card-title">Password:</h4>
+					<h4 class="card-title">Mot De passe:</h4>
 					<label for="password"></label> <input type="password" id="password"
 						name="password" required>
 					<ul class="list-group">
@@ -70,14 +69,40 @@ body {
 							class="form-check-label" for="role_2">Acteur</label></li>
 					</ul>
 
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">Envoyez</button>
 				</form>
 				<br> <a href='./addUser.jsp'>
 					<button type="text" class="btn btn-primary">Inscription</button>
 				</a>
-			</div>
+			<br>
+            <a href='./MotDepasseOublie.jsp'>
+                <button type="button" class="btn btn-secondary mt-2">Mot de passe oublié</button>
+            </a>
+        </div>
+        <%
+        if (session.getAttribute("info") != null) {
+        %>
+        <div class="alert alert-danger" role="alert">
+            <%=session.getAttribute("info")%>
+        </div>
+        <%
+        }
+        %>
 
+        <%
+        if (session.getAttribute("isFirstVisit") != null && (boolean) session.getAttribute("isFirstVisit")) {
+        %>
+        <div class="alert alert-primary" role="alert">
+            <p>Ce site utilise des cookies. En continuant à naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
+        </div>
+        <%
+        session.removeAttribute("isFirstVisit");
+        %>
+        <%
+        }
+        %>
 
+<<<<<<< HEAD
 			<%
 			if (session != null && session.getAttribute("info") != null) {
 			%>
@@ -91,7 +116,45 @@ body {
 		</div>
 		
 		<jsp:include page="Footer.jsp" />
+=======
+        <%
+        if (session != null && session.getAttribute("addSucce") != null && (Boolean) session.getAttribute("addSucce")) {
+        %>
+        <div class="alert alert-success" role="alert">
+            <%=session.getAttribute("messageS")%>
+        </div>
+        <%
+        }
+        session.removeAttribute("messageS");
+        %>
+    </div>
+</div>
 
-	</div>
+<section class="footer py-5 d-flex justify-content-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 d-flex align-items-center">
+                <p class="text-white">&copy; 2024 Rouen | Tous droits réservés.</p>
+            </div>
+            <div class="col-6">
+                <ul class="nav text-center">
+                    <li class="nav-item">
+                        <a href="APropos.jsp" class="nav-link text-white">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">Recherche</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 12881dfbba4f8c86ac4ebfd50eb73121401d942e
+
 </body>
 </html>
