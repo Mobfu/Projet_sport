@@ -1,13 +1,13 @@
 package Module;
 
 public class Club {
-	private int Idclub, code_fede, nbr_clubs, nbr_epa, total_epa_clubs;
-	private String nom_commune, code_commune, region, statut_geo, nom_federation, code_qpv, nom_qpv, deprtement;
+	private int Idclub,  nbr_clubs, nbr_epa, total_epa_clubs;
+	private String nom_commune,code_fede, code_commune, region, statut_geo, nom_federation, code_qpv, nom_qpv, deprtement;
 	
 	//Idclub, code_commune, nom_commune, code_qpv, nom_qpv, deprtement, region, statut_geo, code_fede, nom_federation
 	//nbr_clubs, nbr_epa, total_epa_clubs
 	
-	public Club (int Idclub, String code_commune, String nom_commune, String code_qpv, String nom_qpv, String deprtement, String region, String statut_geo, int code_fede, String nom_federation, int nbr_clubs, int nbr_epa, int total_epa_clubs) {
+	public Club (int Idclub, String code_commune, String nom_commune, String code_qpv, String nom_qpv, String deprtement, String region, String statut_geo, String code_fede, String nom_federation, int nbr_clubs, int nbr_epa, int total_epa_clubs) {
 		this.Idclub=Idclub;
 		this.code_commune=code_commune;
 		this.nom_commune=nom_commune;
@@ -35,7 +35,7 @@ public class Club {
 		return deprtement;
 	}
 	
-	public int getCode_fede() {
+	public String getCode_fede() {
 		return code_fede;
 	}
 	
@@ -87,7 +87,7 @@ public class Club {
 		this.deprtement=deprtement;
 	}
 	
-	public void setCode_fede(int code_fede) {
+	public void setCode_fede(String code_fede) {
 		this.code_fede=code_fede;
 	}
 	

@@ -89,6 +89,8 @@ body {
 			session.removeAttribute("info");
 			%>
 		</div>
+		
+		<jsp:include page="Footer.jsp" />
 
 	</div>
 </body>

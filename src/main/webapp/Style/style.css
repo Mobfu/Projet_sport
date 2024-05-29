@@ -63,8 +63,10 @@
 }
 
 .footer{
-    background-color:rgb(118, 122, 124) ;
-    align-items: flex-down;
+      background-color: rgba(0,0,0,0.55) ;
+       box-shadow: 1px 1px 3px rgba(255,255,255, 0.54);
+    	z-index:90;
+   		 
 }
 
 .form-label{

@@ -78,6 +78,7 @@ if (session.getAttribute("LogFlag") == null) {
                      
    <iframe title="Nombre dâ€™habitants licenciés par fédération" width="1140" height="810" src="https://app.powerbi.com/reportEmbed?reportId=33321683-f01e-470b-9fc8-fe1531985f5e&autoAuth=true&ctid=371cb156-9558-4286-a3cd-3059699b890c" frameborder="0" allowFullScreen="true"></iframe>
   
+  <jsp:include page="Footer.jsp" />
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

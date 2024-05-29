@@ -553,7 +553,7 @@ public class DBDAO {
 					String deprtement=resultSet.getString("deprtement");
 					String region=resultSet.getString("region");
 					String statut_geo=resultSet.getString("statut_geo");
-					int code_fede=resultSet.getInt("code_fede");
+					String code_fede=resultSet.getString("code_fede");
 					String nom_federation=resultSet.getString("nom_federation");
 					int nbr_clubs=resultSet.getInt("nbr_clubs");
 					int nbr_epa=resultSet.getInt("nbr_epa");
@@ -676,7 +676,7 @@ public class DBDAO {
 						String deprtement=resultSet.getString("deprtement");
 						String region=resultSet.getString("region");
 						String statut_geo=resultSet.getString("statut_geo");
-						int code_fede=resultSet.getInt("code_fede");
+						String code_fede=resultSet.getString("code_fede");
 						nom_federation=resultSet.getString("nom_federation");
 						int nbr_clubs=resultSet.getInt("nbr_clubs");
 						int nbr_epa=resultSet.getInt("nbr_epa");
@@ -698,7 +698,7 @@ public class DBDAO {
 						String deprtement=resultSet.getString("deprtement");
 						String region=resultSet.getString("region");
 						String statut_geo=resultSet.getString("statut_geo");
-						int code_fede=resultSet.getInt("code_fede");
+						String code_fede=resultSet.getString("code_fede");
 						nom_federation=resultSet.getString("nom_federation");
 						int nbr_clubs=resultSet.getInt("nbr_clubs");
 						int nbr_epa=resultSet.getInt("nbr_epa");
@@ -723,7 +723,7 @@ public class DBDAO {
 						String deprtement=resultSet.getString("deprtement");
 						String region=resultSet.getString("region");
 						String statut_geo=resultSet.getString("statut_geo");
-						int code_fede=resultSet.getInt("code_fede");
+						String code_fede=resultSet.getString("code_fede");
 						nom_federation=resultSet.getString("nom_federation");
 						int nbr_clubs=resultSet.getInt("nbr_clubs");
 						int nbr_epa=resultSet.getInt("nbr_epa");
