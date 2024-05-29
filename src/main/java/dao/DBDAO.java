@@ -167,7 +167,64 @@ public class DBDAO {
 				}
 				return false;
 			}
-			
+			 // Méthode pour mettre à jour le mot de passe de l'utilisateur
+	    public boolean updatePassword(String username, String newPassword) {
+	        // Vérifier si le nouveau mot de passe est vide
+	        if (newPassword == null || newPassword.isEmpty()) {
+	            System.out.println("Erreur: Le nouveau mot de passe ne peut pas être vide.");
+	            return false;
+	        }
+
+	        // Vérifier si la connexion à la base de données est établie
+	        if (dbConnect()) {
+	            String query = "UPDATE `ps8_bdd`.`user` SET `password` = SHA2(?,256) WHERE `username` = ?";
+	            try (PreparedStatement ps = conn.prepareStatement(query)) {
+	                ps.setString(1, newPassword);
+	                ps.setString(2, username);
+
+	                int rowsAffected = ps.executeUpdate();
+	                return rowsAffected > 0;
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                dbClose();
+	            }
+	        }
+	        return false;
+	    }
+
+	    public boolean checkPassword(String user, String password) {
+	        String query = "SELECT password FROM user WHERE username=? AND userrole= 0";
+	        try {
+	            if (dbConnect()) {
+	                try (PreparedStatement ps = conn.prepareStatement(query)) {
+	                    ps.setString(1, user);
+	                    //ps.setInt(2, role);
+
+	                    try (ResultSet rs = ps.executeQuery()) {
+	                        if (rs.next()) {
+	                            String currentPassword = rs.getString("password");
+	                            // Si le mot de passe stocké est null ou vide, renvoyer true
+	                            if (currentPassword == null || currentPassword.isEmpty()) {
+	                                return true;
+	                            }
+	                           
+	                        } else {
+	                            // Aucun utilisateur trouvé avec le nom d'utilisateur et le rôle donnés
+	                            return false;
+	                        }
+	                    }
+	                } finally {
+	                    dbClose();
+	                }
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return false;
+	    }
+
+		
 			
 			public int getIdByEmail(String email) {
 				int id = -1;
@@ -740,4 +797,9 @@ public class DBDAO {
 		}
 		return maListe;
 	}
+	
+	    public int generateRandomNumber() {
+	        Random random = new Random();
+	        return 1000 + random.nextInt(9000);
+	    }
 }
