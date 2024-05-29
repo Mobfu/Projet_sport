@@ -1,29 +1,46 @@
-
-
-
-
 package dao;
 
+import java.awt.Desktop.Action;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Vector;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Random;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import Module.Club;
 import Module.News;
 import Module.Utilisateur;
+
 
 public class DBDAO {
 
@@ -802,4 +819,167 @@ public class DBDAO {
 	        Random random = new Random();
 	        return 1000 + random.nextInt(9000);
 	    }
+		    
+	    public boolean verifyEmailExists(String email) throws SQLException {
+	        String query = "SELECT COUNT(*) FROM users WHERE email = ?";
+	        Connection connection = null;
+			try (PreparedStatement stmt = connection.prepareStatement(query)) {
+	            stmt.setString(1, email);
+	            try (ResultSet rs = stmt.executeQuery()) {
+	                if (rs.next()) {
+	                    return rs.getInt(1) > 0;
+	                }
+	            }
+	        }
+	        return false;
+	    }
+
+	    public void sendEmailNotification(String to, String subject, String body) {
+	        String from = "fitgroove@outlook.fr"; // Modifier avec votre adresse e-mail
+	        String host = "smtp-mail.outlook.com"; // Modifier avec le serveur SMTP de votre fournisseur de messagerie
+
+	        Properties properties = new Properties();
+	        properties.put("mail.smtp.host", host);
+	        properties.put("mail.smtp.port", "587");
+	        properties.put("mail.smtp.starttls.enable", "true");
+	        properties.put("mail.smtp.auth", "true");
+
+	        Session session = Session.getInstance(properties, new Authenticator() {
+	            @Override
+	            protected PasswordAuthentication getPasswordAuthentication() {
+	                return new PasswordAuthentication("fitgroove@outlook.fr", "ProjetS81&23");
+	            }
+	        });
+
+	        try {
+	            MimeMessage message = new MimeMessage(session);
+	            message.setFrom(new InternetAddress(from));
+	            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+	            message.setSubject(subject);
+	            message.setText(body);
+
+	            Transport.send(message);
+	            System.out.println("E-mail envoyé avec succès.");
+	        } catch (MessagingException mex) {
+	            mex.printStackTrace();
+	        }
+	    }
+	    public static String getAdresseIp() {
+			try {
+				InetAddress ip = InetAddress.getLocalHost();
+				return ip.getHostAddress();
+			}catch(UnknownHostException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+		
+		public void AjoutAction(String type_action, String nom_utilisateur) {
+			if(dbConnect()) {
+				String query="INSERT INTO `ps8_bdd`.`action` (`type_action`,`nom_utilisateur`,`heure`, `adresse_ip`) VALUES (?,?,?,?)";
+				try (PreparedStatement ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+					ps.setString(1, type_action);
+					ps.setString(2, nom_utilisateur);
+					Timestamp heure = new Timestamp(System.currentTimeMillis());
+					ps.setTimestamp(3, heure);
+					String ip = getAdresseIp();
+					ps.setString(4, ip);
+					int rowsAffected = ps.executeUpdate();
+					if (rowsAffected > 0) {
+						ResultSet generatedKeys = ps.getGeneratedKeys();
+						if (generatedKeys.next()) {
+							int generatedId = generatedKeys.getInt(1);
+							System.out.println("ID de l'action insérée : " + generatedId);
+						}
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					dbClose();
+				}
+			}
+		}
+		
+		public List <Action> listeActions(){
+			List<Action> maListe = new ArrayList<>();
+			if(dbConnect()) {
+				try {
+					String query="SELECT * FROM ACTION";
+					Statement statement = conn.createStatement();
+					ResultSet resultSet = statement.executeQuery(query);
+					while(resultSet.next()) {
+						int IdAction = resultSet.getInt("Id");
+						String type_action = resultSet.getString("type_action");
+						String nom_utilisateur = resultSet.getString("nom_utilisateur");
+						Timestamp heure = resultSet.getTimestamp("heure");
+						String adresse_ip=resultSet.getString("adresse_ip");
+						Action action = new Action (IdAction, type_action, nom_utilisateur, heure, adresse_ip);
+						maListe.add(action);
+					}
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}finally {
+					dbClose();
+				}
+			}
+			return maListe;
+		}
+		
+		public List <Action> ResultatRechercheAction(String type_action, String nom_utilisateur){
+			List<Action> maListe = new ArrayList<>();
+			if(dbConnect()) {
+				try {
+					String query;
+					if (type_action.isEmpty()) {
+						query = "SELECT * FROM action WHERE nom_utilisateur = ?";
+		                PreparedStatement statement = conn.prepareStatement(query);
+		                statement.setString(1, nom_utilisateur);
+		                ResultSet resultSet = statement.executeQuery();
+		                while(resultSet.next()) {
+		                	int IdAction = resultSet.getInt("Id");
+							type_action = resultSet.getString("type_action");
+							Timestamp heure = resultSet.getTimestamp("heure");
+							String adresse_ip=resultSet.getString("adresse_ip");
+							Action action = new Action (IdAction, type_action, nom_utilisateur, heure, adresse_ip);
+							maListe.add(action);
+		                }
+					}else if(nom_utilisateur.isEmpty()) {
+						query = "SELECT * FROM action WHERE type_action = ?";
+						PreparedStatement statement = conn.prepareStatement(query);
+		                statement.setString(1, type_action);
+		                ResultSet resultSet = statement.executeQuery();
+		                while(resultSet.next()) {
+		                	int IdAction = resultSet.getInt("Id");
+							type_action = resultSet.getString("type_action");
+							nom_utilisateur = resultSet.getString("nom_utilisateur");
+							Timestamp heure = resultSet.getTimestamp("heure");
+							String adresse_ip=resultSet.getString("adresse_ip");
+							Action action = new Action (IdAction, type_action, nom_utilisateur, heure, adresse_ip);
+							maListe.add(action);
+		                }
+		            } else {
+		            	query = "SELECT * FROM action WHERE type_action = ? AND nom_utilisateur = ?";
+		                PreparedStatement statement = conn.prepareStatement(query);
+		                statement.setString(1, type_action);
+		                statement.setString(2, nom_utilisateur);
+		                ResultSet resultSet = statement.executeQuery();
+		                while(resultSet.next()) {
+		                	int IdAction = resultSet.getInt("Id");
+							type_action = resultSet.getString("type_action");
+							Timestamp heure = resultSet.getTimestamp("heure");
+							String adresse_ip=resultSet.getString("adresse_ip");
+							Action action = new Action (IdAction, type_action, nom_utilisateur, heure, adresse_ip);
+							maListe.add(action);
+		                }
+		            }
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}finally {
+					dbClose();
+				}
+			}
+			return maListe;
+		}
+
 }
