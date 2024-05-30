@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import dao.DBDAO;
  
 public class MenuPrincipal extends JFrame implements ActionListener{
 	 
@@ -53,7 +55,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 		this.btnAffichageActions = new JButton("Afficher l'historique des actions");
 		btnAffichageActions.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAffichageActions.setBounds(24, 163, 355, 30);
+		btnAffichageActions.setBounds(24, 151, 355, 30);
 		contentPane.add(btnAffichageActions);
 		btnAffichageActions.addActionListener(this);
 		lblNewLabel_3 = new JLabel("New label");
@@ -62,13 +64,13 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		contentPane.add(lblNewLabel_3);
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/gui/info (1).png")));
-		lblNewLabel_2.setBounds(476, 71, 131, 137);
+		lblNewLabel_2.setBounds(476, 56, 131, 137);
 		contentPane.add(lblNewLabel_2);
 		JLabel lblGestionsConnexionsEt = new JLabel("Gestion connexions et profils");
 		lblGestionsConnexionsEt.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGestionsConnexionsEt.setForeground(Color.WHITE);
 		lblGestionsConnexionsEt.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
-		lblGestionsConnexionsEt.setBounds(299, 204, 355, 37);
+		lblGestionsConnexionsEt.setBounds(299, 190, 355, 37);
 		contentPane.add(lblGestionsConnexionsEt);
 		JLabel lblConsulterDesInformations = new JLabel("Consulter des informations");
 		lblConsulterDesInformations.setHorizontalAlignment(SwingConstants.CENTER);
@@ -79,12 +81,12 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		//JButtons
 		this.btnHistoriqueConnexion = new JButton("Historique des connexions");
 		btnHistoriqueConnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnHistoriqueConnexion.setBounds(299, 238, 355, 30);
+		btnHistoriqueConnexion.setBounds(299, 225, 355, 30);
 		contentPane.add(btnHistoriqueConnexion);
 		btnHistoriqueConnexion.addActionListener(this);
 		this.btnAffichageClub = new JButton("Afficher les clubs de sport");
 		btnAffichageClub.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnAffichageClub.setBounds(24, 122, 355, 30);
+		btnAffichageClub.setBounds(24, 115, 355, 30);
 		contentPane.add(btnAffichageClub);
 		btnAffichageClub.addActionListener(this);
 		this.btnAffichageUtilisateurs = new JButton("Afficher une liste d'utilisateurs");
@@ -92,17 +94,17 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		btnAffichageUtilisateurs.setBounds(24, 81, 355, 30);
 		contentPane.add(btnAffichageUtilisateurs);
 		btnAffichageUtilisateurs.addActionListener(this);
-		this.btnGestionUtilisateurs = new JButton("Gérer les utilisateurs");
+		this.btnGestionUtilisateurs = new JButton("G\u00E9rer les utilisateurs");
 		btnGestionUtilisateurs.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-		btnGestionUtilisateurs.setBounds(299, 279, 355, 30);
+		btnGestionUtilisateurs.setBounds(299, 295, 355, 30);
 		contentPane.add(btnGestionUtilisateurs);
 		btnGestionUtilisateurs.addActionListener(this);
 		this.btnEnvoyerNotification = new JButton("Envoyer Notification");
 	        btnEnvoyerNotification.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-	        btnEnvoyerNotification.setBounds(261, 259, 355, 30);
+	        btnEnvoyerNotification.setBounds(299, 259, 355, 30);
 	        contentPane.add(btnEnvoyerNotification);
 	        btnEnvoyerNotification.addActionListener(this);
-		this.btnDeconnexion = new JButton("Déconnexion");
+		this.btnDeconnexion = new JButton("Deconnexion");
 		btnDeconnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnDeconnexion.setBounds(261, 332, 163, 30);
 		contentPane.add(btnDeconnexion);

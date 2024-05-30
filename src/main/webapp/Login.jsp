@@ -62,21 +62,21 @@ body {
 						<li class="list-group-item"><input
 							class="form-check-input me-1" type="radio" name="role"
 							value="Elu" id="role_1" checked> <label
-							class="form-check-label" for="role_1">Elu</label></li>
+							class="form-check-label" for="role_1">Élu</label></li>
 						<li class="list-group-item"><input
 							class="form-check-input me-1" type="radio" name="role"
 							value="Acteur" id="role_2"> <label
-							class="form-check-label" for="role_2">Acteur</label></li>
+							class="form-check-label" for="role_2">Acteur du monde sportif</label></li>
 					</ul>
 
-					<button type="submit" class="btn btn-primary">Envoyez</button>
+					<button type="submit" class="btn btn-primary">Valider</button>
 				</form>
 				<br> <a href='./addUser.jsp'>
 					<button type="text" class="btn btn-primary">Inscription</button>
 				</a>
 			<br>
             <a href='./MotDepasseOublie.jsp'>
-                <button type="button" class="btn btn-secondary mt-2">Mot de passe oubliÃ©</button>
+                <button type="button" class="btn btn-secondary mt-2">Mot de passe oublié?</button>
             </a>
         </div>
         <%
@@ -93,7 +93,7 @@ body {
         if (session.getAttribute("isFirstVisit") != null && (boolean) session.getAttribute("isFirstVisit")) {
         %>
         <div class="alert alert-primary" role="alert">
-            <p>Ce site utilise des cookies. En continuant Ã  naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
+            <p>Ce site utilise des cookies. En continuant à  naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
         </div>
         <%
         session.removeAttribute("isFirstVisit");

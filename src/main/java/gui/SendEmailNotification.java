@@ -133,7 +133,9 @@ public class SendEmailNotification extends JFrame implements ActionListener {
                 e.printStackTrace();
             }
         } else if (ae.getSource() == btnCancel) {
-            dispose();
+            MenuPrincipal frame = new MenuPrincipal();
+            frame.setVisible(true);
+        	dispose();
         }
     }
 }

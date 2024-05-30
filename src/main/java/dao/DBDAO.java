@@ -1,6 +1,5 @@
 package dao;
 
-import java.awt.Desktop.Action;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Connection;
@@ -14,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -22,9 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-<<<<<<< HEAD
 
-=======
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,14 +35,13 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
->>>>>>> 0d2bf4dc77439fd03410eb3bbb36e2c0143f0107
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import Module.Club;
 import Module.News;
 import Module.Utilisateur;
-
+import Module.Action;
 
 public class DBDAO {
 
@@ -868,6 +865,7 @@ public class DBDAO {
 	            mex.printStackTrace();
 	        }
 	    }
+	    
 	    public static String getAdresseIp() {
 			try {
 				InetAddress ip = InetAddress.getLocalHost();
@@ -985,5 +983,4 @@ public class DBDAO {
 			}
 			return maListe;
 		}
-
 }

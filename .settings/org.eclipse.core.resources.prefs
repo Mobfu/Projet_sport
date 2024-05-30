@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/dao/DBDAO.java=UTF-8
+encoding//src/main/java/gui/AjouterUtilisateur.java=UTF-8
+encoding//src/main/java/gui/ModifierUtilisateur.java=UTF-8
+encoding//src/main/java/gui/PageConnexion.java=UTF-8
 encoding//src/main/webapp/APropos.jsp=ISO-8859-1
 encoding/<project>=GBK

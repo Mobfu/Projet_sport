@@ -130,7 +130,7 @@ public class ChangerMdp extends JFrame implements ActionListener{
 	        String password = textField_1.getText();
 	        if(dbdao.updatePassword(username, password)) {
 	        	JOptionPane.showMessageDialog(null, "Mot de passe changé !", "Vous allez être rediriger vers la page de connexion" + username,JOptionPane.INFORMATION_MESSAGE);
-	        	Page_Connexion frame = new Page_Connexion();
+	        	PageConnexion frame = new PageConnexion();
 	            frame.setVisible(true);
 	            dispose();
 	        } else {

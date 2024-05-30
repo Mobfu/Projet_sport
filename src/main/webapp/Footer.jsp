@@ -12,11 +12,11 @@
                 <ul class="nav text-center">
                        
                 <li class="nav-item">
-                        <a href="APropos.jsp" class="nav-link text-white">About</a>
+                        <a href="APropos.jsp" class="nav-link text-white">À propos</a>
               	</li>
                     
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Contact</a>
+                        <a href="contact.jsp" class="nav-link text-white">Contactez-nous</a>
                     </li>
                 </ul>
             </div>    
