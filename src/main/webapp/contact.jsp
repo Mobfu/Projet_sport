@@ -46,18 +46,19 @@ if (session.getAttribute("LogFlag") == null) {
     <nav class="cc-navbar navbar  position-center navbar-dark "> 
         <div class="container  ">
             <div class ="row ">
-                    <h1 class="text-center redressed">Page de contact</h1>                   
-            </div>
-            
+                    <h1 class="text-center redressed">Page de contact</h1>                  
+            </div>  
         </div>
+         
   </section>
+  
+     <jsp:include page="saute.jsp" />    
+     
    <h2 class="text-center redressed">Adresse E-mail : FitGroove@outlook.com</h2>
    <h2 class="text-center redressed">Numéro de téléphone : 0604199561</h2>
-  
  </nav>
   
-  	
-  	
+  	   <jsp:include page="saute.jsp" />     
   	
  <section class="footer py-4 d-flex justify-content-center">
     <div class="container">
@@ -70,7 +71,7 @@ if (session.getAttribute("LogFlag") == null) {
             
                 <ul class="nav text-center">
                        
-                <li class="nav-item">
+                <li>
                         <a href="APropos.jsp" class="nav-link text-white">À propos</a>
               	</li>
               	
