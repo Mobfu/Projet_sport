@@ -1,7 +1,3 @@
- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
 <head>
 <meta charset="ISO-8859-1">
 <link
@@ -22,27 +18,39 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link rel="stylesheet" href="./Style/style.css" />
 <style>
-/* Style pour l'arri�re-plan */
-body {
-	/* D�finir l'image comme arrière-plan */
-	background-image: url('./image/adduser.jpeg');
-	background-repeat: no-repeat;
-}
-.dropdown img {
-    cursor: pointer;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-}
-</style>
+        /* Style pour l'arriÃ¨re-plan */
+        body {
+            /* définir l'image comme arrière paln ' */
+            background-image: url('./image/card2.jpg');
+            /* Centrer et attirer l'image pour remplir tout l'écran */
+            background-size: cover;
+           /* Pour que je puisse positionner l'image au centre de l'ÃÂ©cran */
+            background-position: center;
+            /* RÃÂ©pÃÂ©ter l'image si nÃ©cessaire */
+            background-repeat: no-repeat;
+        }
+    </style>
 <title>AddUser</title>
 </head>
 <body>
+<%
+	if (session != null && session.getAttribute("LogFlag") != null) {
+		if ((boolean) session.getAttribute("LogFlag") != true) {
+	%>
+	<jsp:include page="Menu.jsp" />
+	<%
+	} else {
+	%>
+	<jsp:include page="Menu_conn.jsp" />
+	<%
+	}
+	}
+	%>
 
-<jsp:include page="Menu.jsp"/>
+
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-primary text-white">Veuillez entrer les informations suivantes afin de cr�er un compte</div>
+			<div class="card-header bg-primary text-white">Veuillez entrer les informations suivantes afin de créer un compte</div>
 			<div class="card-body">
 				<form action="AddUser" method="post">
 					<h4 class="class-title">Nom d'utilisateur :</h4>
@@ -62,7 +70,7 @@ body {
 						<li class="list-group-item"><input
 							class="form-check-input me-1" type="radio" name="role"
 							value="Elu" id="role_1" checked> <label
-							class="form-check-label" for="role_1">�lu</label></li>
+							class="form-check-label" for="role_1">Élu</label></li>
 						<li class="list-group-item"><input
 							class="form-check-input me-1" type="radio" name="role"
 							value="Acteur" id="role_2"> <label
@@ -78,7 +86,7 @@ body {
 				if (session != null && session.getAttribute("addFailed") != null && (Boolean) session.getAttribute("addFailed")) {
 				%>
 				<div class="alert alert-danger" role="alert">
-					Cet email est d�j� utilis� !
+					Cet email est déjà utilisé !
 				</div>
 				<%
 				}
@@ -86,7 +94,7 @@ body {
 				%>
 			</div>
 		</div>
-		<a href="Login.jsp">revenir � l'onglet de connexion</a>
+		<a href="Login.jsp">revenir à l'onglet de connexion</a>
 	</div>
 </body>
 </html>
