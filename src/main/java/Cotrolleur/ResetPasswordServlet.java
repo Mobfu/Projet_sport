@@ -17,20 +17,21 @@ public class ResetPasswordServlet extends HttpServlet {
         String newPassword = request.getParameter("newPassword");
         String email = (String) request.getSession().getAttribute("email");
 
-        // V®¶rifier que l'e-mail est stock®¶ dans la session
+        // V√©rifier que l'e-mail est stock√© dans la session
         if (email == null) {
-            response.getWriter().println("Erreur: Session expir®¶e ou email non valide.");
+            response.getWriter().println("Erreur: Session expir√©e ou email non valide.");
             return;
         }
 
-        // Appeler la m®¶thode de mise ®§ jour du mot de passe dans le DAO
+        // Appeler la m√©thode de mise √† jour du mot de passe dans le DAO
         DBDAO dbdao = new DBDAO();
         boolean isUpdated = dbdao.updatePassword(email, newPassword);
 
         if (isUpdated) {
-            response.getWriter().println("Mot de passe r®¶initialis®¶ avec succ®®s.");
+        	 response.sendRedirect("Login.jsp");;
         } else {
-            response.getWriter().println("Erreur lors de la r®¶initialisation du mot de passe. Veuillez r®¶essayer.");
+            response.getWriter().println("Erreur lors de la r√©initialisation du mot de passe. Veuillez r√©essayer.");
+            response.sendRedirect("ResetPassword.jsp");
         }
     }
 }
