@@ -21,7 +21,7 @@
             background-size: cover;
            /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
             background-position: center;
-            /* RÃƒÂ©pÃƒÂ©ter l'image si nÃ©cessaire */
+            /* Répéter l'image si nécéssaire*/
             background-repeat: no-repeat;
         }
     </style>
