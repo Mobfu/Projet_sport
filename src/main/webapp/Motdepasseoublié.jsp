@@ -17,71 +17,50 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="./Style/style.css"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        /* Style pour l'arrière-plan */
+       <style>
+        /* Style pour l'arriÃ¨re-plan */
         body {
-            /* Définir l'image comme arrière-plan */
-            background-image: url('./image/FondSiteWeb.jpg');
-            /* Centrer et étirer l'image pour remplir tout l'écran */
+            /* définir l'image comme arrière paln ' */
+            background-image: url('./image/card2.jpg');
+            /* Centrer et attirer l'image pour remplir tout l'écran */
             background-size: cover;
-            /* Pour que je puisse positionner l'image au centre de l'écran */
+           /* Pour que je puisse positionner l'image au centre de l'ÃÂ©cran */
             background-position: center;
-            /* Répéter l'image si nécessaire */
+            /* RÃÂ©pÃÂ©ter l'image si nÃ©cessaire */
             background-repeat: no-repeat;
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 50px auto;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .btn-submit {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
-<nav class="cc-navbar navbar navbar-expand-lg position-fixed navbar-dark w-100">
-    <div class="container">
-        <a class="navbar-brand test-uppercase fw-bolder mx-4 py-3" href="index.jsp">DOSport</a>
-        <!-- Autres liens de navigation -->
-    </div>
-</nav>
-<section class="banner d-flex justify-content-center align-items-center pt-5">
-    <div class="container my-5 py-5">
-        <!-- Contenu de la bannière -->
-    </div>
-</section>
+<%
+	if (session != null && session.getAttribute("LogFlag") != null) {
+		if ((boolean) session.getAttribute("LogFlag") != true) {
+	%>
+	<jsp:include page="Menu.jsp" />
+	<%
+	} else {
+	%>
+	<jsp:include page="Menu_conn.jsp" />
+	<%
+	}
+	}
+	%>
+
+
 <div class="container">
+<div class="card">
+        <div class="card-header bg-secondary text-white">Mot de passe oublié</div>
+        <div class="card-body">
     <div class="form-container">
-        <h2 class="mb-4">Mot de passe oublié</h2>
         <form action="ConfirmPasswordRecoveryServlet" method="post">
             <div class="form-group">
                 <label for="email">Adresse email</label>
                 <input type="email" id="email" name="email" required>
             </div>
-            <button type="submit" class="btn btn-submit">Envoyer le code de récupération</button>
+            <button type="submit" class="btn btn-secondary mt-2">Envoyer le code de récupération</button>
         </form>
+    </div>
+    </div>
     </div>
 </div>
 <footer class="py-5 d-flex justify-content-center">
