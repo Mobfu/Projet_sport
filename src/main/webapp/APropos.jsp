@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,15 +17,23 @@
     <title> A propos</title>
     
       <style>
+<<<<<<< HEAD
         /* Style pour l'arrière-plan */
+=======
+        /* Style pour l'arriÃƒÂ¨re-plan */
+>>>>>>> e7c9eb2c807ece00036eb90accf361a759f92d77
         body {
-            /* définir l'image comme arrière paln ' */
-            background-image: url('./image/FondSiteWeb.jpg');
-            /* Centrer et attirer l'image pour remplir tout l'écran */
+            /* dÃ©finir l'image comme arriÃ¨re paln ' */
+            background-image: url('./image/card2.jpg');
+            /* Centrer et attirer l'image pour remplir tout l'Ã©cran */
             background-size: cover;
-           /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
+           /* Pour que je puisse positionner l'image au centre de l'ÃƒÂƒÃ‚Â©cran */
             background-position: center;
+<<<<<<< HEAD
             /* Répéter l'image si nécéssaire' */
+=======
+            /* RÃƒÂƒÃ‚Â©pÃƒÂƒÃ‚Â©ter l'image si nÃƒÂ©cessaire */
+>>>>>>> e7c9eb2c807ece00036eb90accf361a759f92d77
             background-repeat: no-repeat;
         }
     </style>
@@ -49,89 +57,77 @@ if (session.getAttribute("LogFlag") == null) {
 	%>
 	<jsp:include page="Menu.jsp" />
 	<%
-	} else if(session.getAttribute("id")!= null){
-		Object userIdObj = session.getAttribute("id");
-		String userId = userIdObj.toString();
-			switch(userId){
-			case "1":
-				%>
-				<jsp:include page="Menu_elu.jsp" />
-				<%
-				break;
-			case "2":
-				%>
-				<jsp:include page="Menu_conn.jsp" />
-				<%
-				break;
-			}
-		
+	} else {
+	%>
+	<jsp:include page="Menu_conn.jsp" />
+	<%
 	}
 	}
 	%>
-      
    
      
     <section class="presen d-flex justify-content-center align-items-center pt-5">
+
     <nav class="cc-navbar navbar  position-center navbar-dark "> 
         <div class="container  ">
             <div class ="row ">
                     <h1 class="text-center redressed">Bienvenue</h1>
                      <h2 class="text-center redressed " >
                      
-                        <u>Présentation</u>
+                        <u>PrÃ©sentation</u>
                         
                      </h2>  
                      
-                         <h4 class="text-center "> <u> Votre Compagnon numérique pour Trouver le Club de Sport Idéal </u></h4>
+                         <h4 class="text-center "> <u> Votre Compagnon numÃ©rique pour Trouver le Club de Sport IdÃ©al </u></h4>
 		                        <p class="text-center" >
-			                        Dans un monde où l'activité
-			                        physique est plus importante que jamais pour le bien-être 
-			                        physique et mental, FITGROOVE se présente comme la solution
-			                         incontournable pour tous les passionnéss de sport. 
-			                         En tant que portail en ligne dédié exclusivement aux amateurs de sports,
+			                        Dans un monde oÃ¹ l'activitÃ©
+			                        physique est plus importante que jamais pour le bien-Ãªtre 
+			                        physique et mental, FITGROOVE se prÃ©sente comme la solution
+			                         incontournable pour tous les passionnÃ©ss de sport. 
+			                         En tant que portail en ligne dÃ©diÃ© exclusivement aux amateurs de sports,
 			                          FITGROOVE offre une plateforme dynamique et intuitive pour explorer et 
-			                          découvrir des clubs
-			                         sportifs adaptés à  tous les niveaux et intérêts.
+			                          dÃ©couvrir des clubs
+			                         sportifs adaptÃ©s Ã Â  tous les niveaux et intÃ©rÃªts.
 		                          </p>
                        
-                        <h4 class="text-center "> <u> Recherche Personnalisée de Clubs de Sport </u></h4>
+                        <h4 class="text-center "> <u> Recherche PersonnalisÃ©e de Clubs de Sport </u></h4>
                         
 		                        <p class="text-center"> FITGROOVE simplifie la 
-		                        recherche de clubs de sport grâce à  une interface conviviale et 
-		                        des fonctionnalités de recherche avancés. Que vous soyez débutant
-		                         à  la recherche d'un club de jogging local ou un athlète expérimenté
-		                         en quête d'un club d'aviron compétitif, notre service couvre une 
-		                         vaste gamme de disciplines sportives. Grâce à  notre moteur de 
-		                         recherche détaillé, vous pouvez filtrer les clubs selon des critères spécifiques tels 
-		                         que la localisation, le niveau de compétence requis, les types d'activités
-		                         proposées, et même les horaires d'entrainement</p>
+		                        recherche de clubs de sport grÃ¢ce Ã Â  une interface conviviale et 
+		                        des fonctionnalitÃ©s de recherche avancÃ©s. Que vous soyez dÃ©butant
+		                         Ã Â  la recherche d'un club de jogging local ou un athlÃ¨te expÃ©rimentÃ©
+		                         en quÃªte d'un club d'aviron compÃ©titif, notre service couvre une 
+		                         vaste gamme de disciplines sportives. GrÃ¢ce Ã Â  notre moteur de 
+		                         recherche dÃ©taillÃ©, vous pouvez filtrer les clubs selon des critÃ¨res spÃ©cifiques tels 
+		                         que la localisation, le niveau de compÃ©tence requis, les types d'activitÃ©s
+		                         proposÃ©es, et mÃªme les horaires d'entrainement</p>
                    
-                        <h4 class="text-center"><u> Aide à  la Décision pour Votre Choix de Clubs </u> </h4>
+                        <h4 class="text-center"><u> Aide Ã Â  la DÃ©cision pour Votre Choix de Clubs </u> </h4>
                         
-		                        <p class="text-center ">Choisir le bon club de sport peut être une décision complexe, 
-		                        influencée par divers facteurs allant de la proximité géographique à l'ambiance du club. 
-		                        FITGROOVE va au-dela de la simple mise en relation en offrant des guides détaillés et des conseils
-		                         personnalisés pour vous aider dans votre choix. Notre système de recommandations est alimenté par
-		                          des avis vérifiés et des évaluations des membres, vous permettant ainsi de bénéficier des expériences d'autres sportifs. 
-		                          De plus, des articles réguliers et des blogs spécialisés vous fournissent
-		                         des informations précieuses sur les tendances sportives et des conseils pour
-		                          s'épanouir dans votre discipline.   </p>
+		                        <p class="text-center ">Choisir le bon club de sport peut Ãªtre une dÃ©cision complexe, 
+		                        influencÃ©e par divers facteurs allant de la proximitÃ© gÃ©ographique Ã Â l'ambiance du club. 
+		                        FITGROOVE va au-dela de la simple mise en relation en offrant des guides dÃ©taillÃ©s et des conseils
+		                         personnalisÃ©s pour vous aider dans votre choix. Notre systÃ¨me de recommandations est alimentÃ© par
+		                          des avis vÃ©rifiÃ©s et des Ã©valuations des membres, vous permettant ainsi de bÃ©nÃ©ficier des expÃ©riences d'autres sportifs. 
+		                          De plus, des articles rÃ©guliers et des blogs spÃ©cialisÃ©s vous fournissent
+		                         des informations prÃ©cieuses sur les tendances sportives et des conseils pour
+		                          s'Ã©panouir dans votre discipline.   </p>
                        
                         <h4 class="text-center "><u> Engagement envers l'Excellence</u>  </h4>
                         
 		                        <p class="text-center"> Chez FITGROOVE, notre mission
-		                         est de vous fournir un service personnalisé et fiable.
-		                          Nous nous engageons à  maintenir la plus haute qualité de contenu, 
-		                          des informations à jour et des fonctionnalités innovantes qui répondent 
-		                          à vos besoins sportifs. Avec l'aide de technologies de pointe et d'une équipe dévouée à votre
-		                         service, nous nous assurons que votre expérience 
+		                         est de vous fournir un service personnalisÃ© et fiable.
+		                          Nous nous engageons Ã Â  maintenir la plus haute qualitÃ© de contenu, 
+		                          des informations Ã  jour et des fonctionnalitÃ©s innovantes qui rÃ©pondent 
+		                          Ã  vos besoins sportifs. Avec l'aide de technologies de pointe et d'une Ã©quipe dÃ©vouÃ©e Ã  votre
+		                         service, nous nous assurons que votre expÃ©rience 
 		                         sur FITGROOVE soit non seulement utile, mais aussi inspirante. </p>
 		                       
                        
                    
                         <p class="text-center">  Rejoignez FITGROOVE aujourd'hui et transformez votre parcours 
-                        sportif avec le meilleur outil de recherche et de communauté pour les amateurs de sport.
-                         Explorez, connectez-vous, et excellez avec FITGROOVE à votre porte d'entrée vers le monde du sport.
+                        sportif avec le meilleur outil de recherche et de communautÃ© pour les amateurs de sport.
+                         Explorez, connectez-vous, et excellez avec FITGROOVE Ã  votre porte d'entrÃ©e vers le monde du sport.
                         </p>
             </div>
         </div>

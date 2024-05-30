@@ -6,20 +6,22 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/VerifyCodeServlet1")
 public class VerifyCodeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	HttpSession session = request.getSession();
+        String sessionCode = (String) session.getAttribute("sessionCode");
         String code = request.getParameter("code");
 
-        int sessionCode = (int) request.getSession().getAttribute("code");
-
-        if (code.equals(String.valueOf(sessionCode))) {
+        if (code != null && code.equals(String.valueOf(sessionCode))) {
             response.sendRedirect("ResetPassword.jsp");
         } else {
-            response.getWriter().println("Le code de r¨¦cup¨¦ration est incorrect. Veuillez r¨¦essayer.");
+            request.setAttribute("errorMessage", "Code incorrect");
+            request.getRequestDispatcher("RecupMdp.jsp").forward(request, response);
         }
     }
 }

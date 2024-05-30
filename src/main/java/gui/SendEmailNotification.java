@@ -116,22 +116,18 @@ public class SendEmailNotification extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
+ public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnSend) {
             String email = emailField.getText();
             String subject = subjectField.getText();
             String message = messageField.getText();
 
-            try {
-                if (dbdao.verifyEmailExists(email)) {
-                    dbdao.sendEmailNotification(email, subject, message);
-                    JOptionPane.showMessageDialog(null, "Notification envoyée avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Email introuvable", "Erreur", JOptionPane.INFORMATION_MESSAGE);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            if (dbdao.verifyEmailExists(email)) {
+			    dbdao.sendEmailNotification(email, subject, message);
+			    JOptionPane.showMessageDialog(null, "Notification envoy茅e avec succ猫s !", "Succ猫s", JOptionPane.INFORMATION_MESSAGE);
+			} else {
+			    JOptionPane.showMessageDialog(null, "Email introuvable", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+			}
         } else if (ae.getSource() == btnCancel) {
             MenuPrincipal frame = new MenuPrincipal();
             frame.setVisible(true);
