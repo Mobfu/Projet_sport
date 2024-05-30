@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="5.0">
-  <servlet>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+  <display-name>ProjetSport</display-name>
+<servlet>
     <description></description>
-    <display-name>AddUser</display-name>
-    <servlet-name>AddUser</servlet-name>
-    <servlet-class>ProjetSport.AddUser</servlet-class>
+    <display-name>ClubServlet</display-name>
+    <servlet-name>ClubServlet</servlet-name>
+    <servlet-class>Controller.ClubServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AddUser</servlet-name>
-    <url-pattern>/AddUser</url-pattern>
+    <servlet-name>ClubServlet</servlet-name>
+    <url-pattern>/ClubServlet</url-pattern>
   </servlet-mapping>
-  <display-name>ProjetSport</display-name>
+  <display-name>test</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -21,17 +26,243 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>UserLogin</display-name>
-    <servlet-name>UserLogin</servlet-name>
-    <servlet-class>ProjetSport.UserLogin</servlet-class>
+    <display-name>ServletClub</display-name>
+    <servlet-name>ServletClub</servlet-name>
+    <servlet-class>Controller.ServletClub</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UserLogin</servlet-name>
-    <url-pattern>/UserLogin</url-pattern>
+    <servlet-name>ServletClub</servlet-name>
+    <url-pattern>/ServletClub</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AdminLogin</display-name>
+    <display-name>ServlettClub</display-name>
+    <servlet-name>ServlettClub</servlet-name>
+    <servlet-class>Controller.ServlettClub</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServlettClub</servlet-name>
+    <url-pattern>/ServlettClub</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletCoor</display-name>
+    <servlet-name>ServletCoor</servlet-name>
+    <servlet-class>Controller.ServletCoor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCoor</servlet-name>
+    <url-pattern>/ServletCoor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveData</display-name>
+    <servlet-name>SaveData</servlet-name>
+    <servlet-class>Controller.SaveData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveData</servlet-name>
+    <url-pattern>/SaveData</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletCoorRadius</display-name>
+    <servlet-name>ServletCoorRadius</servlet-name>
+    <servlet-class>Controller.ServletCoorRadius</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCoorRadius</servlet-name>
+    <url-pattern>/ServletCoorRadius</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletClubRadius</display-name>
+    <servlet-name>ServletClubRadius</servlet-name>
+    <servlet-class>Controller.ServletClubRadius</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletClubRadius</servlet-name>
+    <url-pattern>/ServletClubRadius</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAllClubRadius</display-name>
+    <servlet-name>ServletAllClubRadius</servlet-name>
+    <servlet-class>Controller.ServletAllClubRadius</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAllClubRadius</servlet-name>
+    <url-pattern>/ServletAllClubRadius</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletCoorRegion</display-name>
+    <servlet-name>ServletCoorRegion</servlet-name>
+    <servlet-class>Controller.ServletCoorRegion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCoorRegion</servlet-name>
+    <url-pattern>/ServletCoorRegion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletClubRegion</display-name>
+    <servlet-name>ServletClubRegion</servlet-name>
+    <servlet-class>Controller.ServletClubRegion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletClubRegion</servlet-name>
+    <url-pattern>/ServletClubRegion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletCoorCode</display-name>
+    <servlet-name>ServletCoorCode</servlet-name>
+    <servlet-class>Controller.ServletCoorCode</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCoorCode</servlet-name>
+    <url-pattern>/ServletCoorCode</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletClubCode</display-name>
+    <servlet-name>ServletClubCode</servlet-name>
+    <servlet-class>Controller.ServletClubCode</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletClubCode</servlet-name>
+    <url-pattern>/ServletClubCode</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletCoorCommune</display-name>
+    <servlet-name>ServletCoorCommune</servlet-name>
+    <servlet-class>Controller.ServletCoorCommune</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCoorCommune</servlet-name>
+    <url-pattern>/ServletCoorCommune</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletClubCommune</display-name>
+    <servlet-name>ServletClubCommune</servlet-name>
+    <servlet-class>Controller.ServletClubCommune</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletClubCommune</servlet-name>
+    <url-pattern>/ServletClubCommune</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveData1</display-name>
+    <servlet-name>SaveData1</servlet-name>
+    <servlet-class>Controller.SaveData1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveData1</servlet-name>
+    <url-pattern>/SaveData1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveData2</display-name>
+    <servlet-name>SaveData2</servlet-name>
+    <servlet-class>Controller.SaveData2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveData2</servlet-name>
+    <url-pattern>/SaveData2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAllClubRegion</display-name>
+    <servlet-name>ServletAllClubRegion</servlet-name>
+    <servlet-class>Controller.ServletAllClubRegion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAllClubRegion</servlet-name>
+    <url-pattern>/ServletAllClubRegion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAllCoorsRegion</display-name>
+    <servlet-name>ServletAllCoorsRegion</servlet-name>
+    <servlet-class>Controller.ServletAllCoorsRegion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAllCoorsRegion</servlet-name>
+    <url-pattern>/ServletAllCoorsRegion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAllClubCommune</display-name>
+    <servlet-name>ServletAllClubCommune</servlet-name>
+    <servlet-class>Controller.ServletAllClubCommune</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAllClubCommune</servlet-name>
+    <url-pattern>/ServletAllClubCommune</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAllCoorsCommune</display-name>
+    <servlet-name>ServletAllCoorsCommune</servlet-name>
+    <servlet-class>Controller.ServletAllCoorsCommune</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAllCoorsCommune</servlet-name>
+    <url-pattern>/ServletAllCoorsCommune</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAllClubCode</display-name>
+    <servlet-name>ServletAllClubCode</servlet-name>
+    <servlet-class>Controller.ServletAllClubCode</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAllClubCode</servlet-name>
+    <url-pattern>/ServletAllClubCode</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAllCoorsCode</display-name>
+    <servlet-name>ServletAllCoorsCode</servlet-name>
+    <servlet-class>Controller.ServletAllCoorsCode</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAllCoorsCode</servlet-name>
+    <url-pattern>/ServletAllCoorsCode</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletCommune</display-name>
+    <servlet-name>ServletCommune</servlet-name>
+    <servlet-class>Controller.ServletCommune</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCommune</servlet-name>
+    <url-pattern>/ServletCommune</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddUser</servlet-name>
+    <servlet-class>ProjetSport.AddUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUser</servlet-name>
+    <url-pattern>/AddUser</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UserLogin</servlet-name>
+    <servlet-class>dao.UserLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserLogin</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>AdminLogin</servlet-name>
     <servlet-class>ProjetSport.AdminLogin</servlet-class>
   </servlet>
@@ -39,9 +270,8 @@
     <servlet-name>AdminLogin</servlet-name>
     <url-pattern>/AdminLogin</url-pattern>
   </servlet-mapping>
+
   <servlet>
-    <description></description>
-    <display-name>AddNews</display-name>
     <servlet-name>AddNews</servlet-name>
     <servlet-class>dao.AddNews</servlet-class>
   </servlet>
@@ -49,9 +279,8 @@
     <servlet-name>AddNews</servlet-name>
     <url-pattern>/AddNews</url-pattern>
   </servlet-mapping>
+
   <servlet>
-    <description></description>
-    <display-name>AdUser</display-name>
     <servlet-name>AdUser</servlet-name>
     <servlet-class>dao.AdUser</servlet-class>
   </servlet>
@@ -59,9 +288,8 @@
     <servlet-name>AdUser</servlet-name>
     <url-pattern>/AdUser</url-pattern>
   </servlet-mapping>
+
   <servlet>
-    <description></description>
-    <display-name>ModifNews</display-name>
     <servlet-name>ModifNews</servlet-name>
     <servlet-class>dao.ModifNews</servlet-class>
   </servlet>
@@ -69,9 +297,8 @@
     <servlet-name>ModifNews</servlet-name>
     <url-pattern>/ModifNews</url-pattern>
   </servlet-mapping>
+
   <servlet>
-    <description></description>
-    <display-name>userLogin</display-name>
     <servlet-name>userLogin</servlet-name>
     <servlet-class>dao.userLogin</servlet-class>
   </servlet>
@@ -79,39 +306,41 @@
     <servlet-name>userLogin</servlet-name>
     <url-pattern>/userLogin</url-pattern>
   </servlet-mapping>
- 
-    <servlet>
-        <servlet-name>ConfirmPasswordRecoveryServlet</servlet-name>
-        <servlet-class>Cotrolleur.ConfirmPasswordRecoveryServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ConfirmPasswordRecoveryServlet</servlet-name>
-        <url-pattern>/ConfirmPasswordRecoveryServlet</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>VerifyCodeServlet</servlet-name>
-        <servlet-class>Cotrolleur.VerifyCodeServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>VerifyCodeServlet</servlet-name>
-        <url-pattern>/VerifyCodeServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
+
+  <servlet>
+    <servlet-name>ConfirmPasswordRecoveryServlet</servlet-name>
+    <servlet-class>Cotrolleur.ConfirmPasswordRecoveryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmPasswordRecoveryServlet</servlet-name>
+    <url-pattern>/ConfirmPasswordRecoveryServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <servlet-class>Cotrolleur.VerifyCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <url-pattern>/VerifyCodeServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>ResetPasswordServlet</servlet-name>
     <servlet-class>Cotrolleur.ResetPasswordServlet</servlet-class>
-</servlet>
-<servlet-mapping>
+  </servlet>
+  <servlet-mapping>
     <servlet-name>ResetPasswordServlet</servlet-name>
     <url-pattern>/ResetPasswordServlet</url-pattern>
-</servlet-mapping>
-    <display-name>ProjetSport</display-name>
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.htm</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-        <welcome-file>default.html</welcome-file>
-        <welcome-file>default.htm</welcome-file>
-        <welcome-file>default.jsp</welcome-file>
-    </welcome-file-list>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
 </web-app>
