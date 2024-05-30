@@ -29,8 +29,6 @@
             background-repeat: no-repeat;
         }
     </style>
-    
-    
 </head>
 <% 
 if (session == null) {

@@ -94,11 +94,11 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		btnAffichageUtilisateurs.setBounds(24, 81, 355, 30);
 		contentPane.add(btnAffichageUtilisateurs);
 		btnAffichageUtilisateurs.addActionListener(this);
-<<<<<<< HEAD
+ 
 		this.btnGestionUtilisateurs = new JButton("G\u00E9rer les utilisateurs");
-=======
-		this.btnGestionUtilisateurs = new JButton("G茅rer les utilisateurs");
->>>>>>> 98bb4eb3d30e0b4f3eeaa032c2352a1ae845f6ed
+ 
+		this.btnGestionUtilisateurs = new JButton("G\u00E9rer les utilisateurs");
+ 
 		btnGestionUtilisateurs.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnGestionUtilisateurs.setBounds(299, 295, 355, 30);
 		contentPane.add(btnGestionUtilisateurs);
@@ -108,11 +108,10 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 	        btnEnvoyerNotification.setBounds(299, 259, 355, 30);
 	        contentPane.add(btnEnvoyerNotification);
 	        btnEnvoyerNotification.addActionListener(this);
-<<<<<<< HEAD
 		this.btnDeconnexion = new JButton("Deconnexion");
-=======
-		this.btnDeconnexion = new JButton("D茅connexion");
->>>>>>> 98bb4eb3d30e0b4f3eeaa032c2352a1ae845f6ed
+ 
+		this.btnDeconnexion = new JButton("Deconnexion");
+ 
 		btnDeconnexion.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnDeconnexion.setBounds(261, 332, 163, 30);
 		contentPane.add(btnDeconnexion);

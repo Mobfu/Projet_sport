@@ -2,7 +2,6 @@ package Module;
 
 import java.sql.Timestamp;
 import java.time.ZonedDateTime;
-
 public class Action {
 	private int idAction;
 	private String type_action, nom_utilisateur, adresse_ip;
@@ -15,7 +14,6 @@ public class Action {
 		this.temps=temps;
 		this.adresse_ip=adresse_ip;
 	}
-	
 	public int getIdAction() {
 		return idAction;
 	}

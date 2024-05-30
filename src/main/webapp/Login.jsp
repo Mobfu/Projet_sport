@@ -75,7 +75,7 @@ body {
 					<button type="text" class="btn btn-primary">Inscription</button>
 				</a>
 			<br>
-            <a href='./MotDepasseOublie.jsp'>
+            <a href='./Motdepasseoublié.jsp'>
                 <button type="button" class="btn btn-secondary mt-2">Mot de passe oublié?</button>
             </a>
         </div>
