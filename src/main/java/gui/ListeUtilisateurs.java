@@ -72,7 +72,7 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("fond.jpg")).getImage();
 		
-		//partie insertion des donn√©es dans la JTable
+		//partie insertion des donn®¶es dans la JTable
 		
 		modelUtilisateurs = new DefaultTableModel();
 		modelUtilisateurs.addColumn("ID");
@@ -80,7 +80,7 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 		modelUtilisateurs.addColumn("email");
 		modelUtilisateurs.addColumn("role");
 		
-		String[] choix = {"", "Administrateur","Sportif", "Membre Minist√®re Sport","Elu"};
+		String[] choix = {"", "Administrateur","Sportif", "Membre Minist®®re Sport","Elu"};
 		this.combobox = new JComboBox<>(choix);
 		combobox.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		combobox.setMaximumRowCount(5);
@@ -155,7 +155,7 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 		imageLabel.setBounds(0, 0, 686, 373);
 		setLocationRelativeTo(null);
 		
-		//r√©cup√©ration des donn√©es depuis la BDD mysql
+		//r®¶cup®¶ration des donn®¶es depuis la BDD mysql
 		insertionDonnees("", "");
 	}
 	
@@ -164,7 +164,7 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 		if (nom.equals("")&&role.equals("")) {
 			List<Utilisateur> utilisateurs = dbdao.listeUtilisateurs();
 			for(Utilisateur utilisateur : utilisateurs) {
-				String a="pas encore d√©fini";
+				String a="pas encore d®¶fini";
 				switch(utilisateur.getUserrole()) {
 					case 0 :
 						a="administrateur";
@@ -172,9 +172,9 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 					case 1 :
 						a="sportif";
 						break;
-					case 2 :a="minist√®re du sport";
+					case 2 :a="minist®®re du sport";
 						break;
-					case 3 : a="√©lu";
+					case 3 : a="®¶lu";
 						break;
 				}
 				modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), a});
@@ -182,7 +182,7 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 		}else {
 			List<Utilisateur> utilisateurs=dbdao.ResultatRecherche(role, nom);
 			for(Utilisateur utilisateur : utilisateurs) {
-				String a="pas encore d√©fini";
+				String a="pas encore d®¶fini";
 				switch(utilisateur.getUserrole()) {
 					case 0 :
 						a="administrateur";
@@ -190,9 +190,9 @@ public class ListeUtilisateurs extends JFrame implements ActionListener{
 					case 1 :
 						a="sportif";
 						break;
-					case 2 :a="minist√®re du sport";
+					case 2 :a="minist®®re du sport";
 						break;
-					case 3 : a="√©lu";
+					case 3 : a="®¶lu";
 						break;
 				}
 				modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), a});

@@ -1,6 +1,5 @@
 package dao;
 
-import java.awt.Desktop.Action;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Connection;
@@ -24,7 +23,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 871d5b68291240f5605f8ceef82262dfb45b7bb6
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,7 +45,7 @@ import javax.swing.table.DefaultTableModel;
 import Module.Club;
 import Module.News;
 import Module.Utilisateur;
-
+import Module.Action;
 
 public class DBDAO {
 
@@ -867,6 +869,7 @@ public class DBDAO {
 	            mex.printStackTrace();
 	        }
 	    }
+	    
 	    public static String getAdresseIp() {
 			try {
 				InetAddress ip = InetAddress.getLocalHost();
@@ -984,5 +987,4 @@ public class DBDAO {
 			}
 			return maListe;
 		}
-
 }

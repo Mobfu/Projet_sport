@@ -59,13 +59,13 @@ public class GestionUtilisateurs extends JFrame implements ActionListener{
  
         this.btnSupprimerMdp = new JButton("Supprimer Mot de passe");
         btnSupprimerMdp.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-        btnSupprimerMdp.setBounds(117, 317, 305, 30); // PositionnËåÖ au centre sur la deuxiÁå´me ligne
+        btnSupprimerMdp.setBounds(117, 317, 305, 30); // Positionn√© au centre sur la deuxi√®me ligne
         contentPane.add(btnSupprimerMdp);
         btnSupprimerMdp.addActionListener(this);
  
         this.btnRetour = new JButton("Retour");
         btnRetour.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
-        btnRetour.setBounds(454, 317, 140, 30); // PositionnËåÖ au centre juste en bas
+        btnRetour.setBounds(454, 317, 140, 30); // Positionn√© au centre juste en bas
         contentPane.add(btnRetour);
         btnRetour.addActionListener(this);
  
@@ -108,7 +108,7 @@ public class GestionUtilisateurs extends JFrame implements ActionListener{
         imageLabel.setBounds(0, 0, 686, 373);
         setLocationRelativeTo(null);
         
-		//r√©cup√©ration des donn√©es depuis la BDD mysql
+		//r®¶cup®¶ration des donn®¶es depuis la BDD mysql
 		insertionDonnees();
     }
     public static void main(String[] args) {
@@ -128,7 +128,7 @@ public class GestionUtilisateurs extends JFrame implements ActionListener{
 		DBDAO dbdao = new DBDAO();
 		List<Utilisateur> utilisateurs = dbdao.listeUtilisateurs();
 		for(Utilisateur utilisateur : utilisateurs) {
-			String a="pas encore d√©fini";
+			String a="pas encore d®¶fini";
 			switch(utilisateur.getUserrole()) {
 				case 0 :
 					a="administrateur";
@@ -136,9 +136,9 @@ public class GestionUtilisateurs extends JFrame implements ActionListener{
 				case 1 :
 					a="sportif";
 					break;
-				case 2 :a="minist√®re du sport";
+				case 2 :a="minist®®re du sport";
 					break;
-				case 3 : a="√©lu";
+				case 3 : a="®¶lu";
 					break;
 			}
 			modelUtilisateurs.addRow(new Object[] {utilisateur.getIduser(), utilisateur.getUsername(), utilisateur.getEmail(), a});
