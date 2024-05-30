@@ -823,19 +823,25 @@ public class DBDAO {
 	        return 1000 + random.nextInt(9000);
 	    }
 		    
-	    public boolean verifyEmailExists(String email) throws SQLException {
-	        String query = "SELECT COUNT(*) FROM users WHERE email = ?";
-	        Connection connection = null;
-			try (PreparedStatement stmt = connection.prepareStatement(query)) {
-	            stmt.setString(1, email);
-	            try (ResultSet rs = stmt.executeQuery()) {
+ public boolean verifyEmailExists(String email) {
+	        int rowCount = 0;
+	        if (dbConnect()) {
+	            String query = "SELECT COUNT(*) FROM ps8_bdd.user WHERE email = ?";
+	            try (PreparedStatement ps = conn.prepareStatement(query)) {
+	                ps.setString(1, email);
+	                ResultSet rs = ps.executeQuery();
 	                if (rs.next()) {
-	                    return rs.getInt(1) > 0;
+	                    rowCount = rs.getInt(1);
 	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } finally {
+	                dbClose();
 	            }
 	        }
-	        return false;
+	        return rowCount >= 1;
 	    }
+
 
 	    public void sendEmailNotification(String to, String subject, String body) {
 	        String from = "fitgroove@outlook.fr"; // Modifier avec votre adresse e-mail
@@ -867,7 +873,6 @@ public class DBDAO {
 	            mex.printStackTrace();
 	        }
 	    }
-	    
 	    public static String getAdresseIp() {
 			try {
 				InetAddress ip = InetAddress.getLocalHost();
