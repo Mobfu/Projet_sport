@@ -17,7 +17,7 @@
     <title> A propos</title>
     
       <style>
-        /* Style pour l'arriÃ¨re-plan */
+        /* Style pour l'arrière-plan */
         body {
             /* définir l'image comme arrière paln ' */
             background-image: url('./image/FondSiteWeb.jpg');
@@ -25,7 +25,7 @@
             background-size: cover;
            /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
             background-position: center;
-            /* RÃƒÂ©pÃƒÂ©ter l'image si nÃ©cessaire */
+            /* Répéter l'image si nécéssaire' */
             background-repeat: no-repeat;
         }
     </style>
