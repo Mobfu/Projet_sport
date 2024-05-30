@@ -23,10 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 871d5b68291240f5605f8ceef82262dfb45b7bb6
+ 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,6 +40,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import Module.Club;
+import Module.Comment;
 import Module.News;
 import Module.Utilisateur;
 import Module.Action;
@@ -986,5 +984,108 @@ public class DBDAO {
 				}
 			}
 			return maListe;
+		}
+		
+		public Boolean UploadImage(int id, String image) {
+			if (dbConnect()) {
+				String query = "UPDATE user SET image = ? WHERE iduser = ?";
+				try (PreparedStatement ps = conn.prepareStatement(query)) {
+					ps.setString(1, image);
+					ps.setInt(2, id);
+
+					int rs = ps.executeUpdate();
+					System.out.println("Upload Image reussi!");
+					return rs > 0;
+				} catch (SQLException e) {
+					e.printStackTrace();
+					System.out.println("failed to Upload Image!");
+				} finally {
+					dbClose();
+				}
+			}
+			return false;
+		}
+
+		public Boolean UploadSportPrefer(int id, String sport_prefer) {
+			if (dbConnect()) {
+				String query = "UPDATE user SET sport_prefer = ? WHERE iduser = ?";
+				try (PreparedStatement ps = conn.prepareStatement(query)) {
+					ps.setString(1, sport_prefer);
+					ps.setInt(2, id);
+
+					int rs = ps.executeUpdate();
+					System.out.println("Upload sport prefer reussi!");
+					return rs > 0;
+				} catch (SQLException e) {
+					e.printStackTrace();
+					System.out.println("failed to Upload sport perfer!");
+				} finally {
+					dbClose();
+				}
+			}
+			return false;
+		}
+
+		public String getImageByID(String id) {
+			String image = null;
+			if (dbConnect()) {
+				String query = "SELECT image FROM ps8_bdd.user WHERE iduser = ?";
+				try (PreparedStatement ps = conn.prepareStatement(query)) {
+					ps.setString(1, id);
+
+					ResultSet rs = ps.executeQuery();
+					if (rs.next()) {
+						image = rs.getString("image");
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					dbClose();
+				}
+			}
+			return image;
+		}
+
+		public boolean addComment(int newsId, String username, String commentText) {
+			if (dbConnect()) {
+				String query = "INSERT INTO comments (news_id, username, comment_text, timestamp) VALUES (?, ?, ?, ?)";
+				try (PreparedStatement ps = conn.prepareStatement(query)) {
+					ps.setInt(1, newsId);
+					ps.setString(2, username);
+					ps.setString(3, commentText);
+					ps.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+
+					int rs = ps.executeUpdate();
+					return rs > 0;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					dbClose();
+				}
+			}
+			return false;
+		}
+
+		public List<Comment> getCommentsForNews(int newsId) {
+			List<Comment> comments = new ArrayList<>();
+			if (dbConnect()) {
+				String query = "SELECT * FROM comments WHERE news_id = ? ORDER BY timestamp DESC";
+				try (PreparedStatement ps = conn.prepareStatement(query)) {
+					ps.setInt(1, newsId);
+					ResultSet rs = ps.executeQuery();
+					while (rs.next()) {
+						int id = rs.getInt("id");
+						String username = rs.getString("username");
+						String text = rs.getString("comment_text");
+						Timestamp timestamp = rs.getTimestamp("timestamp");
+						comments.add(new Comment(id, newsId, username, text, timestamp));
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					dbClose();
+				}
+			}
+			return comments;
 		}
 }

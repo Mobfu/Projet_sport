@@ -29,7 +29,13 @@
 /* Style pour l'arrière-plan */
 body {
 	background-image: url('./image/news.jpeg');
-	background-repeat: no-repeat;
+	background-repeat: repeat;
+}
+.dropdown img {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
 }
 </style>
 <title>News Public</title>
@@ -75,7 +81,7 @@ body {
 						News:<%=news.getNews()%></p>
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item">Horaire:<%=news.getHoraire()%></li>
+					<li class="list-group-item">Temps de publication:<%=news.getHoraire()%></li>
 				</ul>
 
 			</div>

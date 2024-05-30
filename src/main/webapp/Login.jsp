@@ -1,6 +1,8 @@
  <%@ page import="java.util.List"%>
 <%@ page import="dao.DBDAO"%>
 <%@ page import="Module.User"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +27,13 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="./Style/style.css" />
-<style>
+
+<style> 
 /* Style pour l'arriÃ¨re-plan */
 body {
-	/* DÃ©finir l'image comme arriÃƒÂ¨re-plan */
-	background-image: url('./image/login.jpg');
-	background-repeat: no-repeat;
+	/* Définir l'image comme arrière plan*/
+	background-image: url('./image/card2.jpg');
+ 
 }
 </style>
 <title>Login</title>
@@ -76,11 +79,9 @@ body {
 				</a>
 			<br>
             <a href='./MotDepasseOublie.jsp'>
-<<<<<<< HEAD
-                <button type="button" class="btn btn-secondary mt-2">Mot de passe oublié</button>
-=======
+ 
                 <button type="button" class="btn btn-secondary mt-2">Mot de passe oublié?</button>
->>>>>>> 871d5b68291240f5605f8ceef82262dfb45b7bb6
+ 
             </a>
         </div>
         <%
