@@ -1,4 +1,9 @@
-   <!DOCTYPE html>
+<<<<<<< HEAD
+<!DOCTYPE html>
+   
+=======
+    <!DOCTYPE html>
+>>>>>>> e7c9eb2c807ece00036eb90accf361a759f92d77
 <html lang="en">
 			<head>
 			    <meta charset="UTF-8">
@@ -22,15 +27,15 @@
 			    <title>Elu</title>
 			    
 			    <style>
-			        /* Style pour l'arriére-plan */
+			        /* Style pour l'arriÃ©re-plan */
 			        body {
-			            /* Définir l'image comme arriére-plan */
+			            /* DÃ©finir l'image comme arriÃ©re-plan */
 			            background-image: url('./image/FondSiteWeb.jpg');
-			            /* Centrer et étirer l'image pour remplir tout l'écran */
+			            /* Centrer et Ã©tirer l'image pour remplir tout l'Ã©cran */
 			            background-size: cover;
-			           /* Pour que je puisse positionner l'image au centre de l'écran */
+			           /* Pour que je puisse positionner l'image au centre de l'Ã©cran */
 			            background-position: center;
-			            /* Répéter l'image si nécessaire */
+			            /* RÃ©pÃ©ter l'image si nÃ©cessaire */
 			            background-repeat: no-repeat;
 			        }
 			    </style>
@@ -38,32 +43,7 @@
 			</head>
 			
 			<body>
-			
-				 <nav class="cc-navbar navbar navbar-expand-lg position-fixed navbar-dark w-100">
-        <div class="container">
-          <a class="navbar-brand test-uppercase fw-bolder mx-4 py-3" href="index.jsp">FitGroove</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item pe-2">
-                <a class="nav-link active" aria-current="page" href="index.jsp">Accueil</a>
-              </li>
-             
-              <li class="nav-item pe-2">
-                <a class="nav-link" href ="APropos.jsp">Presentation</a>
-              </li>
-              <li class="nav-item pe-2">
-                <a class="nav-link" href ="addUser.jsp">Devenir membre</a>
-              </li>
-              <li class="nav-item pe-2">
-                <a class="btn btn-order rounded-0" href ="Login.jsp">Connexion</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+		<jsp:include page="Menu_conn.jsp" />
       
       
        <section class="banner d-flex justify-content-center align-items-center pt-5">
@@ -79,7 +59,7 @@
                 
                     <h1  class="texte-capitalize py-3 redressed banner-desc" style="color: white;">
                     
-                      Obtenez l'ensemble des informations sur vos différentes localités
+                      Obtenez l'ensemble des informations sur vos diffÃ©rentes localitÃ©s
                         
                          
                     </h1>    
@@ -99,10 +79,10 @@
 		                      </div>
 		                      <div class="col-md-6">
 		                        <div class="card-body">
-		                          <h5 class="card-title">Habitants licenciés</h5>
-		                          <p class="card-text"> Vous pouvez avoir accès aux nombres d'habitants licenciés par 
-		                          commune,régions,départements ainsi que les fédérations auquels ces nombres apparatiennent.Vous pouvez également
-		                          avoir le détail du genre intervenant dans ces statisitiques </p>
+		                          <h5 class="card-title">Habitants licenciÃ©s</h5>
+		                          <p class="card-text"> Vous pouvez avoir accÃ¨s aux nombres d'habitants licenciÃ©s par 
+		                          commune,rÃ©gions,dÃ©partements ainsi que les fÃ©dÃ©rations auquels ces nombres apparatiennent.Vous pouvez Ã©galement
+		                          avoir le dÃ©tail du genre intervenant dans ces statisitiques </p>
 		                          <p class="card-text">
 		                            <a href="Visual.jsp" class="btn btn-order rounded-0 merriweather">Visualisations des licenciements</a>
 		                          </p>
@@ -118,15 +98,15 @@
                       
                       <div class="col-md-6">
                         <div class="card-body">
-                          <h5 class="card-title">Habitants non répertoriés</h5>
+                          <h5 class="card-title">Habitants non rÃ©pertoriÃ©s</h5>
                           <p class="card-text">
-	                              Un document contenant les chiffres des habitants non répertoriés de certaines fédérations sportives
-	                               offre une vision précise et exhaustive de la démographie des pratiquants 
-	                               dans le domaine du sport.En mettant en lumiére ces chiffres non
-	                                répertoriés, le document fournit des informations cruciales pour orienter les politiques de développement du sport,
-	                                promouvoir l'inclusion et la diversité, et renforcer l'accés équitable é la pratique sportive pour tous.</p>
+	                              Un document contenant les chiffres des habitants non rÃ©pertoriÃ©s de certaines fÃ©dÃ©rations sportives
+	                               offre une vision prÃ©cise et exhaustive de la dÃ©mographie des pratiquants 
+	                               dans le domaine du sport.En mettant en lumiÃ©re ces chiffres non
+	                                rÃ©pertoriÃ©s, le document fournit des informations cruciales pour orienter les politiques de dÃ©veloppement du sport,
+	                                promouvoir l'inclusion et la diversitÃ©, et renforcer l'accÃ©s Ã©quitable Ã© la pratique sportive pour tous.</p>
                                <p class="card-text">
-                            <a href= "Visual2.jsp" class="btn btn-order rounded-0 merriweather">Habitants non répertoriés</a>
+                            <a href= "Visual2.jsp" class="btn btn-order rounded-0 merriweather">Habitants non rÃ©pertoriÃ©s</a>
                           </p>
 	                        </div>
 	                      </div>
@@ -150,12 +130,12 @@
 		                      <div class="col-md-6">
 		                        <div class="card-body">
 		                          <h5 class="card-title">Classement</h5>
-			                          <p class="card-text">En compilant ces données, nous pouvons dresser un tableau clair de l'implication des habitants dans les 
-			                          activités sportives, en mettant en évidence les endroits où 
-			                          le sport joue un rôle significatif dans la vie quotidienne.Cette analyse 
-			                          comparative offre des insights utiles pour les décideurs politiques,comme vous en les 
-			                          aidant à  identifier les régions où des initiatives de promotion du sport pourraient étre 
-			                          les plus bénéfiques, ainsi que comprendre les facteurs socio-économiques qui influent
+			                          <p class="card-text">En compilant ces donnÃ©es, nous pouvons dresser un tableau clair de l'implication des habitants dans les 
+			                          activitÃ©s sportives, en mettant en Ã©vidence les endroits oÃ¹ 
+			                          le sport joue un rÃ´le significatif dans la vie quotidienne.Cette analyse 
+			                          comparative offre des insights utiles pour les dÃ©cideurs politiques,comme vous en les 
+			                          aidant Ã Â  identifier les rÃ©gions oÃ¹ des initiatives de promotion du sport pourraient Ã©tre 
+			                          les plus bÃ©nÃ©fiques, ainsi que comprendre les facteurs socio-Ã©conomiques qui influent
 			                           sur la participation sportive.  </p>
 		                          <p class="card-text">
 		                            <a href="Visual3.jsp" class="btn btn-order rounded-0 merriweather"> Voici la visualisation
@@ -173,7 +153,6 @@
           </div>
       
         </section> 
-      
       
        <jsp:include page="Footer.jsp" />
       

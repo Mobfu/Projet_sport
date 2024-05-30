@@ -21,7 +21,7 @@
             background-size: cover;
            /* Pour que je puisse positionner l'image au centre de l'ÃƒÂ©cran */
             background-position: center;
-            /* RÃƒÂ©pÃƒÂ©ter l'image si nÃ©cessaire */
+            /* Répéter l'image si nécéssaire*/
             background-repeat: no-repeat;
         }
     </style>
@@ -42,14 +42,18 @@
              Vous pouvez
               <a href="Login.jsp" class="btn btn-light d-block mb-2">Vous connecter</a>
               <a href="listClub.jsp" class="btn btn-light d-block mb-2">Rechercher des clubs</a>
-              <a href="News.jsp" class="btn btn-light d-block mb-2">Visualiser les News du monde sportif</a>
+              <a href="NewsPub.jsp" class="btn btn-light d-block mb-2">Visualiser les News du monde sportif</a>
           
           </div>
         </div>
       </div>
       <script>
         var typed = new Typed('#anitext', {
+<<<<<<< HEAD
+          strings: ['Recherchez Les clubs de sport à proximité','Visualisez les statistiques correspondant à chaque club et fédération','Tenez vous informer grâce au forum'],
+=======
           strings: ['Rechercher Les clubs de sport à proximité','Visualiser les statistiques correspondant à chaque club et fédération','Tenez-vous informer grâce au forum'],
+>>>>>>> 871d5b68291240f5605f8ceef82262dfb45b7bb6
           typeSpeed: 50, loop: true , showCursor: false
         });
       </script>

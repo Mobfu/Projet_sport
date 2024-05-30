@@ -999,7 +999,11 @@ public class DBDAO {
 					ps.setInt(2, id);
 
 					int rs = ps.executeUpdate();
+<<<<<<< HEAD
 					System.out.println("Upload Image réussi!");
+=======
+					System.out.println("Upload Image reussi!");
+>>>>>>> ddb91e8f63e823c141166f8c5a8199967734ef62
 					return rs > 0;
 				} catch (SQLException e) {
 					e.printStackTrace();

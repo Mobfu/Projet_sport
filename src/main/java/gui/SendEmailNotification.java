@@ -124,7 +124,11 @@ public class SendEmailNotification extends JFrame implements ActionListener {
 
             if (dbdao.verifyEmailExists(email)) {
 			    dbdao.sendEmailNotification(email, subject, message);
+<<<<<<< HEAD
 			    JOptionPane.showMessageDialog(null, "Notification envoy¨¦e avec succ¨¨s !", "Succ¨¨s", JOptionPane.INFORMATION_MESSAGE);
+=======
+			    JOptionPane.showMessageDialog(null, "Notification envoyèŒ…e avec succçŒ«s !", "SuccçŒ«s", JOptionPane.INFORMATION_MESSAGE);
+>>>>>>> ddb91e8f63e823c141166f8c5a8199967734ef62
 			} else {
 			    JOptionPane.showMessageDialog(null, "Email introuvable", "Erreur", JOptionPane.INFORMATION_MESSAGE);
 			}

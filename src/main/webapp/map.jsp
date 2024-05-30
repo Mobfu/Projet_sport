@@ -33,7 +33,7 @@
 </head>
 <% 
 if (session == null) {
-    session = request.getSession(); //
+    session = request.getSession(); //Â
 }
 if (session.getAttribute("LogFlag") == null) {
     session.setAttribute("LogFlag", false);
@@ -91,13 +91,13 @@ if (session.getAttribute("LogFlag") == null) {
 	
     %>
 <div class="card text-center">
-  <div class="card-header">
+  <div class="card-header" style="background-color:gray;">
     <form accept-charset="UTF-8" id="formFilter" method="POST" action="SaveData13">
       <div id="listClub" class="d-flex" style="margin-top: 15px; margin-bottom: 15px;">
         
-        <select class="form-select w-25 ms-3" aria-label="Liste des fédérations" name="fede" id="fede">
+        <select class="form-select w-25 ms-3" aria-label="Liste des fÃ©dÃ©rations" name="fede" id="fede">
     <% String fedr = ""; %>
-        <option value="<%= fedr %>" <%= (fedr.equals(fedeVal) ? "selected" : "") %>>Toutes les fédérations</option>
+        <option value="<%= fedr %>" <%= (fedr.equals(fedeVal) ? "selected" : "") %>>Toutes les fÃ©dÃ©rations</option>
         
         
         <%
@@ -115,10 +115,10 @@ if (session.getAttribute("LogFlag") == null) {
         %>
     </select>
         
-        <select class="form-select w-25 ms-3 custom-select" aria-label="Critère de recherche" id="searchType" name="searchType">
+        <select class="form-select w-25 ms-3 custom-select" aria-label="CritÃ¨re de recherche" id="searchType" name="searchType">
     
         <option value="">Choisir un mode de recherche</option>
-        <option value="Region" <%= "Region".equals(searchVal) ? "selected" : "" %>>Région</option>
+        <option value="Region" <%= "Region".equals(searchVal) ? "selected" : "" %>>RÃ©gion</option>
         
           <option value="Codepostal" <%= "Codepostal".equals(searchVal) ? "selected" : "" %>>Code postal</option>
           <option value="Commune" <%= "Commune".equals(searchVal) ? "selected" : "" %>>Commune</option>
@@ -188,10 +188,10 @@ let lonInput = document.getElementById("lonInput");
 let latInput = document.getElementById("latInput");
 
 
-// Fonction pour ajuster la hauteur de la carte en fonction de la hauteur de la fenêtre
+// Fonction pour ajuster la hauteur de la carte en fonction de la hauteur de la fenÃªtre
 function setMapHeight() {
-    let windowHeight = window.innerHeight; // Récupère la hauteur de la fenètre en pixel
-    let mapElement = document.getElementById('map'); //Récupère le composant à partir de son id qui est map
+    let windowHeight = window.innerHeight; // RÃ©cupÃ¨re la hauteur de la fenÃ¨tre en pixel
+    let mapElement = document.getElementById('map'); //RÃ©cupÃ¨re le composant Ã  partir de son id qui est map
     mapElement.style.height = windowHeight + 'px';
 }
 
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         latInput.value = latitude;
         console.log(lonInput.value);
         console.log(latInput.value);
-        // Mettre à jour la carte avec la nouvelle position
+        // Mettre Ã  jour la carte avec la nouvelle position
         map.setView([latitude, longitude], 13);
 
         if (!circle) {
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fillOpacity: 0.5
             }).addTo(map);
         } else {
-            // Déplacer le cercle à la nouvelle position
+            // DÃ©placer le cercle Ã  la nouvelle position
             circle.setLatLng([latitude, longitude]);
         }
         
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         	 posCircle.setLatLng([latitude, longitude]);
         }
 
-        // Ajouter un marqueur à la position
+        // Ajouter un marqueur Ã  la position
         myPosition = posCircle.addTo(map)
             .bindPopup("Vous etes ici").openPopup();
     }
@@ -1072,9 +1072,9 @@ document.getElementById('formFilter').addEventListener('submit', async function 
     
     if (rayonInput) {
         const rayon = rayonInput.value;
-        circle.setRadius(rayon * 1010); // Conversion de kilomètres en mètres
+        circle.setRadius(rayon * 1010); // Conversion de kilomÃ¨tres en mÃ¨tres
     }else{
-    	circle.setRadius(0); // Conversion de kilomètres en mètres
+    	circle.setRadius(0); // Conversion de kilomÃ¨tres en mÃ¨tres
     }
     const lonInput = document.getElementById('lonInput');
     const latInput = document.getElementById('latInput');
@@ -1198,7 +1198,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                     const select = document.createElement("select");
                     select.className = "form-select w-75 ms-4";
                     const regionOption = document.createElement("option");
-                    regionOption.textContent = "Liste des régions";
+                    regionOption.textContent = "Liste des rÃ©gions";
                     commu = "";
                     codep = "";
                     rayonInput = "";
@@ -1209,7 +1209,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                             for (int i = 0; i < regions.size(); i++) {
                                 out.print("\"" + regions.get(i) + "\"");
                                 if (i < regions.size() - 1) {
-                                    out.print(", "); // Ajouter une virgule si ce n'est pas le dernier élément
+                                    out.print(", "); // Ajouter une virgule si ce n'est pas le dernier Ã©lÃ©ment
                                 }
                             }
                         %>
@@ -1271,88 +1271,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    function submitFormAutomatically() {
-        // Vérifiez si le formulaire a déjà été soumis
-        
-        if (sessionStorage.getItem("formSubmitted") === "false") {
-            // Définir un indicateur dans sessionStorage pour indiquer que le formulaire a été soumis
-            sessionStorage.setItem("formSubmitted", "true");
-            
-            // Obtenez le formulaire
-            const form = document.getElementById("formFilter");
-
-            // Fonction pour soumettre le formulaire avec les filtres appropriés
-            const submitFormWithFilters = async () => {
-                const fede = document.getElementById('fede').value;
-                const regi = document.getElementById('regi');
-                const codep = document.getElementById('codep');
-                const commu = document.getElementById('commu');
-                const rayonInput = document.getElementById('rayon');
-                const lonInput = document.getElementById('lonInput');
-                const latInput = document.getElementById('latInput');
-
-               
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(async function(position) {
-                        lonInput.value = position.coords.longitude;
-                        latInput.value = position.coords.latitude;
-                        filterClubs(fede, regi, codep, commu, rayonInput);
-                    }, function(error) {
-                        console.error("Geolocation error:", error);
-                        filterClubs(fede, regi, codep, commu, rayonInput);
-                    });
-                } else {
-                    console.error("Geolocation not supported by this browser.");
-                    filterClubs(fede, regi, codep, commu, rayonInput);
-                }
-            };
-            const rayonInput = document.getElementById('rayon');
-            // Fonction pour filtrer les clubs en fonction des paramètres
-            const filterClubs = (fede, regi, codep, commu, rayon) => {
-            	 if(fede !== "" && regi !== ""){
-    				 getClubWithFilter(); // Call the function to fetch and filter clubs
-    			}if(fede === "" && regi !== "" && (codep === "" || codep === null)){
-    				 getAllClubWithRegion(); // Call the function to fetch and filter clubs
-    			}if(fede === "" && regi === null && codep === null){
-    				 getAllClubWithCommune(); // Call the function to fetch and filter clubs
-    			} if(fede === "" && codep !== "" && (rayonInput !== null || rayonInput !== "")  && (regi === "" || regi === null) && (commu === "" || commu === null)){
-    				 getAllClubWithCode(); // Call the function to fetch and filter clubs
-    			} 
-                if(fede !== "" && codep !== ""){
-    				 getClubWithCode(); // Call the function to fetch and filter clubs
-    			}if(fede !== "" && commu !== "" && (rayonInput !== null || rayonInput !== "") && (codep === "" || codep === null) && (regi === "" || regi === null)){
-    				 getClubWithCommune(); // Call the function to fetch and filter clubs
-    			}if(fede === "" && (rayonInput !== null || rayonInput !== "") && (codep === "" || codep === null) && (regi === "" || regi === null) && (commu === "" || commu === null)){
-    				 getAllClubWithRadius(); // Call the function to fetch and filter clubs
-    			}if(fede !== "" && (rayonInput !== null || rayonInput !== "") && (codep === "" || codep === null) && (regi === "" || regi === null) && (commu === "" || commu === null)){
-    				getClubWithRadius(); // Call the function to fetch and filter club
-    			}
-            };
-
-            // Soumettez le formulaire avec les filtres après une courte pause pour permettre le chargement complet de la page
-            setTimeout(submitFormWithFilters, 100);
-        }
-    }
-
-    // Déclencher la soumission automatique du formulaire lors du chargement initial de la page
-    submitFormAutomatically();
-    
-
-    // Utiliser un MutationObserver pour détecter les changements dans le DOM (par exemple, navigation vers map.jsp depuis une autre page)
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === "childList" && document.body.contains(document.getElementById("formFilter"))) {
-                submitFormAutomatically();
-            }
-        });
-    });
-
-    // Commencez à observer le document pour les changements d'enfants
-    observer.observe(document.body, { childList: true, subtree: true });
-    sessionStorage.setItem("formSubmitted", "false");
-});
 </script>
 </body>
 </html>

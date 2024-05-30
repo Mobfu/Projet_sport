@@ -7,39 +7,56 @@
     <title>Confirmation du code de récupération</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <style>
+ <style>
+        /* Style pour l'arriÃ¨re-plan */
         body {
-            background-image: url('./image/FondSiteWeb.jpg');
+            /* définir l'image comme arrière paln ' */
+            background-image: url('./image/card2.jpg');
+            /* Centrer et attirer l'image pour remplir tout l'écran */
             background-size: cover;
+           /* Pour que je puisse positionner l'image au centre de l'ÃÂ©cran */
             background-position: center;
+            /* RÃÂ©pÃÂ©ter l'image si nÃ©cessaire */
             background-repeat: no-repeat;
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 50px auto;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.jsp">FitGroove</a>
-        </div>
-    </nav>
+<%
+	if (session != null && session.getAttribute("LogFlag") != null) {
+		if ((boolean) session.getAttribute("LogFlag") != true) {
+	%>
+	<jsp:include page="Menu.jsp" />
+	<%
+	} else {
+	%>
+	<jsp:include page="Menu_conn.jsp" />
+	<%
+	}
+	}
+	%>
     <div class="container">
+<div class="card">
+        <div class="card-header bg-secondary text-white">Confirmation du code de récupération</div>
+        <div class="card-body">
         <div class="form-container">
-            <h2 class="mb-4">Confirmation du code de récupération</h2>
            <form action="${pageContext.request.contextPath}/VerifyCodeServlet1" method="post">
     <div class="form-group">
         <label for="code">Code de récupération</label>
         <input type="text" id="code" name="code" class="form-control" required>
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Confirmer</button>
+    <button type="submit" class="btn btn-secondary mt-2">Confirmer</button>
 </form>
+<%
+        String errorMessage = (String) request.getAttribute("errorMessage");
+        if (errorMessage != null) {
+    %>
+        <p style="color: red;"><%= errorMessage %></p>
+    <%
+        }
+    %>
+        </div>
+        </div>
         </div>
     </div>
     <footer class="py-5 d-flex justify-content-center">

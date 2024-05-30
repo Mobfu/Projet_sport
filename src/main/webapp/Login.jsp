@@ -1,6 +1,8 @@
  <%@ page import="java.util.List"%>
 <%@ page import="dao.DBDAO"%>
 <%@ page import="Module.User"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,28 +27,45 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="./Style/style.css" />
-<style>
-/* Style pour l'arrière-plan */
-body {
-	/* Définir l'image comme arriÃ¨re-plan */
-	background-image: url('./image/login.jpg');
-	background-repeat: no-repeat;
-}
-</style>
+      <style>
+        /* Style pour l'arriÃ¨re-plan */
+        body {
+            /* définir l'image comme arrière paln ' */
+            background-image: url('./image/card2.jpg');
+            /* Centrer et attirer l'image pour remplir tout l'écran */
+            background-size: cover;
+           /* Pour que je puisse positionner l'image au centre de l'ÃÂ©cran */
+            background-position: center;
+            /* RÃÂ©pÃÂ©ter l'image si nÃ©cessaire */
+            background-repeat: no-repeat;
+        }
+    </style>
+    
 <title>Login</title>
 </head>
 <body>
-
+<%
+	if (session != null && session.getAttribute("LogFlag") != null) {
+		if ((boolean) session.getAttribute("LogFlag") != true) {
+	%>
 	<jsp:include page="Menu.jsp" />
 	<%
-	if (session != null && session.getAttribute("LoginFailed") != null) {
-		Boolean LoginFailed = (Boolean) session.getAttribute("LoginFailed");
-		if (LoginFailed) {
-			session.setAttribute("info", "Mot de passe ou email incorrect ");
-			session.removeAttribute("LoginFailed");
-		}
+	} else {
+	%>
+	<jsp:include page="Menu_conn.jsp" />
+	<%
+	}
 	}
 	%>
+<%
+if (session != null && session.getAttribute("LoginFailed") != null) {
+    Boolean LoginFailed = (Boolean) session.getAttribute("LoginFailed");
+    if (LoginFailed) {
+        session.setAttribute("info", "Mot de passe ou email incorrect ");
+        session.removeAttribute("LoginFailed");
+    }
+}
+%>
 	<div class="container">
 		<div class="card">
 			<div class="card-header bg-primary text-white">Veuillez entrer vos informations de connexion</div>
@@ -62,7 +81,7 @@ body {
 						<li class="list-group-item"><input
 							class="form-check-input me-1" type="radio" name="role"
 							value="Elu" id="role_1" checked> <label
-							class="form-check-label" for="role_1">�lu</label></li>
+							class="form-check-label" for="role_1">Élu</label></li>
 						<li class="list-group-item"><input
 							class="form-check-input me-1" type="radio" name="role"
 							value="Acteur" id="role_2"> <label
@@ -75,8 +94,15 @@ body {
 					<button type="text" class="btn btn-primary">Inscription</button>
 				</a>
 			<br>
+<<<<<<< HEAD
             <a href='./Motdepasseoubli�.jsp'>
                 <button type="button" class="btn btn-secondary mt-2">Mot de passe oubli�?</button>
+=======
+            <a href='./MotDepasseOublie.jsp'>
+ 
+                <button type="button" class="btn btn-secondary mt-2">Mot de passe oublié?</button>
+ 
+>>>>>>> ddb91e8f63e823c141166f8c5a8199967734ef62
             </a>
         </div>
         <%
@@ -93,7 +119,7 @@ body {
         if (session.getAttribute("isFirstVisit") != null && (boolean) session.getAttribute("isFirstVisit")) {
         %>
         <div class="alert alert-primary" role="alert">
-            <p>Ce site utilise des cookies. En continuant � naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
+            <p>Ce site utilise des cookies. En continuant à  naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
         </div>
         <%
         session.removeAttribute("isFirstVisit");

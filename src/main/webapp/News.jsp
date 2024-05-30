@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
-<%@ page import="dao.DBDAO"%>
+<%@ page import=" dao.DBDAO"%>
 <%@ page import="Module.News"%>
 <%@ page import="Module.User"%>
+<%@ page import="Module.Comment"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +28,9 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="./Style/style.css" />
 <style>
-/* Style pour l'arrière-plan */
 body {
-	/* Définir l'image comme arriÃ¨re-plan */
 	background-image: url('./image/news.jpeg');
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 }
 </style>
 <title>News</title>
@@ -39,7 +38,25 @@ body {
 <body>
 	<jsp:include page="Menu_conn.jsp" />
 	<div class="container">
-		<a id="addCardBtn" class="btn btn-primary" href="addNews.jsp">AjouteNews</a>
+	<%
+	if(session.getAttribute("role")!= null){
+		Object userRoleObj = session.getAttribute("role");
+		String userRole = userRoleObj.toString();
+			switch(userRole){
+			case "2":
+				%>
+				<a id="addCardBtn" class="btn btn-primary" href="addNews.jsp">AjouteNews</a>
+				<%
+				break;
+			case "3":
+				%>
+				<%
+				break;
+			}
+		
+	}
+	%>
+		
 
 		<%
 		if (session != null && session.getAttribute("supsucce") != null) {
@@ -53,48 +70,77 @@ body {
 		}
 		%>
 
-		<div id="cardsContainer" class="d-flex flex-wrap mt-4">
+		<div id="cardsContainer" class="row row-cols-1 row-cols-md-2 g-4">
 			<%
 			DBDAO dao = new DBDAO();
 			List<News> newsList = dao.getNews();
 			for (News news : newsList) {
 			%>
-			<div class="card" style="width: 18rem;">
-				<div class="card-body">
-					<h5 class="card-title">
-						NomUtilisateur:<%=news.getUsername()%></h5>
-					<p class="card-text">
-						News:<%=news.getNews()%></p>
-				</div>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">Horaire:<%=news.getHoraire()%></li>
-				</ul>
-
-				<%
-				if (session != null && session.getAttribute("id") != null) {
-					Object iduser = session.getAttribute("id");
-					int id = Integer.parseInt(iduser.toString());
-					if (id == news.getUserId()) {
-				%>
-				<form action="SuprimNews" method="post">
+			<div class="col">
+				<div class="card">
+					<!-- style="width: 18rem; height: auto;" -->
 					<div class="card-body">
-						<input type="hidden" name="id" value=<%=news.getId()%>> <a
-							href="modifNews.jsp?id=<%=news.getId()%>" class="btn btn-primary">Modification</a>
-						<button type="submit" class="btn btn-danger">Supression</button>
+						<h5 class="card-title">
+							NomUtilisateur:<%=news.getUsername()%></h5>
+						<p class="card-text">
+							News:<%=news.getNews()%></p>
 					</div>
-				</form>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Temps de publication:<%=news.getHoraire()%></li>
+					</ul>
+
+					<%
+					if (session != null && session.getAttribute("id") != null) {
+						Object iduser = session.getAttribute("id");
+						int id = Integer.parseInt(iduser.toString());
+						if (id == news.getUserId()) {
+					%>
+					<form action="SuprimNews" method="post">
+						<div class="card-body">
+							<input type="hidden" name="id" value=<%=news.getId()%>> <a
+								href="modifNews.jsp?id=<%=news.getId()%>"
+								class="btn btn-primary">Modification</a>
+							<button type="submit" class="btn btn-danger">Supression</button>
+						</div>
+					</form>
+					<%
+					}
+					%>
+					<div class="card-footer">
+						<form action="PostComment" method="post">
+							<div class="input-group mb-3">
+								<input type="hidden" name="newsId" value="<%=news.getId()%>">
+								<input type="text" class="form-control"
+									placeholder="Ajouter un commentaire" name="comment">
+								<button class="btn btn-outline-secondary" type="submit"
+									id="button-addon2">Commenter</button>
+							</div>
+						</form>
+
+						<ul class="list-group mt-3">
+							<%
+							List<Comment> comments = dao.getCommentsForNews(news.getId());
+							for (Comment comment : comments) {
+							%>
+							<li class="list-group-item"><strong><%=comment.getUsername()%>:</strong>
+								<%=comment.getText()%> <span class="timestamp"> <%=comment.getTimestamp()%>
+							</span></li>
+							<%
+							}
+							%>
+						</ul>
+					</div>
+				</div>
+				<%
+				}
+				%>
 				<%
 				}
 				%>
 			</div>
-			<%
-			}
-			%>
-			<%
-			}
-			%>
 		</div>
-	</div>
+		</div>
 </body>
 
 </html>
+ 

@@ -97,7 +97,11 @@ public class MenuPrincipal extends JFrame implements ActionListener{
  
 		this.btnGestionUtilisateurs = new JButton("G\u00E9rer les utilisateurs");
  
+<<<<<<< HEAD
 		this.btnGestionUtilisateurs = new JButton("G\u00E9rer les utilisateurs");
+=======
+		this.btnGestionUtilisateurs = new JButton("G茅rer les utilisateurs");
+>>>>>>> ddb91e8f63e823c141166f8c5a8199967734ef62
  
 		btnGestionUtilisateurs.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
 		btnGestionUtilisateurs.setBounds(299, 295, 355, 30);

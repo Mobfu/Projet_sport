@@ -52,7 +52,8 @@ if (session.getAttribute("LogFlag") == null) {
 }
 %>
 
-<body>
+
+<body >
 	<%
 	if (session != null && session.getAttribute("LogFlag") != null) {
 		if ((boolean) session.getAttribute("LogFlag") != true) {
@@ -67,8 +68,8 @@ if (session.getAttribute("LogFlag") == null) {
 	}
 	%>
 
-<div class="card text-center">
-  <div class="card-header">
+<div class="card text-center" >
+  <div class="card-header" style="background-color:gray;">
 <form accept-charset="UTF-8" method="post" action="SaveData11"> 
 
 	<%
@@ -142,7 +143,7 @@ if (session.getAttribute("LogFlag") == null) {
     	<input type="hidden" name="limit" value="10">
 </form>
 </div>
-  <div class="card-body">
+  <div class="card-body" style="background-color:gray;">
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -282,7 +283,7 @@ if (session.getAttribute("LogFlag") == null) {
           </div>
 		</div>
 		<div class="col-md-3">
-<button onclick="generatePDF()" class="btn btn-primary" id="pdfButton">Télécharger le PDF</button>
+<button onclick="generatePDF()" class="btn btn-primary" id="pdfButton" style="margin-left:2rem;">Télécharger le PDF</button>
 </div>
     </div>
 </div> </div>
